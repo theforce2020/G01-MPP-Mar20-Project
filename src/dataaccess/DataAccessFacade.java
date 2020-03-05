@@ -115,8 +115,6 @@ public class DataAccessFacade implements DataAccess {
 		return retVal;
 	}
 	
-	
-	
 	final static class Pair<S,T> implements Serializable{
 		
 		S first;
@@ -144,6 +142,5 @@ public class DataAccessFacade implements DataAccess {
 			return "(" + first.toString() + ", " + second.toString() + ")";
 		}
 		private static final long serialVersionUID = 5399827794066637059L;
-	}
-	
+	}	
 }
