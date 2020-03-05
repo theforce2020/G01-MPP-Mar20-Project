@@ -29,5 +29,4 @@ final public class User implements Serializable {
 	public String toString() {
 		return "[" + id + ":" + password + ", " + authorization.toString() + "]";
 	}
-	
 }
