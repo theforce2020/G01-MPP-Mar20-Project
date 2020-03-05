@@ -10,6 +10,7 @@ final public class User implements Serializable {
 	
 	private String password;
 	private Auth authorization;
+
 	User(String id, String pass, Auth  auth) {
 		this.id = id;
 		this.password = pass;
