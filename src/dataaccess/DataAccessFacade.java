@@ -11,15 +11,13 @@ import java.util.HashMap;
 import java.util.List;
 
 import dataaccess.DataAccessFacade.StorageType;
-import model.Book;
-import model.BookCopy;
-import model.LibraryMember;
+import model.*;
 
 
 public class DataAccessFacade implements DataAccess {
 	
 	enum StorageType {
-		BOOKS, MEMBERS, USERS;
+		BOOKS, MEMBERS, USERS,LIBRARIAN;
 	}
 	
 	public static final String OUTPUT_DIR = System.getProperty("user.dir") 
@@ -27,17 +25,35 @@ public class DataAccessFacade implements DataAccess {
 	public static final String DATE_PATTERN = "MM/dd/yyyy";
 	
 	//implement: other save operations
+
 	public void saveNewMember(LibraryMember member) {
 		HashMap<String, LibraryMember> mems = readMemberMap();
 		String memberId = member.getMemberId();
 		mems.put(memberId, member);
-		saveToStorage(StorageType.MEMBERS, mems);	
+		saveToStorage(StorageType.MEMBERS, mems);
+	}
+	
+	public void saveNewLibrarian(Librarian librarian) {
+		HashMap<String, Librarian> libs = readLibrarianMap();
+		String libId = librarian.getLibrarianId();
+		libs.put(libId, librarian);
+		saveToStorage(StorageType.MEMBERS, libs);	
+	}
+	
+	public void saveNewBook(Book bk) {
+		HashMap<String, Book> books = readBooksMap();
+		if(!books.containsKey(bk.getIsbn())) {
+			books.put(bk.getIsbn(), bk);
+			saveToStorage(StorageType.BOOKS, books);
+		}
+		
+			
 	}
 	
 	@SuppressWarnings("unchecked")
 	public  HashMap<String,Book> readBooksMap() {
 		//Returns a Map with name/value pairs being
-		//   isbn -> Book
+		//isbn -> Book
 		return (HashMap<String,Book>) readFromStorage(StorageType.BOOKS);
 	}
 	
@@ -49,6 +65,13 @@ public class DataAccessFacade implements DataAccess {
 				StorageType.MEMBERS);
 	}
 	
+	@SuppressWarnings("unchecked")
+	public HashMap<String, Librarian> readLibrarianMap() {
+		//Returns a Map with name/value pairs being
+		//   memberId -> LibraryMember
+		return (HashMap<String, Librarian>) readFromStorage(
+				StorageType.LIBRARIAN);
+	}
 	
 	@SuppressWarnings("unchecked")
 	public HashMap<String, User> readUserMap() {
