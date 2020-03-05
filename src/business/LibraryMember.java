@@ -19,8 +19,6 @@ final public class LibraryMember extends Person implements Serializable {
 	public String getMemberId() {
 		return memberId;
 	}
-
-	
 	
 	@Override
 	public String toString() {
