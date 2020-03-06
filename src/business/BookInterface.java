@@ -13,6 +13,4 @@ public interface BookInterface {
 	public void updateBook(Book book);
 	
 	public boolean isBookAvailable(String isbn);
-	
-	
 }

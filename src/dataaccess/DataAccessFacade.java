@@ -196,4 +196,9 @@ public class DataAccessFacade implements DataAccess {
 		
 		private static final long serialVersionUID = 5399827794066637059L;
 	}
+
+	public void updateBook(LibraryMember libraryMember) {
+		// TODO Auto-generated method stub
+		
+	}
 }
