@@ -2,13 +2,13 @@ package business;
 
 import java.util.List;
 
-import exceptions.LoginException;
+import model.LibraryMember;
 
 public interface MemberInterface {
 	
-	public void login(String id, String password) throws LoginException;
+	public void saveLibraryMember(LibraryMember libraryMember);
 	
-	public List<String> allMemberIds();
+	public void updateLibraryMember(LibraryMember libraryMember);
 	
-	public List<String> allBookIds();	
+	public List<LibraryMember> allLibraryMembers();
 }
