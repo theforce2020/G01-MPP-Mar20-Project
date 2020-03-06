@@ -8,6 +8,10 @@ final public class LibraryMember extends Person implements Serializable {
 	
 	private String memberId;
 	
+	public LibraryMember(String fName, String lName, String telephone, Address address) {
+		super(fName,lName, telephone, address);
+	}
+	
 	public LibraryMember(String memberId, String fName, String lName, String telephone, Address address) {
 		super(fName,lName, telephone, address);
 		this.memberId = memberId;		

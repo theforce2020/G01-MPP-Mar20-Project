@@ -6,9 +6,9 @@ import model.LibraryMember;
 
 public interface LibraryMemberInterface {
 	
-	public void saveLibraryMember(LibraryMember libraryMember);
+	public void saveLibraryMember(String firstName, String lastName, String telephone, String street, String city, String state, String zip);
 	
-	public void updateLibraryMember(LibraryMember libraryMember);
+	public void updateLibraryMember(String firstName, String lastName, String telephone, String street, String city, String state, String zip);
 	
 	public List<LibraryMember> allLibraryMembers();
 }

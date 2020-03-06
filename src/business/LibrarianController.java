@@ -7,11 +7,11 @@ public class LibrarianController implements CheckInterface {
 
 	@Override
 	public void checkOutBook(String isbn, String memberId) {
-		
+		df.checkOutBook(isbn, memberId);
 	}
 
 	@Override
 	public void checkInBook(String isbn, String memberId) {
-		
+		df.checkInBook(isbn, memberId);
 	}
 }

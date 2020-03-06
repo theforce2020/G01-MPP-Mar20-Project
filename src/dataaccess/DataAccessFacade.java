@@ -38,7 +38,7 @@ public class DataAccessFacade implements DataAccess {
 		HashMap<String, Librarian> libs = readLibrarianMap();
 		String libId = librarian.getLibrarianId();
 		libs.put(libId, librarian);
-		saveToStorage(StorageType.MEMBERS, libs);	
+		saveToStorage(StorageType.LIBRARIAN, libs);	
 	}
 	
 	public void updateBook(Book bk) {
@@ -198,6 +198,16 @@ public class DataAccessFacade implements DataAccess {
 	}
 
 	public void updateBook(LibraryMember libraryMember) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void checkOutBook(String isbn, String memberId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void checkInBook(String isbn, String memberId) {
 		// TODO Auto-generated method stub
 		
 	}
