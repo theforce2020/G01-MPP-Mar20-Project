@@ -26,7 +26,7 @@ public class AdminController implements MemberInterface, BookInterface {
 
 	@Override
 	public void updateLibraryMember(LibraryMember libraryMember) {
-		df.updateBook(libraryMember);
+		
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class AdminController implements MemberInterface, BookInterface {
 	@Override
 	public void updateBook(Book book) {
 		// TODO Auto-generated method stub
-		
+		df.updateBook(book);
 	}
 
 	@Override
