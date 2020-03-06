@@ -8,8 +8,8 @@ final public class Author extends Person implements Serializable {
 	
 	private String bio;
 	
-	public Author(String fName, String lName, String title, Address address, String bio) {
-		super(fName, lName, title, address);
+	public Author(String fName, String lName, String telephone, Address address, String bio) {
+		super(fName, lName, telephone, address);
 		this.bio = bio;
 	}
 

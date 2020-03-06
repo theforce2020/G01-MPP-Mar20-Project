@@ -1,32 +1,39 @@
 package business;
+
 import java.util.*;
 import model.*;
 import dataaccess.DataAccessFacade;
 
-public class AdminController implements MemberInterface, BookInterface {
-	
+public class AdminController implements LibraryMemberInterface, BookInterface {
+
 	DataAccessFacade df = new DataAccessFacade();
 
 	public void addMember(LibraryMember member) {
 		df.saveNewMember(member);
 	}
-	
+
 	public void addLibrarian(Librarian librarian) {
-		
+
 	}
-	
+
 	public void addBook(Book bk) {
-		
+
 	}
 
 	@Override
-	public void saveLibraryMember(LibraryMember libraryMember) {
+	public void saveLibraryMember(String firstName, String lastName, String telephone, String street, String city,
+			String state, String zip) {
+		LibraryMember libraryMember = new LibraryMember(firstName, lastName, telephone,
+				new Address(street, city, state, zip));
 		df.saveNewMember(libraryMember);
 	}
 
 	@Override
-	public void updateLibraryMember(LibraryMember libraryMember) {
-		
+	public void updateLibraryMember(String firstName, String lastName, String telephone, String street, String city,
+			String state, String zip) {
+		LibraryMember libraryMember = new LibraryMember(firstName, lastName, telephone,
+				new Address(street, city, state, zip));
+		df.updateBook(libraryMember);
 	}
 
 	@Override
@@ -42,13 +49,15 @@ public class AdminController implements MemberInterface, BookInterface {
 	}
 
 	@Override
-	public void saveBook(Book book) {
+	public void saveBook(String isbn, String title, int maxCheckoutLength, String fName, String lName, String telephone,
+			String bio, String street, String city, String state, String zip) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	public void updateBook(Book book) {
+	public void updateBook(String isbn, String title, int maxCheckoutLength, String fName, String lName, String telephone,
+			String bio, String street, String city, String state, String zip) {
 		// TODO Auto-generated method stub
 		df.updateBook(book);
 	}
