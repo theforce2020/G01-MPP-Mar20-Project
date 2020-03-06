@@ -4,7 +4,7 @@ import java.util.List;
 
 import model.LibraryMember;
 
-public interface MemberInterface {
+public interface LibraryMemberInterface {
 	
 	public void saveLibraryMember(LibraryMember libraryMember);
 	
