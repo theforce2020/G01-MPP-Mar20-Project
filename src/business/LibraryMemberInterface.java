@@ -10,5 +10,5 @@ public interface LibraryMemberInterface {
 	
 	public void updateLibraryMember(String firstName, String lastName, String telephone, String street, String city, String state, String zip);
 	
-	public List<LibraryMember> allLibraryMembers();
+	public List<LibraryMember> getAllLibraryMembers();
 }

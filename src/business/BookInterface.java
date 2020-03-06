@@ -6,13 +6,13 @@ import model.Book;
 
 public interface BookInterface {
 	
-	public List<Book> allBooks();
+	public List<Book> getAllBooks();
 	
-	public void saveBook(String isbn, String title, int maxCheckoutLength, String fName, String lName, String telephone, String bio, 
-			String street, String city, String state, String zip);
+	public void saveBook(String isbn, String title, int maxCheckoutLength, String fName, String lName);
 	
-	public void updateBook(String isbn, String title, int maxCheckoutLength, String fName, String lName, String telephone, String bio, 
-			String street, String city, String state, String zip);
+	public void updateBook(String isbn, String title, int maxCheckoutLength, String fName, String lName);
 	
 	public boolean isBookAvailable(String isbn);
+	
+	public void addBookAuthor(String isbn, String fName, String lName);
 }
