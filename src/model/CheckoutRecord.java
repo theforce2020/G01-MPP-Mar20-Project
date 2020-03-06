@@ -13,9 +13,11 @@ public class CheckoutRecord implements Serializable {
 
 	private LibraryMember libraryMember;
 	
-	public CheckoutRecord(Book book, int copyNum, Date checkoutDate, Date dueDate, LibraryMember libraryMember){
+	public CheckoutRecord(Book book, int copyNum, LibraryMember libraryMember){
 		this.libraryMember = libraryMember;
-		this.checkoutRecordEntries = new CheckoutRecordEntry[]{new CheckoutRecordEntry(this, book.getNextAvailableCopy(), checkoutDate, dueDate)};	
+		
+		Date checkoutDate = new Date();
+		this.checkoutRecordEntries = new CheckoutRecordEntry[]{new CheckoutRecordEntry(this, book.getNextAvailableCopy(), checkoutDate, LibraryUtil.calculateDueDate(checkoutDate, book.getMaxCheckoutLength()))};	
 	}
 	
 	public void addCheckoutRecordEntry(Book book) {

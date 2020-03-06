@@ -40,6 +40,15 @@ public class DataAccessFacade implements DataAccess {
 		libs.put(libId, librarian);
 		saveToStorage(StorageType.MEMBERS, libs);	
 	}
+	
+	public void updateBook(Book bk) {
+		//HashMap<String, Book> books = readBooksMap();
+		HashMap<String, Book> books = new HashMap<>();
+		//if(!books.containsKey(bk.getIsbn())) {
+			books.put(bk.getIsbn(), bk);
+			saveToStorage(StorageType.BOOKS, books);
+		//}
+	}
 
 	public void saveNewBook(Book bk) {
 		HashMap<String, Book> books = readBooksMap();
@@ -48,6 +57,11 @@ public class DataAccessFacade implements DataAccess {
 			books.put(bk.getIsbn(), bk);
 			saveToStorage(StorageType.BOOKS, books);
 		}
+	}
+	
+	public Book getBook(String isbn) {
+		HashMap<String, Book> books = readBooksMap();
+		return books.get(isbn);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -149,14 +163,17 @@ public class DataAccessFacade implements DataAccess {
 		return retVal;
 	}
 
-	final static class Pair<S,T> implements Serializable{
+	final static class Pair<S,T> implements Serializable {
 
 		S first;
+		
 		T second;
+		
 		Pair(S s, T t) {
 			first = s;
 			second = t;
 		}
+		
 		@Override 
 		public boolean equals(Object ob) {
 			if(ob == null) return false;
@@ -171,10 +188,12 @@ public class DataAccessFacade implements DataAccess {
 		public int hashCode() {
 			return first.hashCode() + 5 * second.hashCode();
 		}
+		
 		@Override
 		public String toString() {
 			return "(" + first.toString() + ", " + second.toString() + ")";
 		}
+		
 		private static final long serialVersionUID = 5399827794066637059L;
 	}
 }
