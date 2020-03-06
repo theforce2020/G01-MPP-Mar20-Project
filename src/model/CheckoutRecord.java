@@ -1,39 +1,36 @@
 package model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
+
+import util.LibraryUtil;
 
 public class CheckoutRecord implements Serializable {
 	
 	private static final long serialVersionUID = 4580065230999673218L;
-	private String checkoutRecordId;
-	private CheckoutRecordEntry checkoutRecordEntry;
-	private LibraryMember member;
 	
-	public CheckoutRecord(String recordId, Book book, int copyNum, LocalDate chD, LocalDate dD, LibraryMember m){
-		//System.out.println("insde Checkout Record const");
-		this.checkoutRecordId = recordId; 
-		String entryId = recordId + String.valueOf(Math.random()*100);
-		this.checkoutRecordEntry = new CheckoutRecordEntry(entryId, book, copyNum, chD, dD);
-		//System.out.println(checkoutRecordEntry);
-		this.member = m;
+	private CheckoutRecordEntry[] checkoutRecordEntries;
+
+	private LibraryMember libraryMember;
+	
+	public CheckoutRecord(Book book, int copyNum, Date checkoutDate, Date dueDate, LibraryMember libraryMember){
+		this.libraryMember = libraryMember;
+		this.checkoutRecordEntries = new CheckoutRecordEntry[]{new CheckoutRecordEntry(this, book.getNextAvailableCopy(), checkoutDate, dueDate)};	
 	}
 	
-	public CheckoutRecordEntry getCheckoutRecordEntry() {
-		return this.checkoutRecordEntry;
+	public void addCheckoutRecordEntry(Book book) {
+		CheckoutRecordEntry[] newArr = new CheckoutRecordEntry[checkoutRecordEntries.length + 1];
+		System.arraycopy(checkoutRecordEntries, 0, newArr, 0, checkoutRecordEntries.length);
+		Date checkoutDate = new Date();
+		newArr[checkoutRecordEntries.length] = new CheckoutRecordEntry(this, book.getNextAvailableCopy(), checkoutDate, LibraryUtil.calculateDueDate(checkoutDate, book.getMaxCheckoutLength()));
+		checkoutRecordEntries = newArr;
 	}
 	
-	public String getCheckoutRecordId() {
-		return this.checkoutRecordId;
+	public LibraryMember getLibraryMember() {
+		return this.libraryMember;
 	}
 	
-	public LibraryMember getMember() {
-		return this.member;
+	public CheckoutRecordEntry[] getCheckoutRecordEntries() {
+		return checkoutRecordEntries;
 	}
-	
-	@Override
-	public String toString() {
-		return "CheckoutRecord: " + checkoutRecordId + " "+ this.checkoutRecordEntry;
-	}
-	
 }
