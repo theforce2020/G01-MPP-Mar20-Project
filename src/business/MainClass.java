@@ -20,12 +20,22 @@ public class MainClass {
 		/*System.out.println(allWhoseZipContains3());
 		System.out.println(allHavingOverdueBook());
 		System.out.println(allHavingMultipleAuthors());*/
-		saveAndReturnBooks();
+		addCopyToBook();
 		//allWhoseZipContains3();
 	}
-
-	public static List<Book> saveAndReturnBooks() throws LoginException {
+	
+	public static Book addCopyToBook() throws LoginException {
 		DataAccess da = new DataAccessFacade();
+		Collection<Book> books = da.readBooksMap().values();
+		
+		Book book = da.getBook("378483");
+		book.addCopy();
+		da.updateBook(book);
+		return book;
+	}
+
+	public static void saveAndReturnBooks() throws LoginException {
+		/*DataAccess da = new DataAccessFacade();
 		
 		List<Author> authors = new ArrayList<>();
 		authors.add(new Author("Elly", "Kane", "Mr", new Address("Kampala", "Kampala", "UG", "256"), "XXXxx"));
@@ -34,9 +44,9 @@ public class MainClass {
 		Collection<Book> books = da.readBooksMap().values();
 		List<Book> mems = new ArrayList<>();
 		mems.addAll(books);
-		return mems;
+		return mems;*/
 		
-		/*DataAccess da = new DataAccessFacade();
+		DataAccess da = new DataAccessFacade();
 		HashMap<String, User> map = da.readUserMap();
 		if(!map.containsKey("id")) {
 			throw new LoginException("ID " + 1 + " not found");
@@ -44,7 +54,7 @@ public class MainClass {
 		String passwordFound = map.get(1).getPassword();
 		if(!passwordFound.equals("")) {
 			throw new LoginException("Password incorrect");
-		}*/
+		}
 	}
 
 	//Returns a list of all ids of LibraryMembers whose zipcode contains the digit 3
