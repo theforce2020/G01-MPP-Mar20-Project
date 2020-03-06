@@ -1,20 +1,17 @@
 package model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-
-
-import dataaccess.DataAccess;
-import dataaccess.DataAccessFacade;
 
 final public class LibraryMember extends Person implements Serializable {
+	
+	private static final long serialVersionUID = -2226197306790714013L;
+	
 	private String memberId;
 	
-	public LibraryMember(String memberId, String fname, String lname, String tel, Address add) {
-		super(fname,lname, tel, add);
+	public LibraryMember(String memberId, String fName, String lName, String telephone, Address address) {
+		super(fName,lName, telephone, address);
 		this.memberId = memberId;		
 	}
-	
 	
 	public String getMemberId() {
 		return memberId;
@@ -25,6 +22,4 @@ final public class LibraryMember extends Person implements Serializable {
 		return "Member Info: " + "ID: " + memberId + ", name: " + getFirstName() + " " + getLastName() + 
 				", " + getTelephone() + " " + getAddress();
 	}
-
-	private static final long serialVersionUID = -2226197306790714013L;
 }

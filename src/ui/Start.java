@@ -23,7 +23,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-
 public class Start extends Application {
 	public static void main(String[] args) {
 		launch(args);
@@ -140,6 +139,5 @@ public class Start extends Application {
 		primaryStage.setScene(scene);
 		scene.getStylesheets().add(getClass().getResource("library.css").toExternalForm());
 		primaryStage.show();
-	}
-	
+	}	
 }

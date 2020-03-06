@@ -1,41 +1,48 @@
 package model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
 
 public class CheckoutRecordEntry implements Serializable {
 
 	private static final long serialVersionUID = 7647940524688830424L;
-	private LocalDate checkoutDate;
-	private LocalDate dueDate;
+	
+	private Date checkoutDate;
+	
+	private Date dueDate;
+	
+	private CheckoutRecord checkoutRecord;
+	
 	private BookCopy bookCopy;
-	private String entryRecordId;
 
-	public CheckoutRecordEntry(String erId, Book book, int copyNum, LocalDate chD, LocalDate dD){
-		this.entryRecordId = erId;
-		this.checkoutDate = chD;
-		this.dueDate = dD;
-	}
-
-	public String getEntryRecordId() {
-		return entryRecordId;
+	CheckoutRecordEntry(CheckoutRecord checkoutRecord, BookCopy bookCopy, Date checkoutDate, Date dueDate){
+		this.checkoutRecord = checkoutRecord;
+		this.bookCopy = bookCopy;
+		this.checkoutDate = checkoutDate;
+		this.dueDate = dueDate;
 	}
 
 	public BookCopy getBookCopy() {
 		return bookCopy;
 	}
 
-	public LocalDate getCheckoutDate() {
+	public Date getCheckoutDate() {
 		return checkoutDate;
 	}
 
-	public LocalDate getDueDate() {
+	public void setCheckoutDate(Date checkoutDate) {
+		this.checkoutDate = checkoutDate;
+	}
+
+	public Date getDueDate() {
 		return dueDate;
 	}
-	public void setDueDate(LocalDate ld) {
-		this.dueDate = ld;
+
+	public void setDueDate(Date dueDate) {
+		this.dueDate = dueDate;
 	}
-	public void setCheckoutDate(LocalDate chd) {
-		this.checkoutDate = chd;
+
+	public CheckoutRecord getCheckoutRecord() {
+		return checkoutRecord;
 	}
 }

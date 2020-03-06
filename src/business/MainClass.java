@@ -1,17 +1,22 @@
 package business;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 
 import dataaccess.DataAccess;
 import dataaccess.DataAccessFacade;
+import dataaccess.User;
+import exceptions.LoginException;
 import model.Address;
 import model.Author;
 import model.Book;
 import model.LibraryMember;
 
-public class Main {
+public class MainClass {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws LoginException {
 		/*System.out.println(allWhoseZipContains3());
 		System.out.println(allHavingOverdueBook());
 		System.out.println(allHavingMultipleAuthors());*/
@@ -19,7 +24,7 @@ public class Main {
 		//allWhoseZipContains3();
 	}
 
-	public static List<Book> saveAndReturnBooks() {
+	public static List<Book> saveAndReturnBooks() throws LoginException {
 		DataAccess da = new DataAccessFacade();
 		
 		List<Author> authors = new ArrayList<>();
@@ -30,6 +35,16 @@ public class Main {
 		List<Book> mems = new ArrayList<>();
 		mems.addAll(books);
 		return mems;
+		
+		/*DataAccess da = new DataAccessFacade();
+		HashMap<String, User> map = da.readUserMap();
+		if(!map.containsKey("id")) {
+			throw new LoginException("ID " + 1 + " not found");
+		}
+		String passwordFound = map.get(1).getPassword();
+		if(!passwordFound.equals("")) {
+			throw new LoginException("Password incorrect");
+		}*/
 	}
 
 	//Returns a list of all ids of LibraryMembers whose zipcode contains the digit 3
@@ -63,5 +78,4 @@ public class Main {
 		return null;
 
 	}
-
 }

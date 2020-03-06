@@ -8,9 +8,13 @@ import java.io.Serializable;
 final public class BookCopy implements Serializable {
 	
 	private static final long serialVersionUID = -63976228084869815L;
+	
 	private Book book;
+	
 	private int copyNum;
+	
 	private boolean isAvailable;
+	
 	BookCopy(Book book, int copyNum, boolean isAvailable) {
 		this.book = book;
 		this.copyNum = copyNum;
@@ -21,7 +25,6 @@ final public class BookCopy implements Serializable {
 		this.book = book;
 		this.copyNum = copyNum;
 	}
-	
 	
 	public boolean isAvailable() {
 		return isAvailable;
@@ -47,4 +50,11 @@ final public class BookCopy implements Serializable {
 		return copy.book.getIsbn().equals(book.getIsbn()) && copy.copyNum == copyNum;
 	}
 	
+	@Override
+	public int hashCode() {
+	    final int PRIME = 31;
+	    int result = 1;
+	    result = PRIME * result + this.copyNum;
+	    return result;
+	}
 }
