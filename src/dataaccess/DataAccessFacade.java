@@ -205,13 +205,4 @@ public class DataAccessFacade implements DataAccess {
 
 	}
 
-	public void checkOutBook(String isbn, String memberId) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public void checkInBook(String isbn, String memberId) {
-		// TODO Auto-generated method stub
-
-	}
 }

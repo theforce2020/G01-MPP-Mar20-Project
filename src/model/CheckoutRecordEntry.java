@@ -10,15 +10,14 @@ public class CheckoutRecordEntry implements Serializable {
 	private Date checkoutDate;
 	
 	private Date dueDate;
-	
-	private CheckoutRecord checkoutRecord;
-	
+	private Date returnDate;
+	Librarian lb;
 	private BookCopy bookCopy;
 	
 	private LibraryMember libraryMember;
 
-	CheckoutRecordEntry(CheckoutRecord checkoutRecord, LibraryMember libraryMember, BookCopy bookCopy, Date checkoutDate, Date dueDate){
-		this.checkoutRecord = checkoutRecord;
+	CheckoutRecordEntry(Librarian lb, CheckoutRecord checkoutRecord, LibraryMember libraryMember, BookCopy bookCopy, Date checkoutDate, Date dueDate){
+		this.lb = lb;
 		this.libraryMember = libraryMember;
 		this.bookCopy = bookCopy;
 		this.checkoutDate = checkoutDate;
@@ -45,11 +44,16 @@ public class CheckoutRecordEntry implements Serializable {
 		this.dueDate = dueDate;
 	}
 
-	public CheckoutRecord getCheckoutRecord() {
-		return checkoutRecord;
-	}
 
 	public LibraryMember getLibraryMember() {
 		return libraryMember;
+	}
+
+	public Date getReturnDate() {
+		return returnDate;
+	}
+
+	public void setReturnDate(Date returnDate) {
+		this.returnDate = returnDate;
 	}
 }
