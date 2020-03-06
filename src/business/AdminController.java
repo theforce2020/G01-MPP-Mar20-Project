@@ -3,7 +3,7 @@ import java.util.*;
 import model.*;
 import dataaccess.DataAccessFacade;
 
-public class AdminController implements MemberInterface, BookInterface {
+public class AdminController implements LibraryMemberInterface, BookInterface {
 	
 	DataAccessFacade df = new DataAccessFacade();
 

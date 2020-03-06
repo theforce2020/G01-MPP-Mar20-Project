@@ -14,9 +14,12 @@ public class CheckoutRecordEntry implements Serializable {
 	private CheckoutRecord checkoutRecord;
 	
 	private BookCopy bookCopy;
+	
+	private LibraryMember libraryMember;
 
-	CheckoutRecordEntry(CheckoutRecord checkoutRecord, BookCopy bookCopy, Date checkoutDate, Date dueDate){
+	CheckoutRecordEntry(CheckoutRecord checkoutRecord, LibraryMember libraryMember, BookCopy bookCopy, Date checkoutDate, Date dueDate){
 		this.checkoutRecord = checkoutRecord;
+		this.libraryMember = libraryMember;
 		this.bookCopy = bookCopy;
 		this.checkoutDate = checkoutDate;
 		this.dueDate = dueDate;
@@ -44,5 +47,9 @@ public class CheckoutRecordEntry implements Serializable {
 
 	public CheckoutRecord getCheckoutRecord() {
 		return checkoutRecord;
+	}
+
+	public LibraryMember getLibraryMember() {
+		return libraryMember;
 	}
 }
