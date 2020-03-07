@@ -20,7 +20,7 @@ import model.LibraryMember;
 public class DataAccessFacade implements DataAccess {
 
 	enum StorageType {
-		BOOKS, MEMBERS, USERS, LIBRARIAN, CHECKOUTRECORD;
+		BOOKS, MEMBERS, USERS, LIBRARIAN, CHECKOUTRECORDS;
 	}
 
 	public static final String OUTPUT_DIR = System.getProperty("user.dir") + File.separator + "src" + File.separator
@@ -115,12 +115,16 @@ public class DataAccessFacade implements DataAccess {
 
 	@SuppressWarnings("unchecked")
 	public HashMap<String, CheckoutRecord> readCheckoutRecordMap() {
-		return (HashMap<String, CheckoutRecord>) readFromStorage(StorageType.CHECKOUTRECORD);
+		return (HashMap<String, CheckoutRecord>) readFromStorage(StorageType.CHECKOUTRECORDS);
 	}
 
 	@Override
 	public void saveNewCheckoutRecord(CheckoutRecord checkoutRecord) {
 		// TODO Auto-generated method stub
+		HashMap<String, CheckoutRecord> cr = readCheckoutRecordMap();
+		String mbrId = checkoutRecord.getMember().getMemberId();
+		cr.put(mbrId, checkoutRecord);
+		saveToStorage(StorageType.CHECKOUTRECORDS, cr);
 
 	}
 

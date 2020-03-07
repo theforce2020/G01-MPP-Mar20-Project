@@ -12,19 +12,21 @@ public class LibrarianController implements CheckInterface {
 	DataAccessFacade df = new DataAccessFacade();
 
 	@Override
-	public void checkOutBook(String isbn, String memberId) throws CheckoutException {
+	public void checkOutBook(String isbn, String memberId) throws CheckException {
 		Book bk;
 		LibraryMember lb;
 		
 		HashMap<String, Book> allBook= df.readBooksMap();
 		HashMap<String,LibraryMember> allMember = df.readMemberMap();
+		
 		bk = allBook.get(isbn);
 		lb = allMember.get(memberId);
+		
 		if(bk == null) {
-			throw new CheckoutException("We dont have that book!");
+			throw new CheckException("We dont have that book!");
 		}
 		if(lb == null) { 
-			throw new CheckoutException("Sorry you are not a member. Let's Sign you in first!");
+			throw new CheckException("Sorry you are not a member. Let's Sign you in first!");
 		}
 		BookCopy bkCopi = bk.getNextAvailableCopy();
 		if (bkCopi != null) {
@@ -40,13 +42,13 @@ public class LibrarianController implements CheckInterface {
 			}
 
 		} else {
-			throw new CheckoutException("The book is not available");
+			throw new CheckException("The book is not available");
 		}
 	}
 
 
 	@Override
-	public void checkInBook(String isbn, int copyNum, String memberId) throws CheckoutException{
+	public void checkInBook(String isbn, int copyNum, String memberId) throws CheckException{
 		Book bk;
 		LibraryMember member;
 		
@@ -57,16 +59,16 @@ public class LibrarianController implements CheckInterface {
 		member = allMember.get(memberId);
 		
 		if(bk == null) {
-			throw new CheckoutException("We dont have that book!");
+			throw new CheckException("We dont have that book!");
 		}
 		
 		BookCopy copy = bk.getCopy(copyNum);
 		if(copy == null) {
-			throw new CheckoutException("This copy is not from us!");
+			throw new CheckException("This copy is not from us!");
 		}
 		
 		if(member == null) { 
-			throw new CheckoutException("Sorry you are not a member. Let's Sign you in first!");
+			throw new CheckException("Sorry you are not a member. Let's Sign you in first!");
 		}
 		
 		CheckoutRecord cr = member.getRecord();
