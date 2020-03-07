@@ -50,9 +50,9 @@ public class BookListController implements Initializable {
     @FXML
     private TableColumn<Book, String> authorCol;
     @FXML
-    private TableColumn<Book, String> publisherCol;
-    @FXML
     private TableColumn<Book, Boolean> availabilityCol;
+//    @FXML
+//    private TableColumn<Book, String> publisherCol;
     @FXML
     private AnchorPane contentPane;
 
@@ -70,7 +70,7 @@ public class BookListController implements Initializable {
         titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         authorCol.setCellValueFactory(new PropertyValueFactory<>("author"));
-        publisherCol.setCellValueFactory(new PropertyValueFactory<>("publisher"));
+//        publisherCol.setCellValueFactory(new PropertyValueFactory<>("publisher"));
         availabilityCol.setCellValueFactory(new PropertyValueFactory<>("availabilty"));
     }
 
@@ -88,7 +88,7 @@ public class BookListController implements Initializable {
                 String publisher = rs.getString("publisher");
                 Boolean avail = rs.getBoolean("isAvail");
 
-                list.add(new Book(titlex, id, author, publisher, avail));
+                list.add(new Book(titlex, id, author, avail));
 
             }
         } catch (SQLException ex) {
@@ -172,7 +172,6 @@ public class BookListController implements Initializable {
             row.add(book.getTitle());
             row.add(book.getId());
             row.add(book.getAuthor());
-            row.add(book.getPublisher());
             row.add(book.getAvailabilty());
             printData.add(row);
         }
@@ -189,14 +188,12 @@ public class BookListController implements Initializable {
         private final SimpleStringProperty title;
         private final SimpleStringProperty id;
         private final SimpleStringProperty author;
-        private final SimpleStringProperty publisher;
         private final SimpleStringProperty availabilty;
 
-        public Book(String title, String id, String author, String pub, Boolean avail) {
+        public Book(String title, String id, String author, Boolean avail) {
             this.title = new SimpleStringProperty(title);
             this.id = new SimpleStringProperty(id);
             this.author = new SimpleStringProperty(author);
-            this.publisher = new SimpleStringProperty(pub);
             if (avail) {
                 this.availabilty = new SimpleStringProperty("Available");
             } else {
@@ -216,14 +213,9 @@ public class BookListController implements Initializable {
             return author.get();
         }
 
-        public String getPublisher() {
-            return publisher.get();
-        }
-
         public String getAvailabilty() {
             return availabilty.get();
         }
-
     }
 
 }

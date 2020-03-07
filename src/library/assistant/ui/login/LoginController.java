@@ -64,7 +64,7 @@ public class LoginController implements Initializable {
 
     void loadMain() {
         try {
-            Parent parent = FXMLLoader.load(getClass().getResource("/library/assistant/ui/main/librarian.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("/library/assistant/ui/main/admin.fxml"));
             Stage stage = new Stage(StageStyle.DECORATED);
             stage.setTitle("The Force");
             stage.setScene(new Scene(parent));
