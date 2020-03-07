@@ -35,8 +35,8 @@ public class DataAccessFacade implements DataAccess {
 	}
 
 	public void saveNewLibrarian(Librarian librarian) {
-		HashMap<String, Librarian> libs = readLibrarianMap();
-		String libId = librarian.getLibrarianId();
+		HashMap<Integer, Librarian> libs = readLibrarianMap();
+		int libId = librarian.getLibrarianId();
 		libs.put(libId, librarian);
 		saveToStorage(StorageType.LIBRARIAN, libs);
 	}
@@ -79,10 +79,10 @@ public class DataAccessFacade implements DataAccess {
 	}
 
 	@SuppressWarnings("unchecked")
-	public HashMap<String, Librarian> readLibrarianMap() {
+	public HashMap<Integer, Librarian> readLibrarianMap() {
 		// Returns a Map with name/value pairs being
 		// memberId -> LibraryMember
-		return (HashMap<String, Librarian>) readFromStorage(StorageType.LIBRARIAN);
+		return (HashMap<Integer, Librarian>) readFromStorage(StorageType.LIBRARIAN);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -222,5 +222,17 @@ public class DataAccessFacade implements DataAccess {
 	public List<LibraryMember> getAllLibraryMembers() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public List<Librarian> getAllLibrarians() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Librarian getLibrarian(int librarianId) {
+		@SuppressWarnings("unchecked")
+		HashMap<Integer, Librarian> result = (HashMap<Integer, Librarian>) readFromStorage(StorageType.LIBRARIAN);
+		return result.get(librarianId);
 	}
 }
