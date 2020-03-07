@@ -209,4 +209,18 @@ public class DataAccessFacade implements DataAccess {
 
 	}
 
+	public boolean isBookAvailable(String isbn) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public List<Book> getAllBooks() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<LibraryMember> getAllLibraryMembers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

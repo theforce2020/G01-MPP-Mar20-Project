@@ -37,34 +37,39 @@ public class AdminController implements LibraryMemberInterface, BookInterface {
 	}
 
 	@Override
-	public List<LibraryMember> allLibraryMembers() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<LibraryMember> getAllLibraryMembers() {
+		return df.getAllLibraryMembers();
 	}
 
 	@Override
-	public List<Book> allBooks() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Book> getAllBooks() {
+		return df.getAllBooks();
+	}
+
+	// TODO Handle list of authors
+	@Override
+	public void saveBook(String isbn, String title, int maxCheckoutLength, String fName, String lName) {
+		Book book = new Book(isbn, title, maxCheckoutLength);
+		book.addAuthor(new Author(fName, lName));
+		df.saveNewBook(book);
 	}
 
 	@Override
-	public void saveBook(String isbn, String title, int maxCheckoutLength, String fName, String lName, String telephone,
-			String bio, String street, String city, String state, String zip) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void updateBook(String isbn, String title, int maxCheckoutLength, String fName, String lName, String telephone,
-			String bio, String street, String city, String state, String zip) {
-		// TODO Auto-generated method stub
-		
+	public void updateBook(String isbn, String title, int maxCheckoutLength, String fName, String lName) {
+		Book book = new Book(isbn, title, maxCheckoutLength);
+		book.addAuthor(new Author(fName, lName));
+		df.updateBook(book);
 	}
 
 	@Override
 	public boolean isBookAvailable(String isbn) {
-		// TODO Auto-generated method stub
-		return false;
+		return df.isBookAvailable(isbn);
+	}
+
+	@Override
+	public void addBookAuthor(String isbn, String fName, String lName) {
+		Book book = df.getBook(isbn);
+		book.addAuthor(new Author(fName, lName));
+		df.updateBook(book);
 	}
 }

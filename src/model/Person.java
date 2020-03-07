@@ -14,6 +14,11 @@ public class Person implements Serializable {
 	
 	private Address address;
 	
+	public Person(String fName, String lName) {
+		this.firstName = fName;
+		this.lastName = lName;
+	}
+	
 	public Person(String fName, String lName, String telephone, Address address) {
 		this.firstName = fName;
 		this.lastName = lName;
