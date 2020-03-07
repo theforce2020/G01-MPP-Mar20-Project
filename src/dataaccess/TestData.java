@@ -27,7 +27,7 @@ public class TestData {
 		td.bookData();
 		td.libraryMemberData();
 		td.userData();
-		DataAccess da = new DataAccessFacade();
+		DataAccess1 da = new DataAccessFacade1();
 		System.out.println(da.readBooksMap());
 		System.out.println(da.readUserMap());
 	}
@@ -39,11 +39,11 @@ public class TestData {
 		allBooks.get(3).addCopy();
 		allBooks.get(2).addCopy();
 		allBooks.get(2).addCopy();
-		DataAccessFacade.loadBookMap(allBooks);
+		DataAccessFacade1.loadBookMap(allBooks);
 	}
 	
 	public void userData() {
-		DataAccessFacade.loadUserMap(allUsers);
+		DataAccessFacade1.loadUserMap(allUsers);
 	}
 	
 	//create library members
@@ -59,7 +59,7 @@ public class TestData {
 		libraryMember = new LibraryMember("1004", "Ricardo", "Montalbahn", "641-472-2871", addresses.get(7));
 		members.add(libraryMember);
 		
-		DataAccessFacade.loadMemberMap(members);	
+		DataAccessFacade1.loadMemberMap(members);	
 	}
 	
 	///////////// DATA //////////////
