@@ -161,6 +161,12 @@ public class DataAccessFacade implements DataAccess {
 		return (HashMap<String, UserCredentials>) readFromStorage(StorageType.USERS);
 	}
 	
+	static void loadUserMap(UserCredentials user) {
+		HashMap<String, UserCredentials> newUsers = readUsersMap();
+		newUsers.put(user.getUsername(), user);
+		saveToStorage(StorageType.USERS, newUsers);
+	}
+	
 	static Person whoLogin(UserCredentials crd) throws LoginException {
 		Person iam;
 		//Check if user exist
