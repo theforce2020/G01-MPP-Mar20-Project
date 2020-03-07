@@ -21,7 +21,7 @@ import model.LibraryMember;
 public class TestData {
 	
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		TestData td = new TestData();
 		td.bookData();
 		td.libraryMemberData();
@@ -38,11 +38,11 @@ public class TestData {
 		allBooks.get(3).addCopy();
 		allBooks.get(2).addCopy();
 		allBooks.get(2).addCopy();
-		DataAccessFacade.loadBookMap(allBooks);
+		//DataAccessFacade.loadBookMap(allBooks);
 	}
 	
 	public void userData() {
-		DataAccessFacade.loadUserMap(allUsers);
+		//DataAccessFacade.loadUserMap(allUsers);
 	}
 	
 	//create library members
@@ -105,5 +105,5 @@ public class TestData {
 			add(new User("102", "abc", Auth.ADMIN));
 			add(new User("103", "111", Auth.BOTH));
 		}
-	};
+	};*/
 }

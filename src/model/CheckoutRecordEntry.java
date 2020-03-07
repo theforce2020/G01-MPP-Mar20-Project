@@ -42,8 +42,6 @@ public class CheckoutRecordEntry implements Serializable {
 		this.dueDate = dueDate;
 	}
 
-
-
 	public Date getReturnDate() {
 		return returnDate;
 	}
@@ -71,6 +69,4 @@ public class CheckoutRecordEntry implements Serializable {
 		CheckoutRecordEntry b = (CheckoutRecordEntry)ob;
 		return b.isbn.equals(isbn) && b.bookCopy.getCopyNum() == bookCopy.getCopyNum();
 	}
-	
-	
 }

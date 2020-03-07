@@ -10,6 +10,8 @@ final public class LibraryMember extends Person implements Serializable {
 	
 	private CheckoutRecord record;
 	
+	private UserCredentials UserCredentials; 
+	
 	public LibraryMember(String fName, String lName, String telephone, Address address) {
 		super(fName,lName, telephone, address);
 	}
@@ -35,5 +37,13 @@ final public class LibraryMember extends Person implements Serializable {
 
 	public void setRecord(CheckoutRecord record) {
 		this.record = record;
+	}
+
+	public UserCredentials getUserCredentials() {
+		return UserCredentials;
+	}
+
+	public void setUserCredentials(UserCredentials userCredentials) {
+		UserCredentials = userCredentials;
 	}
 }

@@ -14,8 +14,8 @@ public class SystemController implements ControllerInterface {
 	public static Auth currentAuth = null;
 	
  public void login(String id, String password) throws LoginException {
-		DataAccess da = new DataAccessFacade();
-		HashMap<String, User> map = da.readUserMap();
+		/*DataAccess da = new DataAccessFacade();
+		HashMap<String, User> map = da.lo;
 		if(!map.containsKey(id)) {
 			throw new LoginException("ID " + id + " not found");
 		}
@@ -23,14 +23,14 @@ public class SystemController implements ControllerInterface {
 		if(!passwordFound.equals(password)) {
 			throw new LoginException("Password incorrect");
 		}
-		currentAuth = map.get(id).getAuthorization();
+		currentAuth = map.get(id).getAuthorization();*/
 		
 	}
 	@Override
 	public List<String> allMemberIds() {
 		DataAccess da = new DataAccessFacade();
 		List<String> retval = new ArrayList<>();
-		retval.addAll(da.readMemberMap().keySet());
+		retval.addAll(da.loadMemberMap().keySet());
 		return retval;
 	}
 	
@@ -38,7 +38,7 @@ public class SystemController implements ControllerInterface {
 	public List<String> allBookIds() {
 		DataAccess da = new DataAccessFacade();
 		List<String> retval = new ArrayList<>();
-		retval.addAll(da.readBooksMap().keySet());
+		retval.addAll(da.loadBookMap().keySet());
 		return retval;
 	}
 	

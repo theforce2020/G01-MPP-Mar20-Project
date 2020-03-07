@@ -2,24 +2,24 @@ package model;
 
 import java.io.Serializable;
 
+import dataaccess.Auth;
+
 public class Admin extends Person implements Serializable{
 
-	private String adminId;
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4918518410164546946L;
-
-	public Admin(String fName, String lName, String telephone, Address address) {
-		super(fName, lName, telephone, address);
-		// TODO Auto-generated constructor stub
-	}
 	
-	public String getAdminId() {
-		return adminId;
-	}
-	public void setAdminId(String adminId) {
-		this.adminId = adminId;
+	private UserCredentials userCredentials; 
+
+	public Admin(String fName, String lName, String telephone, Address address, String username, String password, Auth authorization) {
+		super(fName, lName, telephone, address);
+		this.userCredentials = new UserCredentials(username, password, authorization);
 	}
 
+	public UserCredentials getUserCredentials() {
+		return userCredentials;
+	}
+
+	public void setUserCredentials(UserCredentials userCredentials) {
+		this.userCredentials = userCredentials;
+	}
 }

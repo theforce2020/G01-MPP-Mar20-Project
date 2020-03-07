@@ -9,17 +9,13 @@ import model.LibraryMember;
 
 public interface DataAccess { 
 	
-	public HashMap<String, Book> readBooksMap();
-	
-	public HashMap<String, User> readUserMap();
-	
-	public HashMap<String, LibraryMember> readMemberMap();
+	public HashMap<String, LibraryMember> loadMemberMap();
 	
 	public void saveNewMember(LibraryMember member);
 	
 	public void saveNewBook(Book book); 
 	
-	public HashMap<String, CheckoutRecord> readCheckoutRecordMap();
+	public HashMap<String, CheckoutRecord> loadCheckoutRecordMap();
 	
 	public void saveNewCheckoutRecord(CheckoutRecord checkoutRecord);
 	
@@ -27,5 +23,15 @@ public interface DataAccess {
 	
 	public void updateBook(Book bk);
 	
-	public Librarian getLibrarian(int librarianId);
+	public Librarian getLibrarianById(int librarianId);
+	
+	public boolean isBookAvailable(String isbn);
+	
+	public void saveLibrarian(Librarian librarian);
+	
+	public void updateLibrarian(Librarian librarian);
+	
+	public HashMap<String, Book> loadBookMap();
+	
+	public void updateLibraryMember(LibraryMember member);
 }
