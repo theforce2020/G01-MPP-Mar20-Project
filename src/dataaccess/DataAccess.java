@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import model.Book;
 import model.CheckoutRecord;
+import model.Librarian;
 import model.LibraryMember;
 
 public interface DataAccess { 
@@ -25,4 +26,6 @@ public interface DataAccess {
 	public Book getBook(String isbn);
 	
 	public void updateBook(Book bk);
+	
+	public Librarian getLibrarian(int librarianId);
 }

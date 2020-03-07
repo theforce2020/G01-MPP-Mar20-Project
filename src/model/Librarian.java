@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Librarian extends Person implements Serializable {
 
-	private String librarianId;
+	private int librarianId;
 	
 	private static final long serialVersionUID = -8117104280466495760L;
 
@@ -12,11 +12,11 @@ public class Librarian extends Person implements Serializable {
 		super(fName,lName, telephone, address);
 	}
 
-	public String getLibrarianId() {
+	public int getLibrarianId() {
 		return librarianId;
 	}
 
-	public void setLibrarianId(String librarianId) {
+	public void setLibrarianId(int librarianId) {
 		this.librarianId = librarianId;
 	}
 }

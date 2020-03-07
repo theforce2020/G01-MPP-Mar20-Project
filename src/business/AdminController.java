@@ -4,21 +4,9 @@ import java.util.*;
 import model.*;
 import dataaccess.DataAccessFacade;
 
-public class AdminController implements LibraryMemberInterface, BookInterface {
+public class AdminController implements LibraryMemberInterface, BookInterface, LibrarianInterface {
 
 	DataAccessFacade df = new DataAccessFacade();
-
-	public void addMember(LibraryMember member) {
-		df.saveNewMember(member);
-	}
-
-	public void addLibrarian(Librarian librarian) {
-
-	}
-
-	public void addBook(Book bk) {
-
-	}
 
 	@Override
 	public void saveLibraryMember(String firstName, String lastName, String telephone, String street, String city,
@@ -71,5 +59,29 @@ public class AdminController implements LibraryMemberInterface, BookInterface {
 		Book book = df.getBook(isbn);
 		book.addAuthor(new Author(fName, lName));
 		df.updateBook(book);
+	}
+
+	@Override
+	public List<Librarian> getAllLibrarians() {
+		return df.getAllLibrarians();
+	}
+
+	@Override
+	public void saveLibrarian(String fName, String lName, String telephone, String street, String city, String state,
+			String zip) {
+		Librarian librarian = new Librarian(fName, lName, telephone,
+				new Address(street, city, state, zip));
+		df.saveNewLibrarian(librarian);
+	}
+
+	@Override
+	public void updateLibrarian(int librarianId, String fName, String lName, String telephone, String street, String city, String state,
+			String zip) {
+		Librarian librarian = df.getLibrarian(librarianId);
+		librarian.setAddress(new Address(street, city, state, zip));
+		librarian.setFirstName(fName);
+		librarian.setLastName(lName);
+		librarian.setTelephone(telephone);
+		df.saveNewLibrarian(librarian);
 	}
 }
