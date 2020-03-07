@@ -12,7 +12,7 @@ public class Librarian extends Person implements Serializable {
 	
 	public Librarian(String fName, String lName, String telephone, Address address, String username, String password, Auth authorization) {
 		super(fName,lName, telephone, address);
-		this.userCredentials = new UserCredentials(username, password, authorization);
+		this.userCredentials = new UserCredentials(username, password, authorization,this);
 	}
 
 	public UserCredentials getUserCredentials() {

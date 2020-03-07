@@ -11,10 +11,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
 
+import exceptions.LoginException;
 import model.Book;
 import model.CheckoutRecord;
 import model.Librarian;
 import model.LibraryMember;
+import model.Person;
+import model.UserCredentials;
 
 public class DataAccessFacade implements DataAccess {
 
@@ -151,6 +154,23 @@ public class DataAccessFacade implements DataAccess {
 				}
 			}
 		}
+	}
+
+	@SuppressWarnings("unchecked")
+	static HashMap<String, UserCredentials> readUsersMap() {
+		return (HashMap<String, UserCredentials>) readFromStorage(StorageType.USERS);
+	}
+	
+	static Person whoLogin(UserCredentials crd) throws LoginException {
+		Person iam;
+		//Check if user exist
+		HashMap<String, UserCredentials> allUsers = readUsersMap();
+		if(allUsers.containsKey(crd.getUsername())) {
+			iam = crd.getMe();
+		}else {
+			throw new LoginException("Invalid username or password");
+		}
+		return iam;
 	}
 
 	static Object readFromStorage(StorageType type) {
