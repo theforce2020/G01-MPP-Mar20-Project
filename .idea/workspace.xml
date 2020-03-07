@@ -3,15 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5dd6f14e-a00d-4003-8063-5fef8f038c70" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/assistant/ui/about/about.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/assistant/ui/about/about.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/assistant/ui/addbook/add_book.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/assistant/ui/addbook/add_book.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/assistant/ui/addmember/member_add.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/assistant/ui/addmember/member_add.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/assistant/ui/issuedlist/issued_list.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/assistant/ui/issuedlist/issued_list.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/assistant/ui/listbook/book_list.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/assistant/ui/listbook/book_list.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/assistant/ui/listmember/member_list.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/assistant/ui/listmember/member_list.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/assistant/ui/login/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/assistant/ui/login/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library/assistant/ui/listbook/BookListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/assistant/ui/listbook/BookListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library/assistant/ui/login/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/assistant/ui/login/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/assistant/data/model/Book.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/assistant/database/DataHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/assistant/database/DataHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/assistant/database/DatabaseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/assistant/database/DatabaseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/assistant/ui/addbook/BookAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/assistant/ui/addbook/BookAddController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +35,7 @@
     <option name="showVisibilityIcons" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -50,15 +46,15 @@
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\611087\Documents\Class\Library-Assistant-master\src\library\assistant\ui\main" />
-      <recent name="C:\Users\611087\Documents\Class\Library-Assistant-master\src\resources\img" />
-      <recent name="C:\Users\611087\Documents\Class\Library-Assistant-master\src\resources" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\611087\Documents\Class\Library-Assistant-master\src\library\assistant\ui\main\actions" />
       <recent name="C:\Users\611087\Documents\Class\Library-Assistant-master\src\library\assistant\ui\main" />
       <recent name="C:\Users\611087\Documents\Class\Library-Assistant-master\src\resources\img" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\611087\Documents\Class\Library-Assistant-master\src\library\assistant\ui\main" />
+      <recent name="C:\Users\611087\Documents\Class\Library-Assistant-master\src\resources\img" />
+      <recent name="C:\Users\611087\Documents\Class\Library-Assistant-master\src\resources" />
     </key>
   </component>
   <component name="RunManager">
@@ -85,7 +81,7 @@
       <workItem from="1583443454609" duration="47000" />
       <workItem from="1583443978940" duration="6523000" />
       <workItem from="1583511663786" duration="29774000" />
-      <workItem from="1583593815960" duration="5359000" />
+      <workItem from="1583593815960" duration="8247000" />
     </task>
     <servers />
   </component>
@@ -101,10 +97,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="150" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1583520805907" />
-    <state x="488" y="80" key="#com.intellij.ide.util.MemberChooser" timestamp="1583536152070">
+    <state x="488" y="80" key="#com.intellij.ide.util.MemberChooser" timestamp="1583621892050">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="80" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1583536152070" />
+    <state x="488" y="80" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1583621892050" />
     <state x="425" y="129" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1583438482772">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -113,30 +109,34 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="544" y="233" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1583437595306" />
-    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583526927191">
+    <state x="479" y="249" width="408" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1583622652208">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1583526927191" />
+    <state x="479" y="249" width="408" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1583622652208" />
+    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583621573483">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1583621573483" />
     <state x="476" y="119" key="FileChooserDialogImpl" timestamp="1583620086518">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="476" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1583620086518" />
-    <state width="1323" height="155" key="GridCell.Tab.0.bottom" timestamp="1583619169174">
+    <state width="1323" height="155" key="GridCell.Tab.0.bottom" timestamp="1583620534274">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="155" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1583619169174" />
-    <state width="1323" height="155" key="GridCell.Tab.0.center" timestamp="1583619169174">
+    <state width="1323" height="155" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1583620534274" />
+    <state width="1323" height="155" key="GridCell.Tab.0.center" timestamp="1583620534273">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="155" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1583619169174" />
-    <state width="1323" height="155" key="GridCell.Tab.0.left" timestamp="1583619169174">
+    <state width="1323" height="155" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1583620534273" />
+    <state width="1323" height="155" key="GridCell.Tab.0.left" timestamp="1583620534273">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="155" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1583619169174" />
-    <state width="1323" height="155" key="GridCell.Tab.0.right" timestamp="1583619169174">
+    <state width="1323" height="155" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1583620534273" />
+    <state width="1323" height="155" key="GridCell.Tab.0.right" timestamp="1583620534273">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="155" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1583619169174" />
+    <state width="1323" height="155" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1583620534273" />
     <state width="1323" height="223" key="GridCell.Tab.1.bottom" timestamp="1583542161293">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

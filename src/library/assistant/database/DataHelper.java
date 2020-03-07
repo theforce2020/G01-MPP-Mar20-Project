@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import library.assistant.data.model.Book;
 import library.assistant.data.model.MailServerInfo;
 import library.assistant.ui.listmember.MemberListController.Member;
@@ -20,18 +21,18 @@ public class DataHelper {
     private final static Logger LOGGER = LogManager.getLogger(DatabaseHandler.class.getName());
 
     public static boolean insertNewBook(Book book) {
-        try {
-            PreparedStatement statement = DatabaseHandler.getInstance().getConnection().prepareStatement(
-                    "INSERT INTO BOOK(id,title,author,publisher,isAvail) VALUES(?,?,?,?,?)");
-            statement.setString(1, book.getId());
-            statement.setString(2, book.getTitle());
-            statement.setString(3, book.getAuthor());
-            statement.setString(4, book.getPublisher());
-            statement.setBoolean(5, book.getAvailability());
-            return statement.executeUpdate() > 0;
-        } catch (SQLException ex) {
-            LOGGER.log(Level.ERROR, "{}", ex);
-        }
+//        try {
+//            PreparedStatement statement = DatabaseHandler.getInstance().getConnection().prepareStatement(
+//                    "INSERT INTO BOOK(id,title,author,publisher,isAvail) VALUES(?,?,?,?,?)");
+//            statement.setString(1, book.getId());
+//            statement.setString(2, book.getTitle());
+//            statement.setString(3, book.getAuthor());
+//            statement.setString(4, book.getPublisher());
+//            statement.setBoolean(5, book.getAvailability());
+//            return statement.executeUpdate() > 0;
+//        } catch (SQLException ex) {
+//            LOGGER.log(Level.ERROR, "{}", ex);
+//        }
         return false;
     }
 

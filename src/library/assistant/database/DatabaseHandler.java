@@ -208,11 +208,10 @@ public final class DatabaseHandler {
 
     public boolean updateBook(Book book) {
         try {
-            String update = "UPDATE BOOK SET TITLE=?, AUTHOR=?, PUBLISHER=? WHERE ID=?";
+            String update = "UPDATE BOOK SET TITLE=?, AUTHOR=?, WHERE ID=?";
             PreparedStatement stmt = conn.prepareStatement(update);
             stmt.setString(1, book.getTitle());
             stmt.setString(2, book.getAuthor());
-            stmt.setString(3, book.getPublisher());
             stmt.setString(4, book.getId());
             int res = stmt.executeUpdate();
             return (res > 0);

@@ -71,7 +71,7 @@ public class BookAddController implements Initializable {
             return;
         }
 
-        Book book = new Book(bookID, bookName, bookAuthor, bookPublisher, Boolean.TRUE);
+        Book book = new Book(bookID, bookName);
         boolean result = DataHelper.insertNewBook(book);
         if (result) {
             AlertMaker.showMaterialDialog(rootPane, mainContainer, new ArrayList<>(), "New book added", bookName + " has been added");
@@ -110,7 +110,6 @@ public class BookAddController implements Initializable {
         title.setText(book.getTitle());
         id.setText(book.getId());
         author.setText(book.getAuthor());
-        publisher.setText(book.getPublisher());
         id.setEditable(false);
         isInEditMode = Boolean.TRUE;
     }
@@ -123,7 +122,7 @@ public class BookAddController implements Initializable {
     }
 
     private void handleEditOperation() {
-        BookListController.Book book = new BookListController.Book(title.getText(), id.getText(), author.getText(), publisher.getText(), true);
+        BookListController.Book book = new BookListController.Book(title.getText(), id.getText(), author.getText(), true);
         if (databaseHandler.updateBook(book)) {
             AlertMaker.showMaterialDialog(rootPane, mainContainer, new ArrayList<>(), "Success", "Update complete");
         } else {
