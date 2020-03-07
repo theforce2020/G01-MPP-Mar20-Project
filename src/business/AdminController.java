@@ -2,6 +2,7 @@ package business;
 
 import java.util.*;
 import model.*;
+import dataaccess.Auth;
 import dataaccess.DataAccessFacade;
 
 public class AdminController implements LibraryMemberInterface, BookInterface, LibrarianInterface {
@@ -21,17 +22,18 @@ public class AdminController implements LibraryMemberInterface, BookInterface, L
 			String state, String zip) {
 		LibraryMember libraryMember = new LibraryMember(firstName, lastName, telephone,
 				new Address(street, city, state, zip));
-		df.updateBook(libraryMember);
+		df.updateLibraryMember(libraryMember);
 	}
 
 	@Override
 	public List<LibraryMember> getAllLibraryMembers() {
-		return df.getAllLibraryMembers();
+		return new ArrayList<LibraryMember>(df.loadMemberMap().values());
 	}
 
 	@Override
 	public List<Book> getAllBooks() {
-		return df.getAllBooks();
+		HashMap<String, Book> books = df.loadBookMap();
+		return new ArrayList<Book>(books.values());
 	}
 
 	// TODO Handle list of authors
@@ -63,25 +65,34 @@ public class AdminController implements LibraryMemberInterface, BookInterface, L
 
 	@Override
 	public List<Librarian> getAllLibrarians() {
-		return df.getAllLibrarians();
+		HashMap<Integer, Librarian> librarians = df.loadLibrarianMap();
+		return new ArrayList<Librarian>(librarians.values());
 	}
 
 	@Override
 	public void saveLibrarian(String fName, String lName, String telephone, String street, String city, String state,
-			String zip) {
+			String zip, String username, String password) {
 		Librarian librarian = new Librarian(fName, lName, telephone,
-				new Address(street, city, state, zip));
-		df.saveNewLibrarian(librarian);
+				new Address(street, city, state, zip), username, password, Auth.LIBRARIAN);
+		df.saveLibrarian(librarian);
 	}
 
 	@Override
 	public void updateLibrarian(int librarianId, String fName, String lName, String telephone, String street, String city, String state,
 			String zip) {
-		Librarian librarian = df.getLibrarian(librarianId);
+		Librarian librarian = df.getLibrarianById(librarianId);
 		librarian.setAddress(new Address(street, city, state, zip));
 		librarian.setFirstName(fName);
 		librarian.setLastName(lName);
 		librarian.setTelephone(telephone);
-		df.saveNewLibrarian(librarian);
+		df.updateLibrarian(librarian);
+	}
+	
+	@Override
+	public void saveAdmin(String fName, String lName, String telephone, String street, String city, String state,
+			String zip, String username, String password) {
+		Admin admin = new Admin(fName, lName, telephone,
+				new Address(street, city, state, zip), username, password, Auth.ADMIN);
+		//df.sav(admin);
 	}
 }

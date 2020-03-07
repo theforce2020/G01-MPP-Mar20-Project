@@ -10,7 +10,6 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
-import java.util.List;
 
 import model.Book;
 import model.CheckoutRecord;
@@ -20,108 +19,116 @@ import model.LibraryMember;
 public class DataAccessFacade implements DataAccess {
 
 	enum StorageType {
-		BOOKS, MEMBERS, USERS, LIBRARIAN, CHECKOUTRECORDS;
+		BOOKS, MEMBERS, USERS, CHECKOUTRECORDS;
 	}
 
 	public static final String OUTPUT_DIR = System.getProperty("user.dir") + File.separator + "src" + File.separator
 			+ "dataaccess" + File.separator + "storage";
+	
 	public static final String DATE_PATTERN = "MM/dd/yyyy";
 
 	public void saveNewMember(LibraryMember member) {
-		HashMap<String, LibraryMember> mems = readMemberMap();
+		HashMap<String, LibraryMember> mems = loadMemberMap();
 		String memberId = member.getMemberId();
 		mems.put(memberId, member);
 		saveToStorage(StorageType.MEMBERS, mems);
 	}
+	
+	public void updateLibraryMember(LibraryMember member) {
+		HashMap<String, LibraryMember> mems = loadMemberMap();
+		if(!mems.containsKey(member.getMemberId())) {
+			mems.put(member.getMemberId(), member);
+			saveToStorage(StorageType.MEMBERS, mems);
+		}
+	}
 
-	public void saveNewLibrarian(Librarian librarian) {
-		HashMap<Integer, Librarian> libs = readLibrarianMap();
-		int libId = librarian.getLibrarianId();
+	public void saveLibrarian(Librarian librarian) {
+		HashMap<Integer, Librarian> libs = loadLibrarianMap();
+		int libId = librarian.getId();
 		libs.put(libId, librarian);
-		saveToStorage(StorageType.LIBRARIAN, libs);
+		saveToStorage(StorageType.USERS, libs);
+	}
+	
+	@Override
+	public Librarian getLibrarianById(int librarianId) {
+		@SuppressWarnings("unchecked")
+		HashMap<Integer, Librarian> result = (HashMap<Integer, Librarian>) readFromStorage(StorageType.USERS);
+		return result.get(librarianId);
+	}
+	
+	public void updateLibrarian(Librarian librarian) {
+		HashMap<Integer, Librarian> librarians = loadLibrarianMap();
+		if(!librarians.containsKey(librarian.getId())) {
+			librarians.put(librarian.getId(), librarian);
+			saveToStorage(StorageType.USERS, librarians);
+		}
 	}
 
 	public void updateBook(Book bk) {
-		// HashMap<String, Book> books = readBooksMap();
-		HashMap<String, Book> books = new HashMap<>();
-		// if(!books.containsKey(bk.getIsbn())) {
-		books.put(bk.getIsbn(), bk);
-		saveToStorage(StorageType.BOOKS, books);
-		// }
-	}
-
-	public void saveNewBook(Book bk) {
-		HashMap<String, Book> books = readBooksMap();
-		// HashMap<String, Book> books = new HashMap<>();
-		if (!books.containsKey(bk.getIsbn())) {
+		HashMap<String, Book> books = loadBookMap();
+		if(!books.containsKey(bk.getIsbn())) {
 			books.put(bk.getIsbn(), bk);
 			saveToStorage(StorageType.BOOKS, books);
 		}
 	}
 
+	public void saveNewBook(Book bk) {
+		HashMap<String, Book> books = loadBookMap();
+		if (!books.containsKey(bk.getIsbn())) {
+			books.put(bk.getIsbn(), bk);
+			saveToStorage(StorageType.BOOKS, books);
+		}
+	}
+	
+	public boolean isBookAvailable(String isbn) {
+		boolean result = false;
+		HashMap<String, Book> books = loadBookMap();
+		if (books.containsKey(isbn)) {
+			result = true;
+		}
+		return result;
+	}
+
 	public Book getBook(String isbn) {
-		HashMap<String, Book> books = readBooksMap();
+		HashMap<String, Book> books = loadBookMap();
 		return books.get(isbn);
 	}
 
 	@SuppressWarnings("unchecked")
-	public HashMap<String, Book> readBooksMap() {
-		// Returns a Map with name/value pairs being
-		// isbn -> Book
-		return (HashMap<String, Book>) readFromStorage(StorageType.BOOKS);
+	public HashMap<String, LibraryMember> loadMemberMap() {
+		Object object = readFromStorage(StorageType.MEMBERS);
+		if (object == null)
+			return new HashMap<String, LibraryMember>();
+		return (HashMap<String, LibraryMember>)object;
 	}
 
 	@SuppressWarnings("unchecked")
-	public HashMap<String, LibraryMember> readMemberMap() {
-		// Returns a Map with name/value pairs being
-		// memberId -> LibraryMember
-		return (HashMap<String, LibraryMember>) readFromStorage(StorageType.MEMBERS);
+	public HashMap<Integer, Librarian> loadLibrarianMap() {
+		Object object = readFromStorage(StorageType.USERS);
+		if (object == null)
+			return new HashMap<Integer, Librarian>();
+		return (HashMap<Integer, Librarian>)object;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public HashMap<String, Book> loadBookMap() {
+		Object object = readFromStorage(StorageType.BOOKS);
+		if (object == null)
+			return new HashMap<String, Book>();
+		return (HashMap<String, Book>)object;
 	}
 
 	@SuppressWarnings("unchecked")
-	public HashMap<Integer, Librarian> readLibrarianMap() {
-		// Returns a Map with name/value pairs being
-		// memberId -> LibraryMember
-		return (HashMap<Integer, Librarian>) readFromStorage(StorageType.LIBRARIAN);
-	}
-
-	@SuppressWarnings("unchecked")
-	public HashMap<String, User> readUserMap() {
-		// Returns a Map with name/value pairs being
-		// userId -> User
-		return (HashMap<String, User>) readFromStorage(StorageType.USERS);
-	}
-
-	///// load methods - these place test data into the storage area
-	///// - used just once at startup
-
-	static void loadBookMap(List<Book> bookList) {
-		HashMap<String, Book> books = new HashMap<String, Book>();
-		bookList.forEach(book -> books.put(book.getIsbn(), book));
-		saveToStorage(StorageType.BOOKS, books);
-	}
-
-	static void loadUserMap(List<User> userList) {
-		HashMap<String, User> users = new HashMap<String, User>();
-		userList.forEach(user -> users.put(user.getId(), user));
-		saveToStorage(StorageType.USERS, users);
-	}
-
-	static void loadMemberMap(List<LibraryMember> memberList) {
-		HashMap<String, LibraryMember> members = new HashMap<String, LibraryMember>();
-		memberList.forEach(member -> members.put(member.getMemberId(), member));
-		saveToStorage(StorageType.MEMBERS, members);
-	}
-
-	@SuppressWarnings("unchecked")
-	public HashMap<String, CheckoutRecord> readCheckoutRecordMap() {
-		return (HashMap<String, CheckoutRecord>) readFromStorage(StorageType.CHECKOUTRECORDS);
+	public HashMap<String, CheckoutRecord> loadCheckoutRecordMap() {
+		Object object = readFromStorage(StorageType.CHECKOUTRECORDS);
+		if (object == null)
+			return new HashMap<String, CheckoutRecord>();
+		return (HashMap<String, CheckoutRecord>)object;
 	}
 
 	@Override
 	public void saveNewCheckoutRecord(CheckoutRecord checkoutRecord) {
-		// TODO Auto-generated method stub
-		HashMap<String, CheckoutRecord> cr = readCheckoutRecordMap();
+		HashMap<String, CheckoutRecord> cr = loadCheckoutRecordMap();
 		String mbrId = checkoutRecord.getMember().getMemberId();
 		cr.put(mbrId, checkoutRecord);
 		saveToStorage(StorageType.CHECKOUTRECORDS, cr);
@@ -152,8 +159,10 @@ public class DataAccessFacade implements DataAccess {
 		try {
 			Path path = FileSystems.getDefault().getPath(OUTPUT_DIR, type.toString());
 			InputStream stream = Files.newInputStream(path);
-			in = new ObjectInputStream(stream);
-			retVal = in.readObject();
+			if (stream.available() > 0) { 
+				in = new ObjectInputStream(stream);
+				retVal = in.readObject();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -202,37 +211,5 @@ public class DataAccessFacade implements DataAccess {
 		}
 
 		private static final long serialVersionUID = 5399827794066637059L;
-	}
-
-	public void updateBook(LibraryMember libraryMember) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public boolean isBookAvailable(String isbn) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public List<Book> getAllBooks() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public List<LibraryMember> getAllLibraryMembers() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public List<Librarian> getAllLibrarians() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Librarian getLibrarian(int librarianId) {
-		@SuppressWarnings("unchecked")
-		HashMap<Integer, Librarian> result = (HashMap<Integer, Librarian>) readFromStorage(StorageType.LIBRARIAN);
-		return result.get(librarianId);
 	}
 }

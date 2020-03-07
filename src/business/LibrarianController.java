@@ -16,8 +16,8 @@ public class LibrarianController implements CheckInterface {
 		Book bk;
 		LibraryMember lb;
 		
-		HashMap<String, Book> allBook= df.readBooksMap();
-		HashMap<String,LibraryMember> allMember = df.readMemberMap();
+		HashMap<String, Book> allBook= df.loadBookMap();
+		HashMap<String,LibraryMember> allMember = df.loadMemberMap();
 		
 		bk = allBook.get(isbn);
 		lb = allMember.get(memberId);
@@ -28,19 +28,18 @@ public class LibrarianController implements CheckInterface {
 		if(lb == null) { 
 			throw new CheckException("Sorry you are not a member. Let's Sign you in first!");
 		}
+		
 		BookCopy bkCopi = bk.getNextAvailableCopy();
 		if (bkCopi != null) {
 			int copyNum = bkCopi.getCopyNum();
 			CheckoutRecord cr = lb.getRecord();
 			if (cr == null) {
-				
 				CheckoutRecord newCR = new CheckoutRecord(bk, copyNum, lb);
 				lb.setRecord(newCR);
 				bkCopi.changeAvailability();
 			} else {
-				cr.addCheckoutRecordEntry(bk,copyNum);
+				cr.addCheckoutRecordEntry(bk, copyNum);
 			}
-
 		} else {
 			throw new CheckException("The book is not available");
 		}
@@ -52,8 +51,8 @@ public class LibrarianController implements CheckInterface {
 		Book bk;
 		LibraryMember member;
 		
-		HashMap<String, Book> allBook= df.readBooksMap();
-		HashMap<String,LibraryMember> allMember = df.readMemberMap();
+		HashMap<String, Book> allBook= df.loadBookMap();
+		HashMap<String,LibraryMember> allMember = df.loadMemberMap();
 		
 		bk = allBook.get(isbn);
 		member = allMember.get(memberId);
