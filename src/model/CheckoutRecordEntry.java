@@ -10,16 +10,13 @@ public class CheckoutRecordEntry implements Serializable {
 	private Date checkoutDate;
 	
 	private Date dueDate;
-	
-	private CheckoutRecord checkoutRecord;
-	
+	private Date returnDate;
 	private BookCopy bookCopy;
-	
-	private LibraryMember libraryMember;
+	private String isbn;
 
-	CheckoutRecordEntry(CheckoutRecord checkoutRecord, LibraryMember libraryMember, BookCopy bookCopy, Date checkoutDate, Date dueDate){
-		this.checkoutRecord = checkoutRecord;
-		this.libraryMember = libraryMember;
+	CheckoutRecordEntry(BookCopy bookCopy,String isbn, Date checkoutDate, Date dueDate){
+		
+		this.isbn = isbn;
 		this.bookCopy = bookCopy;
 		this.checkoutDate = checkoutDate;
 		this.dueDate = dueDate;
@@ -45,11 +42,35 @@ public class CheckoutRecordEntry implements Serializable {
 		this.dueDate = dueDate;
 	}
 
-	public CheckoutRecord getCheckoutRecord() {
-		return checkoutRecord;
+
+
+	public Date getReturnDate() {
+		return returnDate;
 	}
 
-	public LibraryMember getLibraryMember() {
-		return libraryMember;
+	public void setReturnDate(Date returnDate) {
+		this.returnDate = returnDate;
 	}
+	
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+	
+	public double checkFines() {
+		return returnDate.after(dueDate) ? 50.0 : 0.0;
+	}
+	
+	public boolean equals(Object ob) {
+		if(ob == null) return false;
+		if(ob.getClass() != getClass()) return false;
+		CheckoutRecordEntry b = (CheckoutRecordEntry)ob;
+		return b.isbn.equals(isbn) && b.bookCopy.getCopyNum() == bookCopy.getCopyNum();
+	}
+	
+	
 }
