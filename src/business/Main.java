@@ -35,9 +35,9 @@ public class Main {
 	//Returns a list of all ids of LibraryMembers whose zipcode contains the digit 3
 	public static List<String> allWhoseZipContains3() {
 		DataAccess da = new DataAccessFacade();
-		Collection<LibraryMember> members = da.loadMemberMap().values();
+		//Collection<LibraryMember> members = da.loadMemberMap().values();
 		List<LibraryMember> mems = new ArrayList<>();
-		mems.addAll(members);
+		//mems.addAll(members);
 		//implement
 		return null;
 
@@ -45,9 +45,9 @@ public class Main {
 	//Returns a list of all ids of  LibraryMembers that have an overdue book
 	public static List<String> allHavingOverdueBook() {
 		DataAccess da = new DataAccessFacade();
-		Collection<LibraryMember> members = da.loadMemberMap().values();
+		//Collection<LibraryMember> members = da.loadMemberMap().values();
 		List<LibraryMember> mems = new ArrayList<>();
-		mems.addAll(members);
+		//mems.addAll(members);
 		//implement
 		return null;
 

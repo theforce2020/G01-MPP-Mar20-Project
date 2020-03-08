@@ -1,7 +1,7 @@
 package ui;
 
-import business.ControllerInterface;
-import business.SystemController;
+import business.AuthenticationInterface;
+import business.AuthenticationController;
 import exceptions.LoginException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -81,7 +81,7 @@ public class LoginWindow extends Stage implements LibWindow {
         	@Override
         	public void handle(ActionEvent e) {
         		try {
-        			ControllerInterface c = new SystemController();
+        			AuthenticationInterface c = new AuthenticationController();
         			c.login(userTextField.getText().trim(), pwBox.getText().trim());
         			messageBar.setFill(Start.Colors.green);
              	    messageBar.setText("Login successful");

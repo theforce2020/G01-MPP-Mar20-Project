@@ -11,18 +11,17 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
 
-import exceptions.LoginException;
+import model.Admin;
 import model.Book;
 import model.CheckoutRecord;
 import model.Librarian;
 import model.LibraryMember;
-import model.Person;
-import model.UserCredentials;
+import model.SystemUser;
 
 public class DataAccessFacade implements DataAccess {
 
 	enum StorageType {
-		BOOKS, MEMBERS, USERS, CHECKOUTRECORDS;
+		BOOKS, MEMBERS, USERS, CHECKOUTRECORDS, LIBRARIANS, ADMINS;
 	}
 
 	public static final String OUTPUT_DIR = System.getProperty("user.dir") + File.separator + "src" + File.separator
@@ -44,26 +43,68 @@ public class DataAccessFacade implements DataAccess {
 			saveToStorage(StorageType.MEMBERS, mems);
 		}
 	}
+	
+	public int saveSystemUser(SystemUser systemUser) {
+		int id = 0;
+		HashMap<String, SystemUser> libs = loadUserMap();
+		if (systemUser.getId() == 0) {
+			if (libs.containsKey(systemUser.getUsername())) 
+				id = -1;
+			else {
+				id = libs.size() + 1;
+				systemUser.setId(id);
+				libs.put(systemUser.getUsername(), systemUser);
+				saveToStorage(StorageType.USERS, libs);
+			}
+		}
+		return id;
+	}
 
 	public void saveLibrarian(Librarian librarian) {
 		HashMap<Integer, Librarian> libs = loadLibrarianMap();
-		int libId = librarian.getId();
-		libs.put(libId, librarian);
-		saveToStorage(StorageType.USERS, libs);
+		libs.put(librarian.getId(), librarian);
+		saveToStorage(StorageType.LIBRARIANS, libs);
+	}
+	
+	public void saveAdmin(Admin admin) {
+		HashMap<Integer, Admin> libs = loadAdminMap();
+		libs.put(admin.getId(), admin);		
+		saveToStorage(StorageType.ADMINS, libs);
 	}
 	
 	@Override
 	public Librarian getLibrarianById(int librarianId) {
 		@SuppressWarnings("unchecked")
-		HashMap<Integer, Librarian> result = (HashMap<Integer, Librarian>) readFromStorage(StorageType.USERS);
+		HashMap<Integer, Librarian> result = (HashMap<Integer, Librarian>) readFromStorage(StorageType.LIBRARIANS);
 		return result.get(librarianId);
+	}
+
+	public SystemUser getSystemUser(String username) {
+		@SuppressWarnings("unchecked")
+		HashMap<String, SystemUser> result = (HashMap<String, SystemUser>) readFromStorage(StorageType.USERS);
+		return result.get(username);
+	}
+	
+	@Override
+	public Admin getAdminById(int adminId) {
+		@SuppressWarnings("unchecked")
+		HashMap<Integer, Admin> result = (HashMap<Integer, Admin>) readFromStorage(StorageType.LIBRARIANS);
+		return result.get(adminId);
 	}
 	
 	public void updateLibrarian(Librarian librarian) {
 		HashMap<Integer, Librarian> librarians = loadLibrarianMap();
 		if(!librarians.containsKey(librarian.getId())) {
 			librarians.put(librarian.getId(), librarian);
-			saveToStorage(StorageType.USERS, librarians);
+			saveToStorage(StorageType.LIBRARIANS, librarians);
+		}
+	}
+	
+	public void updateAdmin(Admin admin) {
+		HashMap<Integer, Admin> admins = loadAdminMap();
+		if(!admins.containsKey(admin.getId())) {
+			admins.put(admin.getId(), admin);
+			saveToStorage(StorageType.ADMINS, admins);
 		}
 	}
 
@@ -107,10 +148,26 @@ public class DataAccessFacade implements DataAccess {
 
 	@SuppressWarnings("unchecked")
 	public HashMap<Integer, Librarian> loadLibrarianMap() {
-		Object object = readFromStorage(StorageType.USERS);
+		Object object = readFromStorage(StorageType.LIBRARIANS);
 		if (object == null)
 			return new HashMap<Integer, Librarian>();
 		return (HashMap<Integer, Librarian>)object;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public HashMap<Integer, Admin> loadAdminMap() {
+		Object object = readFromStorage(StorageType.ADMINS);
+		if (object == null)
+			return new HashMap<Integer, Admin>();
+		return (HashMap<Integer, Admin>)object;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public HashMap<String, SystemUser> loadUserMap() {
+		Object object = readFromStorage(StorageType.USERS);
+		if (object == null)
+			return new HashMap<String, SystemUser>();
+		return (HashMap<String, SystemUser>)object;
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -157,20 +214,8 @@ public class DataAccessFacade implements DataAccess {
 	}
 
 	@SuppressWarnings("unchecked")
-	static HashMap<String, UserCredentials> readUsersMap() {
-		return (HashMap<String, UserCredentials>) readFromStorage(StorageType.USERS);
-	}
-	
-	static Person whoLogin(UserCredentials crd) throws LoginException {
-		Person iam;
-		//Check if user exist
-		HashMap<String, UserCredentials> allUsers = readUsersMap();
-		if(allUsers.containsKey(crd.getUsername())) {
-			iam = crd.getMe();
-		}else {
-			throw new LoginException("Invalid username or password");
-		}
-		return iam;
+	static HashMap<String, SystemUser> readUsersMap() {
+		return (HashMap<String, SystemUser>) readFromStorage(StorageType.USERS);
 	}
 
 	static Object readFromStorage(StorageType type) {

@@ -28,6 +28,14 @@ public class Person implements Serializable {
 		this.address = address;
 	}
 	
+	public Person(int id, String fName, String lName, String telephone, Address address) {
+		this.id = id;
+		this.firstName = fName;
+		this.lastName = lName;
+		this.telephone = telephone;
+		this.address = address;
+	}
+	
 	public String getFirstName() {
 		return firstName;
 	}

@@ -3,8 +3,8 @@ package ui;
 import java.util.Collections;
 import java.util.List;
 
-import business.ControllerInterface;
-import business.SystemController;
+import business.AuthenticationInterface;
+import business.AuthenticationController;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -99,15 +99,15 @@ public class Start extends Application {
 				if(!AllBooksWindow.INSTANCE.isInitialized()) {
 					AllBooksWindow.INSTANCE.init();
 				}
-				ControllerInterface ci = new SystemController();
-				List<String> ids = ci.allBookIds();
+				AuthenticationInterface ci = new AuthenticationController();
+				/*List<String> ids = ci.allBookIds();
 				Collections.sort(ids);
 				StringBuilder sb = new StringBuilder();
 				for(String s: ids) {
 					sb.append(s + "\n");
 				}
 				AllBooksWindow.INSTANCE.setData(sb.toString());
-				AllBooksWindow.INSTANCE.show();
+				AllBooksWindow.INSTANCE.show();*/
             }
 		});
 		
@@ -119,8 +119,8 @@ public class Start extends Application {
 				if(!AllMembersWindow.INSTANCE.isInitialized()) {
 					AllMembersWindow.INSTANCE.init();
 				}
-				ControllerInterface ci = new SystemController();
-				List<String> ids = ci.allMemberIds();
+				AuthenticationInterface ci = new AuthenticationController();
+				/*List<String> ids = ci.allMemberIds();
 				Collections.sort(ids);
 				System.out.println(ids);
 				StringBuilder sb = new StringBuilder();
@@ -129,7 +129,7 @@ public class Start extends Application {
 				}
 				System.out.println(sb.toString());
 				AllMembersWindow.INSTANCE.setData(sb.toString());
-				AllMembersWindow.INSTANCE.show();
+				AllMembersWindow.INSTANCE.show();*/
             }
 		});	
 		optionsMenu.getItems().addAll(login, bookIds, memberIds);

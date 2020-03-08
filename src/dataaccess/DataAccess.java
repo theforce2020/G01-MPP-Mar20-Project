@@ -2,10 +2,12 @@ package dataaccess;
 
 import java.util.HashMap;
 
+import model.Admin;
 import model.Book;
 import model.CheckoutRecord;
 import model.Librarian;
 import model.LibraryMember;
+import model.SystemUser;
 
 public interface DataAccess { 
 	
@@ -34,4 +36,8 @@ public interface DataAccess {
 	public HashMap<String, Book> loadBookMap();
 	
 	public void updateLibraryMember(LibraryMember member);
+	
+	public Admin getAdminById(int adminId);
+	
+	public SystemUser getSystemUser(String username);
 }
