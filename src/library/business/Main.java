@@ -2,12 +2,12 @@ package library.business;
 
 import java.util.*;
 
-import dataaccess.DataAccess;
-import dataaccess.DataAccessFacade;
-import model.Address;
-import model.Author;
-import model.Book;
-import model.LibraryMember;
+import library.dataaccess.DataAccess;
+import library.dataaccess.DataAccessFacade;
+import library.data.model.Address;
+import library.data.model.Author;
+import library.data.model.Book;
+import library.data.model.LibraryMember;
 
 public class Main {
 

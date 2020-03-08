@@ -1,10 +1,10 @@
 package library.business;
 
-import dataaccess.Auth;
-import dataaccess.DataAccess;
-import dataaccess.DataAccessFacade;
-import exceptions.LoginException;
-import model.SystemUser;
+import library.dataaccess.Auth;
+import library.dataaccess.DataAccess;
+import library.dataaccess.DataAccessFacade;
+import library.exceptions.LoginException;
+import library.data.model.SystemUser;
 
 public class AuthenticationController implements AuthenticationInterface {
 	public static Auth currentAuth = null;

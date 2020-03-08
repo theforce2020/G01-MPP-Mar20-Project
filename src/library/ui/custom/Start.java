@@ -3,8 +3,6 @@ package library.ui.custom;
 import java.util.Collections;
 import java.util.List;
 
-import business.AuthenticationInterface;
-import business.AuthenticationController;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -22,6 +20,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import library.business.AuthenticationController;
+import library.business.AuthenticationInterface;
 
 public class Start extends Application {
 	public static void main(String[] args) {

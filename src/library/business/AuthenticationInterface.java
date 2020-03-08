@@ -1,6 +1,6 @@
 package library.business;
 
-import exceptions.LoginException;
+import library.exceptions.LoginException;
 
 public interface AuthenticationInterface {
 	

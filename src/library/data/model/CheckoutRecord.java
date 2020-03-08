@@ -3,7 +3,7 @@ package library.data.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import util.LibraryUtil;
+import library.util.LibraryUtil;
 
 public class CheckoutRecord implements Serializable {
 	

@@ -2,7 +2,7 @@ package library.data.model;
 
 import java.io.Serializable;
 
-import dataaccess.Auth;
+import library.dataaccess.Auth;
 
 final public class SystemUser implements Serializable {
 	

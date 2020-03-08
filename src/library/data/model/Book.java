@@ -31,6 +31,13 @@ final public class Book implements Serializable {
 		this.authors = new ArrayList<Author>();
 	}
 
+	public Book(String isbn, String title) {
+		this.isbn = isbn;
+		this.title = title;
+		this.maxCheckoutLength = 1;
+		this.authors = new ArrayList<Author>();
+	}
+
 	public Book(String isbn, String title, int maxCheckoutLength, List<Author> authors) {
 		this.isbn = isbn;
 		this.title = title;

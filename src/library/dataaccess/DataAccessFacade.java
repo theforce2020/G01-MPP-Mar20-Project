@@ -11,12 +11,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
 
-import model.Admin;
-import model.Book;
-import model.CheckoutRecord;
-import model.Librarian;
-import model.LibraryMember;
-import model.SystemUser;
+import library.data.model.Admin;
+import library.data.model.Book;
+import library.data.model.CheckoutRecord;
+import library.data.model.Librarian;
+import library.data.model.LibraryMember;
+import library.data.model.SystemUser;
 
 public class DataAccessFacade implements DataAccess {
 

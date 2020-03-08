@@ -5,17 +5,17 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
-import dataaccess.DataAccess;
-import dataaccess.DataAccessFacade;
-import dataaccess.User;
-import exceptions.LoginException;
-import model.Address;
-import model.Admin;
-import model.Author;
-import model.Book;
-import model.Librarian;
-import model.LibraryMember;
-import model.Person;
+import library.dataaccess.DataAccess;
+import library.dataaccess.DataAccessFacade;
+import library.dataaccess.User;
+import library.exceptions.LoginException;
+import library.data.model.Address;
+import library.data.model.Admin;
+import library.data.model.Author;
+import library.data.model.Book;
+import library.data.model.Librarian;
+import library.data.model.LibraryMember;
+import library.data.model.Person;
 
 public class MainClass {
 

@@ -1,6 +1,6 @@
 package library.business;
 
-import exceptions.CheckException;
+import library.exceptions.CheckException;
 
 public interface CheckInterface {
 	

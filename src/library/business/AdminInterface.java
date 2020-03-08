@@ -1,9 +1,10 @@
 package library.business;
 
+import library.data.model.Admin;
+import library.exceptions.UsernameInUseException;
+
 import java.util.List;
 
-import exceptions.UsernameInUseException;
-import model.Admin;
 
 public interface AdminInterface {
 	

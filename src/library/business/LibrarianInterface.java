@@ -2,8 +2,8 @@ package library.business;
 
 import java.util.List;
 
-import exceptions.UsernameInUseException;
-import model.Librarian;
+import library.exceptions.UsernameInUseException;
+import library.data.model.Librarian;
 
 public interface LibrarianInterface {
 	

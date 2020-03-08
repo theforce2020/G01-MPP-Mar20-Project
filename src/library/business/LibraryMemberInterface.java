@@ -2,7 +2,7 @@ package library.business;
 
 import java.util.List;
 
-import model.LibraryMember;
+import library.data.model.LibraryMember;
 
 public interface LibraryMemberInterface {
 	

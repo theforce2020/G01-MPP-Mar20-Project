@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5dd6f14e-a00d-4003-8063-5fef8f038c70" name="Default Changelist" comment="" />
+    <list default="true" id="5dd6f14e-a00d-4003-8063-5fef8f038c70" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/business/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/business/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/business/AdminInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/business/AdminInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/business/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/business/AuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/business/AuthenticationInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/business/AuthenticationInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/business/BookInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/business/BookInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/business/CheckInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/business/CheckInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/business/LibrarianController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/business/LibrarianController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/business/LibrarianInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/business/LibrarianInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/business/LibraryMemberInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/business/LibraryMemberInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/business/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/business/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/business/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/business/MainClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/data/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/data/model/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/data/model/CheckoutRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/data/model/CheckoutRecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/data/model/SystemUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/data/model/SystemUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/dataaccess/DataAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/dataaccess/DataAccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/dataaccess/DataAccessFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/dataaccess/DataAccessFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/dataaccess/TestData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/dataaccess/TestData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/ui/custom/LoginWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/ui/custom/LoginWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/ui/custom/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/ui/custom/Start.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,7 +40,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1Yiu68vRannCtajCF9WiHST9U2g" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="autoscrollToSource" value="true" />
@@ -40,20 +63,22 @@
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\611087\Documents\Class\Library-Assistant-master\src\library\assistant\ui\main\actions" />
-      <recent name="C:\Users\611087\Documents\Class\Library-Assistant-master\src\library\assistant\ui\main" />
-      <recent name="C:\Users\611087\Documents\Class\Library-Assistant-master\src\resources\img" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\611087\Documents\Class\Library-Assistant-master\src\library\assistant\ui\main" />
       <recent name="C:\Users\611087\Documents\Class\Library-Assistant-master\src\resources\img" />
       <recent name="C:\Users\611087\Documents\Class\Library-Assistant-master\src\resources" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\611087\Documents\Class\Library-Assistant-master\src\library\util" />
+      <recent name="C:\Users\611087\Documents\Class\Library-Assistant-master\src\library\ui\custom" />
+      <recent name="C:\Users\611087\Documents\Class\Library-Assistant-master\src\library\data\model" />
+      <recent name="C:\Users\611087\Documents\Class\Library-Assistant-master\src\library\exceptions" />
+      <recent name="C:\Users\611087\Documents\Class\Library-Assistant-master\src\library\docs" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="library.assistant.ui.main.Main" />
+      <option name="MAIN_CLASS_NAME" value="library.ui.main.Main" />
       <module name="Library-Assistant-master" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -76,6 +101,7 @@
       <workItem from="1583443978940" duration="6523000" />
       <workItem from="1583511663786" duration="29774000" />
       <workItem from="1583593815960" duration="8519000" />
+      <workItem from="1583705257212" duration="1099000" />
     </task>
     <servers />
   </component>
@@ -87,18 +113,18 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="288" y="2" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1583438508102" />
-    <state x="150" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583520805907">
+    <state x="150" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583706396521">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="150" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1583520805907" />
+    <state x="150" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1583706396521" />
     <state x="488" y="80" key="#com.intellij.ide.util.MemberChooser" timestamp="1583621892050">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="488" y="80" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1583621892050" />
-    <state x="425" y="129" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1583438482772">
+    <state x="425" y="129" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1583706394006">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="425" y="129" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.728@0.0.1366.728" timestamp="1583438482772" />
+    <state x="425" y="129" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.728@0.0.1366.728" timestamp="1583706394006" />
     <state x="544" y="233" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1583437595306">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -115,22 +141,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="476" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1583620086518" />
-    <state width="1323" height="155" key="GridCell.Tab.0.bottom" timestamp="1583623433631">
+    <state width="1323" height="155" key="GridCell.Tab.0.bottom" timestamp="1583706452326">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="155" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1583623433631" />
-    <state width="1323" height="155" key="GridCell.Tab.0.center" timestamp="1583623433630">
+    <state width="1323" height="155" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1583706452326" />
+    <state width="1323" height="155" key="GridCell.Tab.0.center" timestamp="1583706452326">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="155" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1583623433630" />
-    <state width="1323" height="155" key="GridCell.Tab.0.left" timestamp="1583623433630">
+    <state width="1323" height="155" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1583706452326" />
+    <state width="1323" height="155" key="GridCell.Tab.0.left" timestamp="1583706452326">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="155" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1583623433630" />
-    <state width="1323" height="155" key="GridCell.Tab.0.right" timestamp="1583623433631">
+    <state width="1323" height="155" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1583706452326" />
+    <state width="1323" height="155" key="GridCell.Tab.0.right" timestamp="1583706452326">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="155" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1583623433631" />
+    <state width="1323" height="155" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1583706452326" />
     <state width="1323" height="223" key="GridCell.Tab.1.bottom" timestamp="1583542161293">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

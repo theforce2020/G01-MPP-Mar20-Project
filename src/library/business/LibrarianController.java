@@ -3,9 +3,9 @@ package library.business;
 import java.util.Date;
 import java.util.HashMap;
 
-import dataaccess.DataAccessFacade;
-import model.*;
-import exceptions.*;
+import library.dataaccess.DataAccessFacade;
+import library.data.model.*;
+import library.exceptions.*;
 
 public class LibrarianController implements CheckInterface {
 

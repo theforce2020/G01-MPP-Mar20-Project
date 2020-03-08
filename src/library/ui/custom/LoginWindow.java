@@ -1,8 +1,5 @@
 package library.ui.custom;
 
-import business.AuthenticationInterface;
-import business.AuthenticationController;
-import exceptions.LoginException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -19,6 +16,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import library.business.AuthenticationController;
+import library.business.AuthenticationInterface;
+import library.exceptions.LoginException;
 
 public class LoginWindow extends Stage implements LibWindow {
 	public static final LoginWindow INSTANCE = new LoginWindow();
@@ -80,17 +80,17 @@ public class LoginWindow extends Stage implements LibWindow {
         loginBtn.setOnAction(new EventHandler<ActionEvent>() {
         	@Override
         	public void handle(ActionEvent e) {
-        		try {
-        			AuthenticationInterface c = new AuthenticationController();
-        			c.login(userTextField.getText().trim(), pwBox.getText().trim());
-        			messageBar.setFill(Start.Colors.green);
-             	    messageBar.setText("Login successful");
-        		} catch(LoginException ex) {
-        			messageBar.setFill(Start.Colors.red);
-        			messageBar.setText("Error! " + ex.getMessage());
-        		}
-        	   
-        	}
+                AuthenticationInterface c = new AuthenticationController();
+                try {
+                    c.login(userTextField.getText().trim(), pwBox.getText().trim());
+                    messageBar.setFill(Start.Colors.green);
+                    messageBar.setText("Login successful");
+                } catch (LoginException ex) {
+                    messageBar.setFill(Start.Colors.red);
+                    messageBar.setText("Invalid username or password");
+                    ex.printStackTrace();
+                }
+            }
         });
 
         Button backBtn = new Button("<= Back to Main");
