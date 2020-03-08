@@ -2,12 +2,12 @@ package library.dataaccess;
 
 import java.util.HashMap;
 
-import library.data.model.Admin;
-import library.data.model.Book;
-import library.data.model.CheckoutRecord;
-import library.data.model.Librarian;
-import library.data.model.LibraryMember;
-import library.data.model.SystemUser;
+import library.model.Admin;
+import library.model.Book;
+import library.model.CheckoutRecord;
+import library.model.Librarian;
+import library.model.LibraryMember;
+import library.model.SystemUser;
 
 public interface DataAccess { 
 	

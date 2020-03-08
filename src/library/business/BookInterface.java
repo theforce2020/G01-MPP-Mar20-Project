@@ -2,7 +2,7 @@ package library.business;
 
 import java.util.List;
 
-import library.data.model.Book;
+import library.model.Book;
 
 public interface BookInterface {
 	

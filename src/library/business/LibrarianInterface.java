@@ -3,7 +3,7 @@ package library.business;
 import java.util.List;
 
 import library.exceptions.UsernameInUseException;
-import library.data.model.Librarian;
+import library.model.Librarian;
 
 public interface LibrarianInterface {
 	

@@ -4,7 +4,7 @@ import library.dataaccess.Auth;
 import library.dataaccess.DataAccess;
 import library.dataaccess.DataAccessFacade;
 import library.exceptions.LoginException;
-import library.data.model.SystemUser;
+import library.model.SystemUser;
 
 public class AuthenticationController implements AuthenticationInterface {
 	public static Auth currentAuth = null;

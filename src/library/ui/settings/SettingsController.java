@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import library.alert.AlertMaker;
-import library.data.model.MailServerInfo;
+import library.model.MailServerInfo;
 import library.database.DataHelper;
 import library.database.DatabaseHandler;
 import library.database.export.DatabaseExporter;

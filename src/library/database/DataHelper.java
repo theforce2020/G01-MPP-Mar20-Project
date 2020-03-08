@@ -5,8 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import library.data.model.Book;
-import library.data.model.MailServerInfo;
+import library.model.Book;
+import library.model.MailServerInfo;
 import library.ui.listmember.MemberListController.Member;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;

@@ -1,6 +1,6 @@
 package library.business;
 
-import library.data.model.*;
+import library.model.*;
 import library.dataaccess.Auth;
 import library.dataaccess.DataAccessFacade;
 import library.exceptions.UsernameInUseException;
