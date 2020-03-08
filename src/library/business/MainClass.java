@@ -34,11 +34,8 @@ public class MainClass {
 		//mems.addAll(books);*/
 
 		try {
-			controller.saveLibrarian("Elly", "Businge", "92283", "xxx", "iowa city", "Iowa", "256", "elly", "qwerty");
-			controller.saveAdmin("Elly1", "Businge1", "922831", "xxx", "iowa city", "Iowa", "256", "elly", "qwerty");
-
-			controller.saveLibrarian("Elly2", "Businge2", "922832", "xxx", "iowa city", "Iowa", "256", "elly", "qwerty");
-			controller.saveAdmin("Elly3", "Businge3", "922834", "xxx", "iowa city", "Iowa", "256", "elly", "qwerty");
+			controller.saveLibrarian("Elly", "Businge", "92283", "xxx", "iowa city", "Iowa", "256", "lib", "qwerty");
+			controller.saveAdmin("Elly1", "Businge1", "922831", "xxx", "iowa city", "Iowa", "256", "admin", "qwerty");
 
 			Collection<Admin> admins = controller.getAllAdmins();
 			Collection<Librarian> librarians = controller.getAllLibrarians();
