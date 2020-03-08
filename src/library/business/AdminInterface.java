@@ -1,6 +1,6 @@
 package library.business;
 
-import library.data.model.Admin;
+import library.model.Admin;
 import library.exceptions.UsernameInUseException;
 
 import java.util.List;

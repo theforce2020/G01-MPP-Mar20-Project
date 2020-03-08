@@ -2,26 +2,90 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5dd6f14e-a00d-4003-8063-5fef8f038c70" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/business/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/business/AdminController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/business/AdminInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/business/AdminInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/business/AuthenticationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/business/AuthenticationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/business/BookInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/business/BookInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/business/LibrarianController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/business/LibrarianController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/business/LibrarianInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/business/LibrarianInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/business/LibraryMemberInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/business/LibraryMemberInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/business/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/business/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/business/MainClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/business/MainClass.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/data/model/Address.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/data/model/Admin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/data/model/Author.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/data/model/Book.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/data/model/BookCopy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/data/model/CheckoutRecord.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/data/model/CheckoutRecordEntry.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/data/model/Librarian.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/data/model/LibraryMember.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/data/model/MailServerInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/data/model/Member.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/data/model/Person.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/data/model/SystemUser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/data/model/UserCredentials.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/dataaccess/DataAccess.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/dataaccess/DataAccess.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/dataaccess/DataAccessFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/dataaccess/DataAccessFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/dataaccess/TestData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/dataaccess/TestData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/database/DataHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/database/DataHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/email/EmailUtil$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/email/EmailUtil$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/email/EmailUtil$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/email/EmailUtil$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/email/EmailUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/email/EmailUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/ui/about/about.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/ui/about/about.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/ui/addbook/BookAddController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/ui/addbook/BookAddController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/ui/addbook/add_book.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/ui/addbook/add_book.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/ui/addmember/member_add.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/ui/addmember/member_add.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/ui/issuedlist/issued_list.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/ui/issuedlist/issued_list.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/ui/listbook/book_list.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/ui/listbook/book_list.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/ui/listmember/member_list.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/ui/listmember/member_list.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/ui/login/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/ui/login/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/ui/login/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/ui/login/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/ui/settings/SettingsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Library-Assistant-master/library/ui/settings/SettingsController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/library/business/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/business/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/library/business/AdminInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/business/AdminInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/library/business/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/business/AuthenticationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library/business/AuthenticationInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/business/AuthenticationInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/library/business/BookInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/business/BookInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library/business/CheckInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/business/CheckInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/library/business/LibrarianController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/business/LibrarianController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/library/business/LibrarianInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/business/LibrarianInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/library/business/LibraryMemberInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/business/LibraryMemberInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/library/business/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/business/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/library/business/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/business/MainClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library/data/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/data/model/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library/data/model/CheckoutRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/data/model/CheckoutRecord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library/data/model/SystemUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/data/model/SystemUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/data/model/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/model/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/data/model/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/model/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/data/model/Author.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/model/Author.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/data/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/model/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/data/model/BookCopy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/model/BookCopy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/data/model/CheckoutRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/model/CheckoutRecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/data/model/CheckoutRecordEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/model/CheckoutRecordEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/data/model/Librarian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/model/Librarian.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/data/model/LibraryMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/model/LibraryMember.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/data/model/MailServerInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/model/MailServerInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/data/model/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/model/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/data/model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/model/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/data/model/SystemUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/model/SystemUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/data/model/UserCredentials.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/model/UserCredentials.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/library/dataaccess/DataAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/dataaccess/DataAccess.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/library/dataaccess/DataAccessFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/dataaccess/DataAccessFacade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/library/dataaccess/TestData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/dataaccess/TestData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library/ui/custom/LoginWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/ui/custom/LoginWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/library/ui/custom/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/ui/custom/Start.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/dataaccess/storage/BOOKS" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/dataaccess/storage/BOOKS" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/dataaccess/storage/LIBRARIAN" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/dataaccess/storage/LIBRARIAN" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/dataaccess/storage/MEMBERS" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/dataaccess/storage/MEMBERS" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/dataaccess/storage/USERS" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/dataaccess/storage/USERS" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/database/DataHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/database/DataHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/email/EmailUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/email/EmailUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/ui/about/about.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/ui/about/about.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/ui/addbook/BookAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/ui/addbook/BookAddController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/ui/addbook/add_book.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/ui/addbook/add_book.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/ui/addmember/member_add.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/ui/addmember/member_add.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/ui/issuedlist/issued_list.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/ui/issuedlist/issued_list.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/ui/listbook/book_list.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/ui/listbook/book_list.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/ui/listmember/member_list.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/ui/listmember/member_list.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/ui/login/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/ui/login/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/ui/login/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/ui/login/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/library/ui/settings/SettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/library/ui/settings/SettingsController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +165,7 @@
       <workItem from="1583443978940" duration="6523000" />
       <workItem from="1583511663786" duration="29774000" />
       <workItem from="1583593815960" duration="8519000" />
-      <workItem from="1583705257212" duration="1099000" />
+      <workItem from="1583705257212" duration="2741000" />
     </task>
     <servers />
   </component>
@@ -117,6 +181,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="150" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1583706396521" />
+    <state x="439" y="167" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583707209470">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="439" y="167" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1583707209470" />
     <state x="488" y="80" key="#com.intellij.ide.util.MemberChooser" timestamp="1583621892050">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -141,22 +209,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="476" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1583620086518" />
-    <state width="1323" height="155" key="GridCell.Tab.0.bottom" timestamp="1583706452326">
+    <state width="1323" height="174" key="GridCell.Tab.0.bottom" timestamp="1583707775631">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="155" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1583706452326" />
-    <state width="1323" height="155" key="GridCell.Tab.0.center" timestamp="1583706452326">
+    <state width="1323" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1583707775631" />
+    <state width="1323" height="174" key="GridCell.Tab.0.center" timestamp="1583707775631">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="155" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1583706452326" />
-    <state width="1323" height="155" key="GridCell.Tab.0.left" timestamp="1583706452326">
+    <state width="1323" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1583707775631" />
+    <state width="1323" height="174" key="GridCell.Tab.0.left" timestamp="1583707775631">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="155" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1583706452326" />
-    <state width="1323" height="155" key="GridCell.Tab.0.right" timestamp="1583706452326">
+    <state width="1323" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1583707775631" />
+    <state width="1323" height="174" key="GridCell.Tab.0.right" timestamp="1583707775631">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="155" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1583706452326" />
+    <state width="1323" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1583707775631" />
     <state width="1323" height="223" key="GridCell.Tab.1.bottom" timestamp="1583542161293">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -189,5 +257,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="78" y="39" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1583439071998" />
+    <state x="339" y="17" width="670" height="676" key="search.everywhere.popup" timestamp="1583706685217">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="17" width="670" height="676" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1583706685217" />
   </component>
 </project>

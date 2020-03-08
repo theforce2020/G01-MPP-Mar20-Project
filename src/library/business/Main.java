@@ -4,10 +4,10 @@ import java.util.*;
 
 import library.dataaccess.DataAccess;
 import library.dataaccess.DataAccessFacade;
-import library.data.model.Address;
-import library.data.model.Author;
-import library.data.model.Book;
-import library.data.model.LibraryMember;
+import library.model.Address;
+import library.model.Author;
+import library.model.Book;
+import library.model.LibraryMember;
 
 public class Main {
 

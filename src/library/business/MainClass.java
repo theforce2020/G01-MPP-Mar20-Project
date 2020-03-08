@@ -2,20 +2,14 @@ package library.business;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 
 import library.dataaccess.DataAccess;
 import library.dataaccess.DataAccessFacade;
-import library.dataaccess.User;
 import library.exceptions.LoginException;
-import library.data.model.Address;
-import library.data.model.Admin;
-import library.data.model.Author;
-import library.data.model.Book;
-import library.data.model.Librarian;
-import library.data.model.LibraryMember;
-import library.data.model.Person;
+import library.model.Admin;
+import library.model.Book;
+import library.model.Librarian;
 
 public class MainClass {
 

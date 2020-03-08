@@ -1,12 +1,14 @@
-package library.data.model;
+package library.model;
 
 import java.io.Serializable;
 
 import library.dataaccess.Auth;
 
-final public class UserCredentials implements Serializable {
+final public class SystemUser implements Serializable {
 	
 	private static final long serialVersionUID = 5147265048973262104L;
+	
+	private int id;
 	
 	private String username;
 	
@@ -14,7 +16,7 @@ final public class UserCredentials implements Serializable {
 	
 	private Auth authorization;
 
-	UserCredentials(String username, String password, Auth auth) {
+	public SystemUser(String username, String password, Auth auth) {
 		this.username = username;
 		this.password = password;
 		this.authorization = auth;
@@ -27,6 +29,11 @@ final public class UserCredentials implements Serializable {
 	public Auth getAuthorization() {
 		return authorization;
 	}
+	
+	@Override
+	public String toString() {
+		return "[" + authorization.toString() + "]";
+	}
 
 	public String getUsername() {
 		return username;
@@ -35,9 +42,12 @@ final public class UserCredentials implements Serializable {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
-	@Override
-	public String toString() {
-		return "[" + authorization.toString() + "]";
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }

@@ -1,4 +1,4 @@
-package library.data.model;
+package library.model;
 
 /**
  *

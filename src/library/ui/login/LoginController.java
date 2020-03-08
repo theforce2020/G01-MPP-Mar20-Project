@@ -13,6 +13,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import library.business.AuthenticationController;
+import library.exceptions.LoginException;
 import library.ui.settings.Preferences;
 import library.util.LibraryAssistantUtil;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -21,7 +23,7 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class LoginController implements Initializable {
+public class LoginController extends AuthenticationController implements Initializable {
 
     private final static Logger LOGGER = LogManager.getLogger(LoginController.class.getName());
 
@@ -40,16 +42,19 @@ public class LoginController implements Initializable {
     @FXML
     private void handleLoginButtonAction(ActionEvent event) {
         String uname = StringUtils.trimToEmpty(username.getText());
-        String pword = DigestUtils.shaHex(password.getText());
+        String pword = password.getText();
 
-        if (uname.equals(preference.getUsername()) && pword.equals(preference.getPassword())) {
+        try {
+            login(uname, pword);
+
             closeStage();
             loadMain();
             LOGGER.log(Level.INFO, "User successfully logged in {}", uname);
-        }
-        else {
+            System.out.println(currentAuth.name());
+        } catch (LoginException e) {
             username.getStyleClass().add("wrong-credentials");
             password.getStyleClass().add("wrong-credentials");
+            e.printStackTrace();
         }
     }
 
