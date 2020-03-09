@@ -1,15 +1,5 @@
 package library.ui.issuedlist;
 
-import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.concurrent.TimeUnit;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -25,9 +15,16 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import library.database.DatabaseHandler;
-import library.ui.settings.Preferences;
 import library.ui.callback.BookReturnCallback;
+import library.ui.settings.Preferences;
 import library.util.LibraryAssistantUtil;
+
+import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 /*
  * @author afsal villan

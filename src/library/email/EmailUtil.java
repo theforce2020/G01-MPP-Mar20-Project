@@ -1,18 +1,19 @@
 package library.email;
 
 import com.sun.mail.util.MailSSLSocketFactory;
-import java.util.Properties;
+import library.data.callback.GenericCallback;
+import library.model.MailServerInfo;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import library.data.callback.GenericCallback;
-import library.model.MailServerInfo;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import java.util.Properties;
 
 /**
  * @author Villan

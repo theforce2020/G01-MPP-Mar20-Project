@@ -1,9 +1,9 @@
 package library.business;
 
-import library.model.*;
 import library.dataaccess.Auth;
 import library.dataaccess.DataAccessFacade;
 import library.exceptions.UsernameInUseException;
+import library.model.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;

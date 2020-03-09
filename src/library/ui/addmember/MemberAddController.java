@@ -1,10 +1,6 @@
 package library.ui.addmember;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,28 +9,22 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import library.alert.AlertMaker;
 import library.business.AdminController;
-import library.database.DataHelper;
-import library.database.DatabaseHandler;
-import library.ui.listmember.MemberListController;
+import library.model.LibraryMember;
 import org.apache.commons.lang3.StringUtils;
 
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
 public class MemberAddController extends AdminController implements Initializable {
-
-    DatabaseHandler handler;
-
     @FXML
-    private JFXTextField name;
+    private JFXTextField firstName;
+    @FXML
+    private JFXTextField lastName;
     @FXML
     private JFXTextField id;
     @FXML
     private JFXTextField mobile;
-    @FXML
-    private JFXTextField email;
-    @FXML
-    private JFXButton saveButton;
-    @FXML
-    private JFXButton cancelButton;
-
     private Boolean isInEditMode = false;
     @FXML
     private StackPane rootPane;
@@ -43,36 +33,30 @@ public class MemberAddController extends AdminController implements Initializabl
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        handler = DatabaseHandler.getInstance();
+
     }
 
     @FXML
     private void cancel(ActionEvent event) {
-        Stage stage = (Stage) name.getScene().getWindow();
+        Stage stage = (Stage) firstName.getScene().getWindow();
         stage.close();
     }
 
     @FXML
     private void addMember(ActionEvent event) {
-        String mName = StringUtils.trimToEmpty(name.getText());
+        String fName = StringUtils.trimToEmpty(firstName.getText());
+        String lName = StringUtils.trimToEmpty(lastName.getText());
         String mID = StringUtils.trimToEmpty(id.getText());
         String mMobile = StringUtils.trimToEmpty(mobile.getText());
-        String mEmail = StringUtils.trimToEmpty(email.getText());
 
-        String[] names  = mName.split(" ");
-        String fName = names[0];
-        String lName = "";
-        if (names.length > 1) {
-            lName = names[1];
-        }
-
-        boolean flag = mName.isEmpty() || mID.isEmpty() || mMobile.isEmpty() || mEmail.isEmpty();
+        boolean flag = fName.isEmpty() || lName.isEmpty() || mID.isEmpty() || mMobile.isEmpty();
         if (flag) {
             AlertMaker.showMaterialDialog(rootPane, mainContainer, new ArrayList<>(), "Insufficient Data", "Please enter data in all fields.");
             return;
         }
 
         if (isInEditMode) {
+            updateLibraryMember(mID, fName, lName, mMobile, "", "", "", "");
             handleUpdateMember();
             return;
         }
@@ -82,41 +66,36 @@ public class MemberAddController extends AdminController implements Initializabl
             return;
         }
 
-        MemberListController.Member member = new MemberListController.Member(mName, mID, mMobile, mEmail);
         saveLibraryMember(mID, fName, lName, mMobile, "", "", "", "");
-        AlertMaker.showMaterialDialog(rootPane, mainContainer, new ArrayList<>(), "New member added", mName + " has been added");
+        AlertMaker.showMaterialDialog(rootPane, mainContainer, new ArrayList<>(), "New member added", fName + " " + lName + " has been added");
         clearEntries();
         close();
     }
 
-    public void infalteUI(MemberListController.Member member) {
-        name.setText(member.getName());
-        id.setText(member.getId());
+    public void infalteUI(LibraryMember member) {
+        firstName.setText(member.getFirstName());
+        lastName.setText(member.getLastName());
+        id.setText(member.getMemberId());
         id.setEditable(false);
-        mobile.setText(member.getMobile());
-        email.setText(member.getEmail());
+        mobile.setText(member.getTelephone());
 
         isInEditMode = Boolean.TRUE;
     }
 
     private void clearEntries() {
-        name.clear();
+        firstName.clear();
+        lastName.clear();
         id.clear();
         mobile.clear();
-        email.clear();
     }
 
     private void handleUpdateMember() {
-        MemberListController.Member member = new MemberListController.Member(name.getText(), id.getText(), mobile.getText(), email.getText());
-        if (DatabaseHandler.getInstance().updateMember(member)) {
-            AlertMaker.showMaterialDialog(rootPane, mainContainer, new ArrayList<>(), "Success", "Member data updated.");
-        } else {
-            AlertMaker.showMaterialDialog(rootPane, mainContainer, new ArrayList<>(), "Failed", "Cant update member.");
-        }
+        close();
+        AlertMaker.showMaterialDialog(rootPane, mainContainer, new ArrayList<>(), "Success", "Member data updated.");
     }
 
-    private  void close(){
-        Stage stage = (Stage) name.getScene().getWindow();
+    private void close() {
+        Stage stage = (Stage) firstName.getScene().getWindow();
         stage.close();
     }
 

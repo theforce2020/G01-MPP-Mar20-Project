@@ -1,18 +1,18 @@
 package library.business;
 
-import java.util.List;
-
 import library.model.LibraryMember;
 
+import java.util.List;
+
 public interface LibraryMemberInterface {
-	
-	public void saveLibraryMember(String memberId, String firstName, String lastName, String telephone, String street, String city, String state, String zip);
-	
-	public void updateLibraryMember(String memberId, String firstName, String lastName, String telephone, String street, String city, String state, String zip);
-	
-	public List<LibraryMember> getAllLibraryMembers();
-	
-	public boolean doesMemberExist(String memberId);
-	
-	public void deleteMember(String memberId);
+
+    void saveLibraryMember(String memberId, String firstName, String lastName, String telephone, String street, String city, String state, String zip);
+
+    void updateLibraryMember(String memberId, String firstName, String lastName, String telephone, String street, String city, String state, String zip);
+
+    List<LibraryMember> getAllLibraryMembers();
+
+    boolean doesMemberExist(String memberId);
+
+    void deleteMember(String memberId);
 }

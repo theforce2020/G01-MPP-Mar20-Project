@@ -1,11 +1,5 @@
 package library.ui.about;
 
-import java.awt.Desktop;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,6 +10,13 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import library.alert.AlertMaker;
 import library.util.LibraryAssistantUtil;
+
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class AboutController implements Initializable {
 

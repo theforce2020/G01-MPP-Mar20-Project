@@ -31,5 +31,5 @@ public class CipherSpec implements Serializable {
     public String toString() {
         return "CipherSpec{" + "key=" + key + ", iv=" + iv + '}';
     }
-    
+
 }

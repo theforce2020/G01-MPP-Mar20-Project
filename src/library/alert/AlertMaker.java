@@ -4,16 +4,9 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.events.JFXDialogEvent;
-import java.awt.SystemTray;
-import java.awt.TrayIcon;
-import java.awt.TrayIcon.MessageType;
-import java.awt.image.BufferedImage;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.List;
 import javafx.scene.Node;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -23,8 +16,15 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javax.imageio.ImageIO;
 import library.util.LibraryAssistantUtil;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.TrayIcon.MessageType;
+import java.awt.image.BufferedImage;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.List;
 
 public class AlertMaker {
 
@@ -155,7 +155,8 @@ public class AlertMaker {
         LibraryAssistantUtil.setStageIcon(stage);
 
         DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.getStylesheets().add(AlertMaker.class.getResource("/resources/dark-theme.css").toExternalForm());
+//        dialogPane.getStylesheets().add(AlertMaker.class.getResource("src/resources/blue-theme.css").toExternalForm());
+//        System.out.println(dialogPane.getStylesheets());
         dialogPane.getStyleClass().add("custom-alert");
     }
 }

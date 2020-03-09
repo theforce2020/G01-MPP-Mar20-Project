@@ -2,23 +2,20 @@ package library.export.pdf;
 
 import be.quodlibet.boxable.BaseTable;
 import be.quodlibet.boxable.datatable.DataTable;
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
 import library.alert.AlertMaker;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
 
 /*
 @author afsal-5502
  */
 
 public class ListToPDF {
-
-    public enum Orientation {
-        PORTRAIT, LANDSCAPE
-    };
 
     public boolean doPrintToPdf(List<List> list, File saveLoc, Orientation orientation) {
         try {
@@ -59,6 +56,10 @@ public class ListToPDF {
             AlertMaker.showErrorMessage("Error occurred during PDF export", ex.getMessage());
         }
         return false;
+    }
+
+    public enum Orientation {
+        PORTRAIT, LANDSCAPE
     }
 
 }

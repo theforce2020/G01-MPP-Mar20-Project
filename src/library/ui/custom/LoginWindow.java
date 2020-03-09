@@ -11,7 +11,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -21,25 +20,28 @@ import library.business.AuthenticationInterface;
 import library.exceptions.LoginException;
 
 public class LoginWindow extends Stage implements LibWindow {
-	public static final LoginWindow INSTANCE = new LoginWindow();
-	
-	private boolean isInitialized = false;
-	
-	public boolean isInitialized() {
-		return isInitialized;
-	}
-	public void isInitialized(boolean val) {
-		isInitialized = val;
-	}
-	private Text messageBar = new Text();
-	public void clear() {
-		messageBar.setText("");
-	}
-	
-	/* This class is a singleton */
-    private LoginWindow () {}
-    
-    public void init() { 
+    public static final LoginWindow INSTANCE = new LoginWindow();
+
+    private boolean isInitialized = false;
+    private Text messageBar = new Text();
+
+    /* This class is a singleton */
+    private LoginWindow() {
+    }
+
+    public boolean isInitialized() {
+        return isInitialized;
+    }
+
+    public void isInitialized(boolean val) {
+        isInitialized = val;
+    }
+
+    public void clear() {
+        messageBar.setText("");
+    }
+
+    public void init() {
         GridPane grid = new GridPane();
         grid.setId("top-container");
         grid.setAlignment(Pos.CENTER);
@@ -61,7 +63,7 @@ public class LoginWindow extends Stage implements LibWindow {
 
         Label pw = new Label("Password:");
         grid.add(pw, 0, 2);
-        grid.setGridLinesVisible(false) ;
+        grid.setGridLinesVisible(false);
 
         PasswordField pwBox = new PasswordField();
         grid.add(pwBox, 1, 2);
@@ -74,12 +76,12 @@ public class LoginWindow extends Stage implements LibWindow {
 
         HBox messageBox = new HBox(10);
         messageBox.setAlignment(Pos.BOTTOM_RIGHT);
-        messageBox.getChildren().add(messageBar);;
+        messageBox.getChildren().add(messageBar);
         grid.add(messageBox, 1, 6);
-        
+
         loginBtn.setOnAction(new EventHandler<ActionEvent>() {
-        	@Override
-        	public void handle(ActionEvent e) {
+            @Override
+            public void handle(ActionEvent e) {
                 AuthenticationInterface c = new AuthenticationController();
                 try {
                     c.login(userTextField.getText().trim(), pwBox.getText().trim());
@@ -95,11 +97,11 @@ public class LoginWindow extends Stage implements LibWindow {
 
         Button backBtn = new Button("<= Back to Main");
         backBtn.setOnAction(new EventHandler<ActionEvent>() {
-        	@Override
-        	public void handle(ActionEvent e) {
-        		Start.hideAllWindows();
-        		Start.primStage().show();
-        	}
+            @Override
+            public void handle(ActionEvent e) {
+                Start.hideAllWindows();
+                Start.primStage().show();
+            }
         });
         HBox hBack = new HBox(10);
         hBack.setAlignment(Pos.BOTTOM_LEFT);
@@ -108,8 +110,8 @@ public class LoginWindow extends Stage implements LibWindow {
         Scene scene = new Scene(grid);
         scene.getStylesheets().add(getClass().getResource("library.css").toExternalForm());
         setScene(scene);
-        
+
     }
-	
-	
+
+
 }

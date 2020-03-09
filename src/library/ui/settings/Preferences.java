@@ -1,16 +1,12 @@
 package library.ui.settings;
 
 import com.google.gson.Gson;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import library.alert.AlertMaker;
 import org.apache.commons.codec.digest.DigestUtils;
+
+import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Preferences {
 
@@ -26,41 +22,6 @@ public class Preferences {
         finePerDay = 2;
         username = "admin";
         setPassword("admin");
-    }
-
-    public int getnDaysWithoutFine() {
-        return nDaysWithoutFine;
-    }
-
-    public void setnDaysWithoutFine(int nDaysWithoutFine) {
-        this.nDaysWithoutFine = nDaysWithoutFine;
-    }
-
-    public float getFinePerDay() {
-        return finePerDay;
-    }
-
-    public void setFinePerDay(float finePerDay) {
-        this.finePerDay = finePerDay;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        if (password.length() < 16) {
-            this.password = DigestUtils.shaHex(password);
-        }else
-            this.password = password;
     }
 
     public static void initConfig() {
@@ -111,6 +72,41 @@ public class Preferences {
                 Logger.getLogger(Preferences.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+
+    public int getnDaysWithoutFine() {
+        return nDaysWithoutFine;
+    }
+
+    public void setnDaysWithoutFine(int nDaysWithoutFine) {
+        this.nDaysWithoutFine = nDaysWithoutFine;
+    }
+
+    public float getFinePerDay() {
+        return finePerDay;
+    }
+
+    public void setFinePerDay(float finePerDay) {
+        this.finePerDay = finePerDay;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        if (password.length() < 16) {
+            this.password = DigestUtils.shaHex(password);
+        } else
+            this.password = password;
     }
 
 }

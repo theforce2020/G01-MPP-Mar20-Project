@@ -1,17 +1,5 @@
 package library.ui.listmember;
 
-import java.io.IOException;
-import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -30,26 +18,32 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import library.alert.AlertMaker;
-import library.database.DatabaseHandler;
-import library.ui.addbook.BookAddController;
+import library.business.AdminController;
+import library.model.LibraryMember;
 import library.ui.addmember.MemberAddController;
 import library.ui.main.MainController;
 import library.util.LibraryAssistantUtil;
 
-public class MemberListController implements Initializable {
+import java.io.IOException;
+import java.net.URL;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-    ObservableList<Member> list = FXCollections.observableArrayList();
+public class MemberListController extends AdminController implements Initializable {
+
+    ObservableList<LibraryMember> list = FXCollections.observableArrayList();
 
     @FXML
-    private TableView<Member> tableView;
+    private TableView<LibraryMember> tableView;
     @FXML
-    private TableColumn<Member, String> nameCol;
+    private TableColumn<LibraryMember, String> firstNameCol;
     @FXML
-    private TableColumn<Member, String> idCol;
+    private TableColumn<LibraryMember, String> lastNameCol;
     @FXML
-    private TableColumn<Member, String> mobileCol;
+    private TableColumn<LibraryMember, String> idCol;
     @FXML
-    private TableColumn<Member, String> emailCol;
+    private TableColumn<LibraryMember, String> telephoneCol;
     @FXML
     private StackPane rootPane;
     @FXML
@@ -62,10 +56,10 @@ public class MemberListController implements Initializable {
     }
 
     private void initCol() {
-        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-        mobileCol.setCellValueFactory(new PropertyValueFactory<>("mobile"));
-        emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
+        idCol.setCellValueFactory(new PropertyValueFactory<>("memberId"));
+        firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        telephoneCol.setCellValueFactory(new PropertyValueFactory<>("telephone"));
     }
 
     private Stage getStage() {
@@ -75,50 +69,32 @@ public class MemberListController implements Initializable {
     private void loadData() {
         list.clear();
 
-        DatabaseHandler handler = DatabaseHandler.getInstance();
-        String qu = "SELECT * FROM MEMBER";
-        ResultSet rs = handler.execQuery(qu);
-        try {
-            while (rs.next()) {
-                String name = rs.getString("name");
-                String mobile = rs.getString("mobile");
-                String id = rs.getString("id");
-                String email = rs.getString("email");
-
-                list.add(new Member(name, id, mobile, email));
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(BookAddController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        List<LibraryMember> members = getAllLibraryMembers();
+        System.out.println(members);
+        list.addAll(members);
         tableView.setItems(list);
     }
 
     @FXML
     private void handleMemberDelete(ActionEvent event) {
         //Fetch the selected row
-        MemberListController.Member selectedForDeletion = tableView.getSelectionModel().getSelectedItem();
+        LibraryMember selectedForDeletion = tableView.getSelectionModel().getSelectedItem();
         if (selectedForDeletion == null) {
             AlertMaker.showErrorMessage("No member selected", "Please select a member for deletion.");
             return;
         }
-        if (DatabaseHandler.getInstance().isMemberHasAnyBooks(selectedForDeletion)) {
-            AlertMaker.showErrorMessage("Cant be deleted", "This member has some books.");
-            return;
-        }
+//        if (DatabaseHandler.getInstance().isMemberHasAnyBooks(selectedForDeletion)) {
+//            AlertMaker.showErrorMessage("Cant be deleted", "This member has some books.");
+//            return;
+//        }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Deleting book");
-        alert.setContentText("Are you sure want to delete " + selectedForDeletion.getName() + " ?");
+        alert.setContentText("Are you sure want to delete " + selectedForDeletion.getFirstName() + " " + selectedForDeletion.getLastName() + " ?");
         Optional<ButtonType> answer = alert.showAndWait();
         if (answer.get() == ButtonType.OK) {
-            Boolean result = DatabaseHandler.getInstance().deleteMember(selectedForDeletion);
-            if (result) {
-                AlertMaker.showSimpleAlert("Book deleted", selectedForDeletion.getName() + " was deleted successfully.");
-                list.remove(selectedForDeletion);
-            } else {
-                AlertMaker.showSimpleAlert("Failed", selectedForDeletion.getName() + " could not be deleted");
-            }
+            deleteMember(selectedForDeletion.getMemberId());
+            AlertMaker.showSimpleAlert("Book deleted", selectedForDeletion.getFirstName() + " " + selectedForDeletion.getLastName() + " was deleted successfully.");
+            list.remove(selectedForDeletion);
         } else {
             AlertMaker.showSimpleAlert("Deletion cancelled", "Deletion process cancelled");
         }
@@ -132,7 +108,7 @@ public class MemberListController implements Initializable {
     @FXML
     private void handleMemberEdit(ActionEvent event) {
         //Fetch the selected row
-        Member selectedForEdit = tableView.getSelectionModel().getSelectedItem();
+        LibraryMember selectedForEdit = tableView.getSelectionModel().getSelectedItem();
         if (selectedForEdit == null) {
             AlertMaker.showErrorMessage("No member selected", "Please select a member for edit.");
             return;
@@ -141,7 +117,7 @@ public class MemberListController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/library/ui/addmember/member_add.fxml"));
             Parent parent = loader.load();
 
-            MemberAddController controller = (MemberAddController) loader.getController();
+            MemberAddController controller = loader.getController();
             controller.infalteUI(selectedForEdit);
 
             Stage stage = new Stage(StageStyle.DECORATED);
@@ -164,12 +140,12 @@ public class MemberListController implements Initializable {
         List<List> printData = new ArrayList<>();
         String[] headers = {"   Name    ", "ID", "Mobile", "    Email   "};
         printData.add(Arrays.asList(headers));
-        for (Member member : list) {
+        for (LibraryMember member : list) {
             List<String> row = new ArrayList<>();
-            row.add(member.getName());
-            row.add(member.getId());
-            row.add(member.getMobile());
-            row.add(member.getEmail());
+            row.add(member.getFirstName());
+            row.add(member.getLastName());
+            row.add(member.getMemberId());
+            row.add(member.getTelephone());
             printData.add(row);
         }
         LibraryAssistantUtil.initPDFExprot(rootPane, contentPane, getStage(), printData);
@@ -179,37 +155,4 @@ public class MemberListController implements Initializable {
     private void closeStage(ActionEvent event) {
         getStage().close();
     }
-
-    public static class Member {
-
-        private final SimpleStringProperty name;
-        private final SimpleStringProperty id;
-        private final SimpleStringProperty mobile;
-        private final SimpleStringProperty email;
-
-        public Member(String name, String id, String mobile, String email) {
-            this.name = new SimpleStringProperty(name);
-            this.id = new SimpleStringProperty(id);
-            this.mobile = new SimpleStringProperty(mobile);
-            this.email = new SimpleStringProperty(email);
-        }
-
-        public String getName() {
-            return name.get();
-        }
-
-        public String getId() {
-            return id.get();
-        }
-
-        public String getMobile() {
-            return mobile.get();
-        }
-
-        public String getEmail() {
-            return email.get();
-        }
-
-    }
-
 }

@@ -1,7 +1,6 @@
 package library.model;
 
 /**
- *
  * @author afsal
  */
 public class Member {
@@ -16,7 +15,7 @@ public class Member {
         this.email = email;
         this.mobile = mobile;
     }
-    
+
     public String getId() {
         return id;
     }
@@ -48,6 +47,6 @@ public class Member {
     public void setMobile(String mobile) {
         this.mobile = mobile;
     }
-    
-    
+
+
 }

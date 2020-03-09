@@ -2,9 +2,6 @@ package library.ui.login;
 
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,22 +15,23 @@ import library.dataaccess.Auth;
 import library.exceptions.LoginException;
 import library.ui.settings.Preferences;
 import library.util.LibraryAssistantUtil;
-import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 public class LoginController extends AuthenticationController implements Initializable {
 
     private final static Logger LOGGER = LogManager.getLogger(LoginController.class.getName());
-
+    Preferences preference;
     @FXML
     private JFXTextField username;
     @FXML
     private JFXPasswordField password;
-
-    Preferences preference;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -71,19 +69,19 @@ public class LoginController extends AuthenticationController implements Initial
     void loadMain(Auth auth) throws IOException {
         Parent parent;
 
-            if (auth == Auth.ADMIN) {
-                parent = FXMLLoader.load(getClass().getResource("/library/ui/main/admin.fxml"));
-            } else {
-                parent = FXMLLoader.load(getClass().getResource("/library/ui/main/librarian.fxml"));
-            }
+        if (auth == Auth.ADMIN) {
+            parent = FXMLLoader.load(getClass().getResource("/library/ui/main/admin.fxml"));
+        } else {
+            parent = FXMLLoader.load(getClass().getResource("/library/ui/main/librarian.fxml"));
+        }
 
-            Stage stage = new Stage(StageStyle.DECORATED);
-            stage.setTitle("The Force");
-            stage.setScene(new Scene(parent));
-            stage.show();
-            LibraryAssistantUtil.setStageIcon(stage);
+        Stage stage = new Stage(StageStyle.DECORATED);
+        stage.setTitle("The Force");
+        stage.setScene(new Scene(parent));
+        stage.show();
+        LibraryAssistantUtil.setStageIcon(stage);
 
-            parent.requestFocus();
+        parent.requestFocus();
     }
 
 }

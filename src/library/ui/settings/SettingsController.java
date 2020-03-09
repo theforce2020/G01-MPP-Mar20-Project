@@ -4,27 +4,29 @@ import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
-import java.io.File;
-import java.net.URL;
-import java.security.InvalidParameterException;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import library.alert.AlertMaker;
-import library.model.MailServerInfo;
 import library.database.DataHelper;
 import library.database.DatabaseHandler;
 import library.database.export.DatabaseExporter;
+import library.model.MailServerInfo;
 import library.util.LibraryAssistantUtil;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.File;
+import java.net.URL;
+import java.security.InvalidParameterException;
+import java.util.ResourceBundle;
+
 public class SettingsController implements Initializable {
 
+    private final static Logger LOGGER = LogManager.getLogger(DatabaseHandler.class.getName());
     @FXML
     private JFXTextField nDaysWithoutFine;
     @FXML
@@ -39,8 +41,6 @@ public class SettingsController implements Initializable {
     private JFXTextField smtpPort;
     @FXML
     private JFXTextField emailAddress;
-
-    private final static Logger LOGGER = LogManager.getLogger(DatabaseHandler.class.getName());
     @FXML
     private JFXPasswordField emailPassword;
     @FXML
