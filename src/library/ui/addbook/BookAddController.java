@@ -55,9 +55,9 @@ public class BookAddController extends AdminController implements Initializable 
         if (isInEditMode) {
         	Book book = getBook(isbn);
         	book.setTitle(bookName);
-        	book.setMaxCheckoutLength(checkout);
-        	book.addAuthor(new Author(bookAuthor, ""));
-            updateBook(book);
+        	updateBook(book);
+        	
+            //updateBook(isbn, bookName, checkout, bookAuthor, "");
             handleEditOperation();
             return;
         }

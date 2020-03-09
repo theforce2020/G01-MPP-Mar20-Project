@@ -221,7 +221,7 @@ public class BookListController extends AdminController implements Initializable
             this.isbn = book.getIsbn();
             this.author = book.getAuthors().get(0).getName();
             this.copies = book.getNumCopies();
-            this.available = book.getAvailableCopies();
+            this.available = book.getAvailableNoOfCopies();
         }
 
         public Book toBook() {

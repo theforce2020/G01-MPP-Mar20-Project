@@ -47,8 +47,6 @@ public class MainClass {
 			admins = controller.getAllLibraryMembers();*/
 			System.out.println("");
 		} catch (Exception e) {}
-
-		
 	}
 
     public static Book addCopyToBook() throws LoginException {
