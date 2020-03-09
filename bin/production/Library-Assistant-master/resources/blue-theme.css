@@ -116,7 +116,7 @@
 /*Toolbar buttons*/
 .toolbar-button {
     -fx-border-color: transparent;
-    -fx-background-color: derive(-fx-primary, 10%);
+    -fx-background-color: transparent;
     -fx-background-radius: 0px;
     -fx-border-radius: 0px;
 }
@@ -376,25 +376,6 @@
 
 .colored-context-menu .menu-item:focused .label {
     -fx-text-fill: -fx-primarytext;
-}
-
-/*.login-button {*/
-/*    -fx-border-radius: 5px;*/
-/*    -fx-text-fill: WHITE;*/
-/*}*/
-
-/*.login {*/
-/*    -fx-background-image: url('img/library-2.jpg');*/
-/*    -fx-background-size: 100% 100%;*/
-/*    -fx-base: rgba(255, 78, 50, 0.89);*/
-/*}*/
-
-.menu-item {
-    -fx-start-margin: 80px;
-}
-
-.push-left {
-    -fx-start-margin: 80px;
 }
 
 .info-text {

@@ -6,79 +6,77 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
+<?import com.jfoenix.controls.JFXButton?>
 <StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity"
            minHeight="-Infinity"
            minWidth="-Infinity" prefHeight="625.0" prefWidth="1000.0"
            styleClass="custom-pane" stylesheets="@../../../../resources/blue-theme.css"
            xmlns="http://javafx.com/javafx/8.0.171" fx:controller="library.ui.main.admin.AdminController">
     <children>
-        <JFXDrawer fx:id="drawer" defaultDrawerSize="150.0" resizableOnDrag="true" resizeContent="true"
-                   styleClass="jfx-drawer" overLayVisible="false"/>
-        <AnchorPane fx:id="rootAnchorPane" prefHeight="200.0" prefWidth="200.0">
+        <AnchorPane fx:id="rootAnchorPane" prefHeight="200.0" prefWidth="200.0" StackPane.alignment="CENTER">
             <children>
                 <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                            AnchorPane.topAnchor="25.0">
+                            AnchorPane.topAnchor="25.0" StackPane.alignment="CENTER">
                     <children>
 
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"
                                     AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
+                        StackPane.alignment="CENTER">
                             <children>
-                                <VBox prefHeight="412.0" prefWidth="557.0" AnchorPane.bottomAnchor="0.0"
-                                      AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                                      AnchorPane.topAnchor="0.0">
+
+                                <HBox prefHeight="180.0">
                                     <children>
-                                        <HBox fx:id="book_info" alignment="CENTER" prefHeight="200.0"
-                                              prefWidth="1000.0">
-                                            <children>
-                                                <VBox alignment="CENTER" spacing="20.0">
-                                                    <HBox.margin>
-                                                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-                                                    </HBox.margin>
-                                                    <children>
-                                                        <FontAwesomeIconView glyphName="CHART_TIMELINE" size="30"/>
-                                                        <Text text="System Statistics" styleClass="info-text"></Text>
-
-                                                        <TableView fx:id="tableView" prefHeight="400.0"
-                                                                   prefWidth="622.0" AnchorPane.bottomAnchor="0.0"
-                                                                   AnchorPane.leftAnchor="0.0"
-                                                                   AnchorPane.rightAnchor="0.0"
-                                                                   AnchorPane.topAnchor="30.0" styleClass="table-view">
-                                                            <columns>
-                                                                <TableColumn fx:id="fieldCol" prefWidth="75.0"
-                                                                             text="Field"/>
-                                                                <TableColumn fx:id="countCol" maxWidth="2800.0"
-                                                                             prefWidth="60.0" text="Count"/>
-                                                            </columns>
-                                                            <columnResizePolicy>
-                                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
-                                                            </columnResizePolicy>
-                                                        </TableView>
-
-                                                    </children>
-                                                </VBox>
-                                            </children>
-                                            <VBox.margin>
-                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-                                            </VBox.margin>
-                                        </HBox>
+                                        <JFXButton contentDisplay="TOP" mnemonicParsing="false" onAction="#loadAddMember" prefHeight="400.0"
+                                                   prefWidth="166.0" styleClass="toolbar-button" text="Add Member" textAlignment="CENTER">
+                                            <graphic>
+                                                <FontAwesomeIconView glyphName="USER" size="25"/>
+                                            </graphic>
+                                        </JFXButton>
+                                        <JFXButton contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadAddBook"
+                                                   prefHeight="400.0" prefWidth="166.0" styleClass="toolbar-button" text="Add Book"
+                                                   textAlignment="CENTER">
+                                            <graphic>
+                                                <FontAwesomeIconView glyphName="BOOK" size="25"/>
+                                            </graphic>
+                                        </JFXButton>
+                                        <JFXButton contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false"
+                                                   onAction="#loadMemberTable" prefHeight="400.0" prefWidth="166.0" styleClass="toolbar-button"
+                                                   text="Member List" textAlignment="CENTER">
+                                            <graphic>
+                                                <FontAwesomeIconView glyphName="TABLE" size="25"/>
+                                            </graphic>
+                                        </JFXButton>
+                                        <JFXButton contentDisplay="TOP" layoutX="10.0" layoutY="81.0" mnemonicParsing="false" onAction="#loadBookTable"
+                                                   prefHeight="400.0" prefWidth="166.0" styleClass="toolbar-button" text="Book List"
+                                                   textAlignment="CENTER">
+                                            <graphic>
+                                                <FontAwesomeIconView glyphName="TABLE" size="25"/>
+                                            </graphic>
+                                        </JFXButton>
+                                        <JFXButton contentDisplay="TOP" layoutX="10.0" layoutY="223.0" mnemonicParsing="false" onAction="#logout"
+                                                   prefHeight="400.0" prefWidth="166.0" styleClass="toolbar-button" text="Logout"
+                                                   textAlignment="CENTER">
+                                            <graphic>
+                                                <FontAwesomeIconView glyphName="LOCK" size="25"/>
+                                            </graphic>
+                                        </JFXButton>
+                                        <JFXButton contentDisplay="TOP" layoutX="10.0" layoutY="223.0" mnemonicParsing="false" onAction="#exit"
+                                                   prefHeight="400.0" prefWidth="168.0" styleClass="toolbar-button" text="Exit"
+                                                   textAlignment="CENTER">
+                                            <graphic>
+                                                <FontAwesomeIconView glyphName="LOCK" size="25"/>
+                                            </graphic>
+                                        </JFXButton>
                                     </children>
-                                </VBox>
+                                </HBox>
                             </children>
                         </AnchorPane>
 
-                        <!--                        <JFXHamburger fx:id="hamburger" styleClass="jfx-hamburger-icon" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="75.0" />-->
                     </children>
                 </AnchorPane>
                 <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <menus>
-                        <Menu mnemonicParsing="false" text=""></Menu>
-                        <Menu mnemonicParsing="false" text=""></Menu>
-                        <Menu mnemonicParsing="false" text=""></Menu>
-                        <Menu mnemonicParsing="false" text=""></Menu>
-                        <Menu mnemonicParsing="false" text=""></Menu>
-                        <Menu mnemonicParsing="false" text=""></Menu>
-                        <Menu mnemonicParsing="false" text=""></Menu>
                         <Menu mnemonicParsing="false" text="File">
                             <items>
                                 <MenuItem mnemonicParsing="false" onAction="#handleMenuClose" text="Exit"/>

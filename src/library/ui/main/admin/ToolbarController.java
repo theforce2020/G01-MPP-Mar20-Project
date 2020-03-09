@@ -1,8 +1,9 @@
-package library.ui.main.toolbar;
+package library.ui.main.admin;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import library.business.AuthenticationController;
 import library.ui.callback.BookReturnCallback;
 import library.ui.issuedlist.IssuedListController;
 import library.util.LibraryAssistantUtil;
@@ -57,7 +58,9 @@ public class ToolbarController implements Initializable {
         }
     }
 
-    public void logout(ActionEvent actionEvent) {
-        System.exit(1);
+    public void exit(ActionEvent actionEvent) {
+            System.exit(1);
     }
+
+
 }

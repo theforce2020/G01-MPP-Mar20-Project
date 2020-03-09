@@ -32,19 +32,12 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/library/ui/login/login.fxml"));
-
         Scene scene = new Scene(root);
-
         stage.setScene(scene);
         stage.show();
         stage.setTitle("The Force Login");
 
         LibraryAssistantUtil.setStageIcon(stage);
-
-        new Thread(() -> {
-            ExceptionUtil.init();
-            DatabaseHandler.getInstance();
-        }).start();
     }
 
 }
