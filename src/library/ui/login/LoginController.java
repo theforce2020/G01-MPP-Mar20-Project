@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import library.business.AuthenticationController;
+import library.dataaccess.Auth;
 import library.exceptions.LoginException;
 import library.ui.settings.Preferences;
 import library.util.LibraryAssistantUtil;
@@ -48,10 +49,10 @@ public class LoginController extends AuthenticationController implements Initial
             login(uname, pword);
 
             closeStage();
-            loadMain();
+            loadMain(currentAuth);
             LOGGER.log(Level.INFO, "User successfully logged in {}", uname);
             System.out.println(currentAuth.name());
-        } catch (LoginException e) {
+        } catch (LoginException | IOException e) {
             username.getStyleClass().add("wrong-credentials");
             password.getStyleClass().add("wrong-credentials");
             e.printStackTrace();
@@ -67,9 +68,15 @@ public class LoginController extends AuthenticationController implements Initial
         ((Stage) username.getScene().getWindow()).close();
     }
 
-    void loadMain() {
-        try {
-            Parent parent = FXMLLoader.load(getClass().getResource("/library/ui/main/admin.fxml"));
+    void loadMain(Auth auth) throws IOException {
+        Parent parent;
+
+            if (auth == Auth.ADMIN) {
+                parent = FXMLLoader.load(getClass().getResource("/library/ui/main/admin.fxml"));
+            } else {
+                parent = FXMLLoader.load(getClass().getResource("/library/ui/main/librarian.fxml"));
+            }
+
             Stage stage = new Stage(StageStyle.DECORATED);
             stage.setTitle("The Force");
             stage.setScene(new Scene(parent));
@@ -77,10 +84,6 @@ public class LoginController extends AuthenticationController implements Initial
             LibraryAssistantUtil.setStageIcon(stage);
 
             parent.requestFocus();
-        }
-        catch (IOException ex) {
-            LOGGER.log(Level.ERROR, "{}", ex);
-        }
     }
 
 }

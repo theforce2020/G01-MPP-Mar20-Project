@@ -36,20 +36,20 @@ public class DataHelper {
         return false;
     }
 
-    public static boolean insertNewMember(Member member) {
-        try {
-            PreparedStatement statement = DatabaseHandler.getInstance().getConnection().prepareStatement(
-                    "INSERT INTO MEMBER(id,name,mobile,email) VALUES(?,?,?,?)");
-            statement.setString(1, member.getId());
-            statement.setString(2, member.getName());
-            statement.setString(3, member.getMobile());
-            statement.setString(4, member.getEmail());
-            return statement.executeUpdate() > 0;
-        } catch (SQLException ex) {
-            LOGGER.log(Level.ERROR, "{}", ex);
-        }
-        return false;
-    }
+//    public static boolean insertNewMember(Member member) {
+//        try {
+//            PreparedStatement statement = DatabaseHandler.getInstance().getConnection().prepareStatement(
+//                    "INSERT INTO MEMBER(id,name,mobile,email) VALUES(?,?,?,?)");
+//            statement.setString(1, member.getId());
+//            statement.setString(2, member.getName());
+//            statement.setString(3, member.getMobile());
+//            statement.setString(4, member.getEmail());
+//            return statement.executeUpdate() > 0;
+//        } catch (SQLException ex) {
+//            LOGGER.log(Level.ERROR, "{}", ex);
+//        }
+//        return false;
+//    }
 
     public static boolean isBookExists(String id) {
         try {
@@ -68,22 +68,22 @@ public class DataHelper {
         return false;
     }
 
-    public static boolean isMemberExists(String id) {
-        try {
-            String checkstmt = "SELECT COUNT(*) FROM MEMBER WHERE id=?";
-            PreparedStatement stmt = DatabaseHandler.getInstance().getConnection().prepareStatement(checkstmt);
-            stmt.setString(1, id);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                int count = rs.getInt(1);
-                System.out.println(count);
-                return (count > 0);
-            }
-        } catch (SQLException ex) {
-            LOGGER.log(Level.ERROR, "{}", ex);
-        }
-        return false;
-    }
+//    public static boolean isMemberExists(String id) {
+//        try {
+//            String checkstmt = "SELECT COUNT(*) FROM MEMBER WHERE id=?";
+//            PreparedStatement stmt = DatabaseHandler.getInstance().getConnection().prepareStatement(checkstmt);
+//            stmt.setString(1, id);
+//            ResultSet rs = stmt.executeQuery();
+//            if (rs.next()) {
+//                int count = rs.getInt(1);
+//                System.out.println(count);
+//                return (count > 0);
+//            }
+//        } catch (SQLException ex) {
+//            LOGGER.log(Level.ERROR, "{}", ex);
+//        }
+//        return false;
+//    }
 
     public static ResultSet getBookInfoWithIssueData(String id) {
         try {
