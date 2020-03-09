@@ -4,7 +4,7 @@
 <?import de.jensd.fx.glyphs.fontawesome.*?>
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" prefHeight="445.0" prefWidth="154.0"
-      styleClass="toolbar-container" stylesheets="@../../../../../resources/blue-theme.css"
+      styleClass="toolbar-container" stylesheets="@../../../../resources/blue-theme.css"
       xmlns="http://javafx.com/javafx/8.0.141" fx:controller="library.ui.main.toolbar.ToolbarController">
     <children>
         <JFXButton contentDisplay="TOP" mnemonicParsing="false" onAction="#loadAddMember" prefHeight="400.0"

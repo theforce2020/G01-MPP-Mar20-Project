@@ -4,7 +4,7 @@
 <?import de.jensd.fx.glyphs.fontawesome.*?>
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" prefHeight="445.0" prefWidth="154.0"
-      styleClass="toolbar-container" stylesheets="@../../../../../resources/blue-theme.css"
+      styleClass="toolbar-container" stylesheets="@../../../../resources/blue-theme.css"
       xmlns="http://javafx.com/javafx/8.0.141" fx:controller="library.ui.main.toolbar.ToolbarController">
     <children>
         <JFXButton contentDisplay="TOP" mnemonicParsing="false" onAction="#loadAddMember" prefHeight="400.0"
@@ -34,12 +34,12 @@
                 <FontAwesomeIconView glyphName="TABLE" size="25"/>
             </graphic>
         </JFXButton>
-<!--        <JFXButton contentDisplay="TOP" mnemonicParsing="false" onAction="#loadIssuedBookList" prefHeight="400.0"-->
-<!--                   prefWidth="160.0" styleClass="toolbar-button" text="Issued Book List" textAlignment="CENTER">-->
-<!--            <graphic>-->
-<!--                <FontAwesomeIconView glyphName="CHECK" size="25" textAlignment="CENTER"/>-->
-<!--            </graphic>-->
-<!--        </JFXButton>-->
+        <!--        <JFXButton contentDisplay="TOP" mnemonicParsing="false" onAction="#loadIssuedBookList" prefHeight="400.0"-->
+        <!--                   prefWidth="160.0" styleClass="toolbar-button" text="Issued Book List" textAlignment="CENTER">-->
+        <!--            <graphic>-->
+        <!--                <FontAwesomeIconView glyphName="CHECK" size="25" textAlignment="CENTER"/>-->
+        <!--            </graphic>-->
+        <!--        </JFXButton>-->
         <JFXButton contentDisplay="TOP" layoutX="10.0" layoutY="223.0" mnemonicParsing="false" onAction="#logout"
                    prefHeight="400.0" prefWidth="160.0" styleClass="toolbar-button" text="Logout"
                    textAlignment="CENTER">

@@ -213,8 +213,8 @@ public class LibrarianController implements Initializable, BookReturnCallback {
                 });
                 AlertMaker.showMaterialDialog(rootPane, rootAnchorPane, Arrays.asList(button), "Book Issue Complete", null);
             } catch (CheckException e) {
-                JFXButton button = new JFXButton("Okay.I'll Check");
-                AlertMaker.showMaterialDialog(rootPane, rootAnchorPane, Arrays.asList(button), "Issue Operation Failed", null);
+                JFXButton button = new JFXButton("Okay!");
+                AlertMaker.showMaterialDialog(rootPane, rootAnchorPane, Arrays.asList(button), "Checkout Failed", "There are no copies of this available.");
                 e.printStackTrace();
             }
 
