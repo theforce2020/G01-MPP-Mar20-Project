@@ -1,6 +1,7 @@
 package library.business;
 
 import library.model.Book;
+import library.model.BookCopy;
 
 import java.util.List;
 
@@ -19,4 +20,6 @@ public interface BookInterface {
 	public void addBookAuthor(String isbn, String fName, String lName);
 	
 	public Book getBook(String isbn);
+	
+	public BookCopy getBookCopy(String isbn, int copyNum);
 }

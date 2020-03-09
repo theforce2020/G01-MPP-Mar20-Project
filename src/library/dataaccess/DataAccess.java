@@ -18,6 +18,8 @@ public interface DataAccess {
 
     Book getBook(String isbn);
     
+    BookCopy getBookCopy(String isbn, int copyNum);
+    
     void deleteBook(String isbn);
 
     void updateBook(Book bk);
