@@ -49,9 +49,7 @@ public class AdminController implements LibraryMemberInterface, BookInterface, L
 	}
 
 	@Override
-	public void updateBook(String isbn, String title, int maxCheckoutLength, String fName, String lName) {
-		Book book = new Book(isbn, title, maxCheckoutLength);
-		book.addAuthor(new Author(fName, lName));
+	public void updateBook(Book book) {
 		dataFacade.updateBook(book);
 	}
 
@@ -136,5 +134,10 @@ public class AdminController implements LibraryMemberInterface, BookInterface, L
 	@Override
 	public void deleteMember(String memberId) {
 		dataFacade.deleteMember(memberId);
+	}
+
+	@Override
+	public Book getBook(String isbn) {
+		return dataFacade.getBook(isbn);
 	}
 }

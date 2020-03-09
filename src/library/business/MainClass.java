@@ -23,8 +23,13 @@ public class MainClass {
 
 		AdminController controller = new AdminController();
 
-		//controller.saveBook("37832", "It works", 30, "Elly", "Kane");
+		controller.saveBook("37832", "It works", 30, "Elly", "Kane");
 		Collection<Book> books = controller.getAllBooks();
+		
+		Book book = controller.getBook("37832");
+		book.addCopy();
+		controller.updateBook(book);
+		book = controller.getBook("37832");
 		//List<Book> mems = new ArrayList<>();
 		//mems.addAll(books);*/
 
@@ -35,13 +40,13 @@ public class MainClass {
 			Collection<Admin> admins = controller.getAllAdmins();
 			Collection<Librarian> librarians = controller.getAllLibrarians();*/
 			
-			controller.saveLibraryMember("19292913", "Elly", "Businge", "92283", "xxx", "iowa city", "Iowa", "256");
-			Collection<LibraryMember> admins = controller.getAllLibraryMembers();
-			controller.updateLibraryMember("19292913", "Elly33", "Businge22", "92283", "xxx", "iowa city", "Iowa", "256");
+			//controller.saveLibraryMember("19292913", "Elly", "Businge", "92283", "xxx", "iowa city", "Iowa", "256");
+			//Collection<LibraryMember> admins = controller.getAllLibraryMembers();
+			//controller.updateLibraryMember("19292913", "Elly33", "Businge22", "92283", "xxx", "iowa city", "Iowa", "256");
 			
-			admins = controller.getAllLibraryMembers();
+			/*admins = controller.getAllLibraryMembers();
 			controller.deleteMember("19292913");
-			admins = controller.getAllLibraryMembers();
+			admins = controller.getAllLibraryMembers();*/
 			System.out.println("");
 		} catch (Exception e) {}
 

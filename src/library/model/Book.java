@@ -29,6 +29,7 @@ final public class Book implements Serializable {
 		this.title = title;
 		this.maxCheckoutLength = maxCheckoutLength;
 		this.authors = new ArrayList<Author>();
+		copies = new BookCopy[]{new BookCopy(this, 1, true)};
 	}
 
 	public Book(String isbn, String title) {
@@ -36,6 +37,7 @@ final public class Book implements Serializable {
 		this.title = title;
 		this.maxCheckoutLength = 1;
 		this.authors = new ArrayList<Author>();
+		copies = new BookCopy[]{new BookCopy(this, 1, true)};
 	}
 
 	public Book(String isbn, String title, int maxCheckoutLength, List<Author> authors) {
