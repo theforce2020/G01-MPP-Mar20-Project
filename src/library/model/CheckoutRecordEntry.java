@@ -10,12 +10,14 @@ public class CheckoutRecordEntry implements Serializable {
 	private Date checkoutDate;
 	
 	private Date dueDate;
+	
 	private Date returnDate;
+	
 	private BookCopy bookCopy;
+	
 	private String isbn;
 
-	CheckoutRecordEntry(BookCopy bookCopy,String isbn, Date checkoutDate, Date dueDate){
-		
+	CheckoutRecordEntry(BookCopy bookCopy,String isbn, Date checkoutDate, Date dueDate) {
 		this.isbn = isbn;
 		this.bookCopy = bookCopy;
 		this.checkoutDate = checkoutDate;

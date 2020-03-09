@@ -288,6 +288,12 @@ public class DataAccessFacade implements DataAccess {
 		}
 		return result;
 	}
+	
+	@Override
+	public LibraryMember getLibraryMember(String memberId) {
+		HashMap<String, LibraryMember> members = loadMemberMap();
+		return members.get(memberId);
+	}
 
 	@Override
 	public void deleteMember(String memberId) {

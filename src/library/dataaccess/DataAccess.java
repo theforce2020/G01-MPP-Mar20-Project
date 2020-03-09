@@ -44,4 +44,6 @@ public interface DataAccess {
 	public Admin getAdminById(int adminId);
 	
 	public SystemUser getSystemUser(String username);
+	
+	public LibraryMember getLibraryMember(String memberId);
 }
