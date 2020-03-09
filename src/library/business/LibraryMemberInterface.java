@@ -1,5 +1,6 @@
 package library.business;
 
+import library.exceptions.LibrarySystemException;
 import library.model.LibraryMember;
 
 import java.util.List;
@@ -16,5 +17,5 @@ public interface LibraryMemberInterface {
     
     LibraryMember getMember(String memberId);
 
-    void deleteMember(String memberId);
+    void deleteMember(String memberId) throws LibrarySystemException;
 }

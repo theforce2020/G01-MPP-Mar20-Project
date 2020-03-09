@@ -162,6 +162,17 @@ final public class Book implements Serializable {
 		return total;
 	}
 	
+	public boolean hasBorrowedCopies() {
+		boolean result = false;
+		for (BookCopy copy : copies) {
+			if (!copy.isAvailable()) {
+				result = true;
+				break;
+			}
+		}
+		return result;
+	}
+	
 	public BookCopy getAvailableCopy() {
 		BookCopy bookCopy = null;
 		for (BookCopy copy : copies) {

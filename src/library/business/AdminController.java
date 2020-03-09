@@ -2,6 +2,7 @@ package library.business;
 
 import library.dataaccess.Auth;
 import library.dataaccess.DataAccessFacade;
+import library.exceptions.LibrarySystemException;
 import library.exceptions.UsernameInUseException;
 import library.model.*;
 
@@ -132,8 +133,17 @@ public class AdminController implements LibraryMemberInterface, BookInterface, L
 	}
 
 	@Override
-	public void deleteMember(String memberId) {
-		dataFacade.deleteMember(memberId);
+	public void deleteMember(String memberId) throws LibrarySystemException {
+		CheckoutRecord record = dataFacade.getCheckoutRecord(memberId);
+		
+		if (record == null)
+			dataFacade.deleteMember(memberId);
+		else {
+			if (!record.hasBorrowedBook()) 
+				dataFacade.deleteMember(memberId);
+			else
+				throw new LibrarySystemException("Member can't be deleted because he has borrowed a book");
+		}
 	}
 
 	@Override
@@ -147,7 +157,12 @@ public class AdminController implements LibraryMemberInterface, BookInterface, L
 	}
 
 	@Override
-	public void deleteBook(String isbn) {
+	public void deleteBook(String isbn) throws LibrarySystemException {
+		Book book = dataFacade.getBook(isbn);
+		if (book != null) {
+			if (book.hasBorrowedCopies())
+				throw new LibrarySystemException("Book cant be deleted because it has borrowed copies");
+		}
 		dataFacade.deleteBook(isbn);
 	}
 
