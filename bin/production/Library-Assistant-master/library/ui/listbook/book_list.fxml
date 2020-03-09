@@ -13,8 +13,8 @@
                            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                            AnchorPane.topAnchor="30.0">
                     <columns>
+                        <TableColumn fx:id="idCol" maxWidth="2500.0" prefWidth="75.0" text="Book ISBN"/>
                         <TableColumn fx:id="titleCol" prefWidth="75.0" text="Title"/>
-                        <TableColumn fx:id="idCol" maxWidth="2500.0" prefWidth="75.0" text="Book ID"/>
                         <TableColumn fx:id="authorCol" prefWidth="75.0" text="Author"/>
                         <TableColumn fx:id="copyCol" maxWidth="2800.0" prefWidth="75.0" text="Copies"/>
                         <TableColumn fx:id="availCol" maxWidth="2800.0" prefWidth="75.0" text="Available"/>

@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import library.alert.AlertMaker;
 import library.export.pdf.ListToPDF;
-import library.ui.main.MainController;
+import library.ui.main.admin.AdminController;
 import library.ui.settings.Preferences;
 
 import java.awt.*;
@@ -56,7 +56,7 @@ public class LibraryAssistantUtil {
             stage.show();
             setStageIcon(stage);
         } catch (IOException ex) {
-            Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return controller;
     }

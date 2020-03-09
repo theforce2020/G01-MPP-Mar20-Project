@@ -1,4 +1,4 @@
-package library.ui.main;
+package library.ui.main.admin;
 
 public class CountStat {
     private String field;

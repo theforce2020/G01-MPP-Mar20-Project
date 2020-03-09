@@ -18,10 +18,9 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import library.alert.AlertMaker;
-import library.business.AdminController;
 import library.model.LibraryMember;
 import library.ui.addmember.MemberAddController;
-import library.ui.main.MainController;
+import library.ui.main.admin.AdminController;
 import library.util.LibraryAssistantUtil;
 
 import java.io.IOException;
@@ -30,7 +29,7 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MemberListController extends AdminController implements Initializable {
+public class MemberListController extends library.business.AdminController implements Initializable {
 
     ObservableList<LibraryMember> list = FXCollections.observableArrayList();
 
@@ -131,7 +130,7 @@ public class MemberListController extends AdminController implements Initializab
             });
 
         } catch (IOException ex) {
-            Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

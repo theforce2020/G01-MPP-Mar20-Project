@@ -70,9 +70,9 @@ public class LoginController extends AuthenticationController implements Initial
         Parent parent;
 
         if (auth == Auth.ADMIN) {
-            parent = FXMLLoader.load(getClass().getResource("/library/ui/main/admin.fxml"));
+            parent = FXMLLoader.load(getClass().getResource("/library/ui/main/admin/admin.fxml"));
         } else {
-            parent = FXMLLoader.load(getClass().getResource("/library/ui/main/librarian.fxml"));
+            parent = FXMLLoader.load(getClass().getResource("/library/ui/main/librarian/librarian.fxml"));
         }
 
         Stage stage = new Stage(StageStyle.DECORATED);
