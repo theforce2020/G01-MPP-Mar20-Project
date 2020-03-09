@@ -14,17 +14,17 @@ public class AdminController implements LibraryMemberInterface, BookInterface, L
 	DataAccessFacade dataFacade = new DataAccessFacade();
 
 	@Override
-	public void saveLibraryMember(String firstName, String lastName, String telephone, String street, String city,
+	public void saveLibraryMember(String memberId, String firstName, String lastName, String telephone, String street, String city,
 			String state, String zip) {
-		LibraryMember libraryMember = new LibraryMember(firstName, lastName, telephone,
+		LibraryMember libraryMember = new LibraryMember(memberId, firstName, lastName, telephone,
 				new Address(street, city, state, zip));
 		dataFacade.saveNewMember(libraryMember);
 	}
 
 	@Override
-	public void updateLibraryMember(String firstName, String lastName, String telephone, String street, String city,
+	public void updateLibraryMember(String memberId, String firstName, String lastName, String telephone, String street, String city,
 			String state, String zip) {
-		LibraryMember libraryMember = new LibraryMember(firstName, lastName, telephone,
+		LibraryMember libraryMember = new LibraryMember(memberId, firstName, lastName, telephone,
 				new Address(street, city, state, zip));
 		dataFacade.updateLibraryMember(libraryMember);
 	}
