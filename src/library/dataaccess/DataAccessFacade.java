@@ -302,4 +302,11 @@ public class DataAccessFacade implements DataAccess {
 		HashMap<String, CheckoutRecord> records = loadCheckoutRecordMap();
         return records.get(memberId);
 	}
+
+	@Override
+	public BookCopy getBookCopy(String isbn, int copyNum) {
+		HashMap<String, Book> books = loadBookMap();
+		Book book = books.get(isbn);
+		return book.getCopy(copyNum);
+	}
 }

@@ -150,4 +150,9 @@ public class AdminController implements LibraryMemberInterface, BookInterface, L
 	public void deleteBook(String isbn) {
 		dataFacade.deleteBook(isbn);
 	}
+
+	@Override
+	public BookCopy getBookCopy(String isbn, int copyNum) {
+		return dataFacade.getBookCopy(isbn, copyNum);
+	}
 }
