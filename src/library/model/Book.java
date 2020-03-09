@@ -165,10 +165,21 @@ final public class Book implements Serializable {
 	public BookCopy getAvailableCopy() {
 		BookCopy bookCopy = null;
 		for (BookCopy copy : copies) {
-			if (copy.isAvailable())
+			if (copy.isAvailable()) {
 				copy.changeAvailability();
-			bookCopy = copy;
+				bookCopy = copy;
+				break;
+			}
 		}
 		return bookCopy;
+	}
+	
+	public void makeCopyAvailable(int copyNo) {
+		for (BookCopy copy : copies) {
+			if (copy.getCopyNum() == copyNo) {
+				copy.changeAvailability();
+				break;
+			}
+		}
 	}
 }

@@ -34,6 +34,7 @@ public class LibrarianController implements CheckInterface {
 			} else {
 				record = new CheckoutRecord(book, copy.getCopyNum(), memberId);
 			}
+			df.updateBook(book);
 			df.saveCheckoutRecord(record);
 		} else {
 			throw new CheckException("There are no available book copies");
@@ -48,16 +49,34 @@ public class LibrarianController implements CheckInterface {
 		if (!df.isBookAvailable(isbn))
 			throw new CheckException("We dont have that book!");
 		
+		Book book = df.getBook(isbn);
+		
 		CheckoutRecord record = df.getCheckoutRecord(memberId);
 		
 		if (record != null) {
 			for (CheckoutRecordEntry entry : record.getEntries()) {
 				if (entry.getBookCopy().getCopyNum() == copyNum) {
 					entry.setReturnDate(new Date());
+					entry.setReturned(true);
 					entry.getBookCopy().changeAvailability();
 				}
 			}
 			df.saveCheckoutRecord(record);
+			book.makeCopyAvailable(copyNum);
+			df.updateBook(book);
 		} 
+	}
+
+	@Override
+	public CheckoutRecord getCheckoutRecord(String memberId) {
+		return df.getCheckoutRecord(memberId);
+	}
+
+	@Override
+	public CheckoutRecordEntry[] getCheckoutRecordEntries(String memberId) {
+		CheckoutRecord record = df.getCheckoutRecord(memberId);
+		if (record != null)
+			return record.getEntries();
+		return null;
 	}
 }
