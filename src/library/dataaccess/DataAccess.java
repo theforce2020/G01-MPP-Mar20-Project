@@ -17,6 +17,8 @@ public interface DataAccess {
     void saveNewCheckoutRecord(CheckoutRecord checkoutRecord);
 
     Book getBook(String isbn);
+    
+    void deleteBook(String isbn);
 
     void updateBook(Book bk);
 

@@ -129,7 +129,36 @@ final public class Book implements Serializable {
 		return null;
 	}
 
+	public void setCopies(BookCopy[] copies) {
+		this.copies = copies;
+	}
+
+	public void setAuthors(List<Author> authors) {
+		this.authors = authors;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setMaxCheckoutLength(int maxCheckoutLength) {
+		this.maxCheckoutLength = maxCheckoutLength;
+	}
+
 	public int getMaxCheckoutLength() {
 		return maxCheckoutLength;
+	}
+
+	public int getAvailableCopies() {
+		int total = 0;
+		for (BookCopy copy : copies) {
+			if (copy.isAvailable())
+				total++;
+		}
+		return total;
 	}
 }

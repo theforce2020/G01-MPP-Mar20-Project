@@ -256,7 +256,7 @@ public class DataAccessFacade implements DataAccess {
         HashMap<String, Book> books = loadBookMap();
         if (books.containsKey(isbn)) {
             books.remove(isbn);
-            saveToStorage(StorageType.MEMBERS, books);
+            saveToStorage(StorageType.BOOKS, books);
         }
     }
 

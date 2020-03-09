@@ -14,6 +14,8 @@ public interface BookInterface {
 	
 	public boolean isBookAvailable(String isbn);
 	
+	public void deleteBook(String isbn);
+	
 	public void addBookAuthor(String isbn, String fName, String lName);
 	
 	public Book getBook(String isbn);

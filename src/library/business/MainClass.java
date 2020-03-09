@@ -51,20 +51,6 @@ public class MainClass {
 		
 	}
 
-            controller.saveLibraryMember("19292913", "Elly", "Businge", "92283", "xxx", "iowa city", "Iowa", "256");
-            Collection<LibraryMember> admins = controller.getAllLibraryMembers();
-            controller.updateLibraryMember("19292913", "Elly33", "Businge22", "92283", "xxx", "iowa city", "Iowa", "256");
-
-            admins = controller.getAllLibraryMembers();
-            controller.deleteMember("19292913");
-            admins = controller.getAllLibraryMembers();
-            System.out.println();
-        } catch (Exception e) {
-        }
-
-
-    }
-
     public static Book addCopyToBook() throws LoginException {
         DataAccess da = new DataAccessFacade();
         Collection<Book> books = da.loadBookMap().values();
