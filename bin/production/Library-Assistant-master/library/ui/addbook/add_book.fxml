@@ -29,8 +29,8 @@
                                 <Insets left="10.0" right="10.0" top="20.0"/>
                             </VBox.margin>
                         </JFXTextField>
-                        <JFXTextField fx:id="copies" labelFloat="true" layoutX="10.0" layoutY="62.0"
-                                      promptText="Number of copies">
+                        <JFXTextField fx:id="maxCheckout" labelFloat="true" layoutX="10.0" layoutY="62.0"
+                                      promptText="Borrow limit">
                             <VBox.margin>
                                 <Insets left="10.0" right="10.0" top="20.0"/>
                             </VBox.margin>

@@ -9,7 +9,6 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import library.alert.AlertMaker;
 import library.business.AdminController;
-import library.model.Author;
 import library.model.Book;
 import library.ui.listbook.BookListController;
 import org.apache.commons.lang3.StringUtils;
@@ -25,7 +24,7 @@ public class BookAddController extends AdminController implements Initializable 
     @FXML
     private JFXTextField isbn;
     @FXML
-    private JFXTextField copies;
+    private JFXTextField maxCheckout;
     @FXML
     private JFXTextField author;
     @FXML
@@ -45,7 +44,7 @@ public class BookAddController extends AdminController implements Initializable 
         String isbn = StringUtils.trimToEmpty(this.isbn.getText());
         String bookAuthor = StringUtils.trimToEmpty(author.getText());
         String bookName = StringUtils.trimToEmpty(title.getText());
-        int checkout = Integer.parseInt(StringUtils.trimToEmpty(copies.getText()));
+        int checkout = Integer.parseInt(StringUtils.trimToEmpty(maxCheckout.getText()));
 
         if (isbn.isEmpty() || bookAuthor.isEmpty() || bookName.isEmpty()) {
             AlertMaker.showMaterialDialog(rootPane, mainContainer, new ArrayList<>(), "Insufficient Data", "Please enter data in all fields.");

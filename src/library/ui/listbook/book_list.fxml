@@ -16,6 +16,7 @@
                         <TableColumn fx:id="idCol" maxWidth="2500.0" prefWidth="75.0" text="Book ISBN"/>
                         <TableColumn fx:id="titleCol" prefWidth="75.0" text="Title"/>
                         <TableColumn fx:id="authorCol" prefWidth="75.0" text="Author"/>
+                        <TableColumn fx:id="limitCol" prefWidth="75.0" text="Borrow Limit"/>
                         <TableColumn fx:id="copyCol" maxWidth="2800.0" prefWidth="75.0" text="Copies"/>
                         <TableColumn fx:id="availCol" maxWidth="2800.0" prefWidth="75.0" text="Available"/>
                     </columns>

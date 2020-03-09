@@ -42,6 +42,8 @@ public class BookListController extends library.business.AdminController impleme
     @FXML
     private TableColumn<Bookz, String> titleCol;
     @FXML
+    private TableColumn<Bookz, Integer> limitCol;
+    @FXML
     private TableColumn<Bookz, String> idCol;
     @FXML
     private TableColumn<Bookz, String> authorCol;
@@ -66,6 +68,7 @@ public class BookListController extends library.business.AdminController impleme
         titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
         idCol.setCellValueFactory(new PropertyValueFactory<>("isbn"));
         authorCol.setCellValueFactory(new PropertyValueFactory<>("author"));
+        limitCol.setCellValueFactory(new PropertyValueFactory<>("limit"));
         copyCol.setCellValueFactory(new PropertyValueFactory<>("copies"));
         availCol.setCellValueFactory(new PropertyValueFactory<>("available"));
     }
@@ -214,12 +217,14 @@ public class BookListController extends library.business.AdminController impleme
         String author;
         int copies;
         int available;
+        int limit;
 
         public Bookz(Book book) {
             this.title = book.getTitle();
             this.isbn = book.getIsbn();
             this.author = book.getAuthors().get(0).getName();
             this.copies = book.getNumCopies();
+            this.limit = book.getMaxCheckoutLength();
             this.available = book.getAvailableNoOfCopies();
         }
 
@@ -245,6 +250,10 @@ public class BookListController extends library.business.AdminController impleme
 
         public int getAvailable() {
             return available;
+        }
+
+        public int getLimit() {
+            return limit;
         }
 
         @Override

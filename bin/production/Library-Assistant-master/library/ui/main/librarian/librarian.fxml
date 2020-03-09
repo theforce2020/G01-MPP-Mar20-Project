@@ -22,7 +22,7 @@
                         <JFXTabPane fx:id="mainTabPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                                     AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <tabs>
-                                <Tab fx:id="bookIssueTab" closable="false" styleClass="tab-main" text="Book Issue">
+                                <Tab fx:id="bookIssueTab" closable="false" styleClass="tab-main" text="Book Checkout">
                                     <content>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                             <children>
@@ -167,7 +167,7 @@
                                                                            onAction="#loadIssueOperation"
                                                                            onKeyPressed="#handleIssueButtonKeyPress"
                                                                            prefHeight="44.0" prefWidth="151.0"
-                                                                           text="Issue">
+                                                                           text="Checkout">
                                                                     <HBox.margin>
                                                                         <Insets/>
                                                                     </HBox.margin>
@@ -184,15 +184,88 @@
                                         </AnchorPane>
                                     </content>
                                 </Tab>
-                                <Tab fx:id="checkInTab" closable="false" styleClass="tab-main" text="Book Issue">
+                                <Tab fx:id="checkInTab" closable="false" styleClass="tab-main" text="Book Checkin">
                                     <content>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                             <children>
-                                                <VBox prefHeight="412.0" prefWidth="557.0" AnchorPane.bottomAnchor="0.0"
+                                                <VBox prefHeight="312.0" prefWidth="557.0" AnchorPane.bottomAnchor="0.0"
                                                       AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                                                       AnchorPane.topAnchor="0.0">
                                                     <children>
-                                                        <HBox fx:id="book_info_2" alignment="CENTER" prefHeight="200.0"
+                                                        <HBox fx:id="book_info_2" alignment="CENTER" prefHeight="100.0"
+                                                                     prefWidth="1000.0">
+                                                        <children>
+                                                            <VBox alignment="CENTER" spacing="20.0">
+                                                                <HBox.margin>
+                                                                    <Insets bottom="20.0" left="20.0" right="20.0"
+                                                                            top="20.0"/>
+                                                                </HBox.margin>
+                                                                <children>
+                                                                    <FontAwesomeIconView glyphName="BOOK"
+                                                                                         size="30"/>
+                                                                    <JFXTextField fx:id="bookIDInput_2"
+                                                                                  labelFloat="true"
+                                                                                  onAction="#loadBookInfo"
+                                                                                  prefHeight="26.0"
+                                                                                  prefWidth="230.0"
+                                                                                  promptText="Book ISBN"/>
+                                                                </children>
+                                                            </VBox>
+
+                                                            <StackPane fx:id="bookInfoContainer_2">
+                                                                <HBox.margin>
+                                                                    <Insets bottom="20.0" left="20.0" right="20.0"
+                                                                            top="20.0"/>
+                                                                </HBox.margin>
+                                                                <children>
+                                                                    <VBox alignment="CENTER" prefHeight="147.0"
+                                                                          prefWidth="550.0">
+                                                                        <children>
+                                                                            <Text fx:id="bookName_2"
+                                                                                  strokeType="OUTSIDE"
+                                                                                  strokeWidth="0.0"
+                                                                                  styleClass="main-text"
+                                                                                  textAlignment="CENTER"
+                                                                                  wrappingWidth="460.0">
+                                                                                <VBox.margin>
+                                                                                    <Insets top="10.0"/>
+                                                                                </VBox.margin>
+                                                                            </Text>
+                                                                            <Text fx:id="bookAuthor_2" layoutX="10.0"
+                                                                                  layoutY="71.0"
+                                                                                  strokeType="OUTSIDE"
+                                                                                  strokeWidth="0.0"
+                                                                                  styleClass="main-text"
+                                                                                  textAlignment="CENTER"
+                                                                                  wrappingWidth="460.0">
+                                                                                <VBox.margin>
+                                                                                    <Insets top="10.0"/>
+                                                                                </VBox.margin>
+                                                                            </Text>
+                                                                            <Text fx:id="bookStatus_2" layoutX="10.0"
+                                                                                  layoutY="91.0"
+                                                                                  strokeType="OUTSIDE"
+                                                                                  strokeWidth="0.0"
+                                                                                  styleClass="main-text"
+                                                                                  textAlignment="CENTER"
+                                                                                  wrappingWidth="460.0">
+                                                                                <VBox.margin>
+                                                                                    <Insets top="10.0"/>
+                                                                                </VBox.margin>
+                                                                            </Text>
+                                                                        </children>
+                                                                    </VBox>
+                                                                </children>
+                                                            </StackPane>
+
+                                                        </children>
+                                                        <VBox.margin>
+                                                            <Insets bottom="20.0" left="20.0" right="20.0"
+                                                                    top="20.0"/>
+                                                        </VBox.margin>
+                                                    </HBox>
+
+                                                        <HBox fx:id="copy_info_2" alignment="CENTER" prefHeight="200.0"
                                                               prefWidth="1000.0">
                                                             <children>
                                                                 <VBox alignment="CENTER" spacing="20.0">
@@ -203,16 +276,16 @@
                                                                     <children>
                                                                         <FontAwesomeIconView glyphName="BOOK"
                                                                                              size="30"/>
-                                                                        <JFXTextField fx:id="bookIDInput_2"
+                                                                        <JFXTextField fx:id="copyNoInput_2"
                                                                                       labelFloat="true"
-                                                                                      onAction="#loadBookInfo"
+                                                                                      onAction="#loadCopyInfo"
                                                                                       prefHeight="26.0"
                                                                                       prefWidth="230.0"
-                                                                                      promptText="Book ISBN"/>
+                                                                                      promptText="Copy Number"/>
                                                                     </children>
                                                                 </VBox>
 
-                                                                <StackPane fx:id="bookInfoContainer_2">
+                                                                <StackPane fx:id="copyInfoContainer_2">
                                                                     <HBox.margin>
                                                                         <Insets bottom="20.0" left="20.0" right="20.0"
                                                                                 top="20.0"/>
@@ -221,28 +294,7 @@
                                                                         <VBox alignment="CENTER" prefHeight="147.0"
                                                                               prefWidth="550.0">
                                                                             <children>
-                                                                                <Text fx:id="bookName_2"
-                                                                                      strokeType="OUTSIDE"
-                                                                                      strokeWidth="0.0"
-                                                                                      styleClass="main-text"
-                                                                                      textAlignment="CENTER"
-                                                                                      wrappingWidth="460.0">
-                                                                                    <VBox.margin>
-                                                                                        <Insets top="10.0"/>
-                                                                                    </VBox.margin>
-                                                                                </Text>
-                                                                                <Text fx:id="bookAuthor_2" layoutX="10.0"
-                                                                                      layoutY="71.0"
-                                                                                      strokeType="OUTSIDE"
-                                                                                      strokeWidth="0.0"
-                                                                                      styleClass="main-text"
-                                                                                      textAlignment="CENTER"
-                                                                                      wrappingWidth="460.0">
-                                                                                    <VBox.margin>
-                                                                                        <Insets top="10.0"/>
-                                                                                    </VBox.margin>
-                                                                                </Text>
-                                                                                <Text fx:id="bookStatus_2" layoutX="10.0"
+                                                                                <Text fx:id="copyStatus_2" layoutX="10.0"
                                                                                       layoutY="91.0"
                                                                                       strokeType="OUTSIDE"
                                                                                       strokeWidth="0.0"
@@ -250,7 +302,7 @@
                                                                                       textAlignment="CENTER"
                                                                                       wrappingWidth="460.0">
                                                                                     <VBox.margin>
-                                                                                        <Insets top="10.0"/>
+                                                                                        <Insets top="5.0"/>
                                                                                     </VBox.margin>
                                                                                 </Text>
                                                                             </children>
@@ -264,6 +316,8 @@
                                                                         top="20.0"/>
                                                             </VBox.margin>
                                                         </HBox>
+
+
                                                         <HBox fx:id="member_info_2" alignment="CENTER" layoutX="10.0"
                                                               layoutY="10.0" prefHeight="200.0" prefWidth="1000.0">
                                                             <children>
@@ -329,7 +383,7 @@
                                                                            onAction="#loadCheckinOperation"
                                                                            onKeyPressed="#handleCheckinButtonKeyPress"
                                                                            prefHeight="44.0" prefWidth="151.0"
-                                                                           text="Issue">
+                                                                           text="Checkin">
                                                                     <HBox.margin>
                                                                         <Insets/>
                                                                     </HBox.margin>

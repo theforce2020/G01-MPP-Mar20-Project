@@ -48,18 +48,10 @@ public class LibrarianController implements Initializable, BookReturnCallback {
     private static final String NO_SUCH_BOOK_AVAILABLE = "No Such Book Available";
     private static final String NO_SUCH_MEMBER_AVAILABLE = "No Such Member Available";
     private static final String BOOK_AVAILABLE = "Available";
+
     library.business.LibrarianController librarianController = new library.business.LibrarianController();
     AdminController adminController = new AdminController();
-    ObservableList<CountStat> list = FXCollections.observableArrayList();
-    @FXML
-    private TableColumn<String, String> fieldCol;
-    @FXML
-    private TableColumn<String, Long> countCol;
-    private Boolean isReadyForSubmission = false;
-    //    @FXML
-//    private HBox book_info;
-//    @FXML
-//    private HBox member_info;
+
     @FXML
     private TextField bookIDInput;
     @FXML
@@ -399,24 +391,6 @@ public class LibrarianController implements Initializable, BookReturnCallback {
     }
 
     public void loadCheckinOperation(ActionEvent actionEvent) {
-        if (checkForIssueValidity()) {
-            JFXButton btn = new JFXButton("Okay!");
-            AlertMaker.showMaterialDialog(rootPane, rootAnchorPane, Arrays.asList(btn), "Invalid Input", null);
-            return;
-        }
-        if (bookStatus.getText().equals(BOOK_NOT_AVAILABLE)) {
-            JFXButton btn = new JFXButton("Okay!");
-            JFXButton viewDetails = new JFXButton("View Details");
-            viewDetails.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent e) -> {
-                String bookToBeLoaded = bookIDInput.getText();
-                bookID.setText(bookToBeLoaded);
-                bookID.fireEvent(new ActionEvent());
-                mainTabPane.getSelectionModel().select(renewTab);
-            });
-            AlertMaker.showMaterialDialog(rootPane, rootAnchorPane, Arrays.asList(btn, viewDetails), "Already issued book", "This book is already issued. Cant process issue request");
-            return;
-        }
-
         String memberID = memberIDInput_2.getText();
         String isbn = bookIDInput_2.getText();
         int copyNo = Integer.parseInt(copyNoInput_2.getText());
@@ -436,7 +410,7 @@ public class LibrarianController implements Initializable, BookReturnCallback {
             return;
         }
 
-        BookCopy copy = null;
+        BookCopy copy = adminController.getBookCopy(isbn, copyNo);
 
         if (copy == null) {
             JFXButton btn = new JFXButton("Okay!");
