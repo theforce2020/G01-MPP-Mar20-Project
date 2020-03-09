@@ -16,12 +16,15 @@ public class CheckoutRecordEntry implements Serializable {
     private BookCopy bookCopy;
 
     private String isbn;
+    
+    private boolean returned;
 
-    CheckoutRecordEntry(BookCopy bookCopy, String isbn, Date checkoutDate, Date dueDate) {
+    CheckoutRecordEntry(BookCopy bookCopy, String isbn, Date checkoutDate, Date dueDate, boolean returned) {
         this.isbn = isbn;
         this.bookCopy = bookCopy;
         this.checkoutDate = checkoutDate;
         this.dueDate = dueDate;
+        this.returned = returned;
     }
 
     public BookCopy getBookCopy() {
@@ -71,4 +74,12 @@ public class CheckoutRecordEntry implements Serializable {
         CheckoutRecordEntry b = (CheckoutRecordEntry) ob;
         return b.isbn.equals(isbn) && b.bookCopy.getCopyNum() == bookCopy.getCopyNum();
     }
+
+	public boolean isReturned() {
+		return returned;
+	}
+
+	public void setReturned(boolean returned) {
+		this.returned = returned;
+	}
 }

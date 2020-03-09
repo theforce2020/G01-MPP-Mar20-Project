@@ -52,10 +52,11 @@ public class BookAddController extends AdminController implements Initializable 
         }
 
         if (isInEditMode) {
-        	//Book book = getBook(isbn);
-        	//book.setTitle(bookName);
+        	Book book = getBook(isbn);
+        	book.setTitle(bookName);
+        	updateBook(book);
         	
-            updateBook(isbn, bookName, checkout, bookAuthor, "");
+            //updateBook(isbn, bookName, checkout, bookAuthor, "");
             handleEditOperation();
             return;
         }
