@@ -9,6 +9,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import library.alert.AlertMaker;
 import library.business.AdminController;
+import library.model.Author;
 import library.model.Book;
 import library.ui.listbook.BookListController;
 import org.apache.commons.lang3.StringUtils;
@@ -52,10 +53,11 @@ public class BookAddController extends AdminController implements Initializable 
         }
 
         if (isInEditMode) {
-        	//Book book = getBook(isbn);
-        	//book.setTitle(bookName);
-        	
-            updateBook(isbn, bookName, checkout, bookAuthor, "");
+        	Book book = getBook(isbn);
+        	book.setTitle(bookName);
+        	book.setMaxCheckoutLength(checkout);
+        	book.addAuthor(new Author(bookAuthor, ""));
+            updateBook(book);
             handleEditOperation();
             return;
         }

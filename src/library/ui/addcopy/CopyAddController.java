@@ -9,6 +9,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import library.alert.AlertMaker;
 import library.business.AdminController;
+import library.model.Book;
 import library.ui.listbook.BookListController;
 import org.apache.commons.lang3.StringUtils;
 
@@ -37,7 +38,7 @@ public class CopyAddController extends AdminController implements Initializable 
     @FXML
     private void addCopy(ActionEvent event) {
         String isbn = StringUtils.trimToEmpty(this.isbn.getText());
-        int checkout = Integer.parseInt(StringUtils.trimToEmpty(copies.getText()));
+        int copyNum = Integer.parseInt(StringUtils.trimToEmpty(copies.getText()));
 
         if (isbn.isEmpty()) {
             AlertMaker.showMaterialDialog(rootPane, mainContainer, new ArrayList<>(), "Insufficient Data", "Please enter data in all fields.");
@@ -45,7 +46,11 @@ public class CopyAddController extends AdminController implements Initializable 
         }
 
         if (isInEditMode) {
-            addBookCopies(isbn, checkout);
+            Book book = getBook(isbn);
+            for (int i = 0; i < copyNum; i++) {
+                book.addCopy();
+            }
+            updateBook(book);
             handleEditOperation();
         }
     }
