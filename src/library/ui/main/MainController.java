@@ -40,8 +40,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import library.alert.AlertMaker;
+import library.business.AdminController;
+import library.business.LibrarianController;
 import library.database.DataHelper;
 import library.database.DatabaseHandler;
+import library.exceptions.CheckException;
+import library.model.Book;
+import library.model.LibraryMember;
 import library.ui.callback.BookReturnCallback;
 import library.ui.issuedlist.IssuedListController;
 import library.ui.main.toolbar.ToolbarController;
@@ -62,6 +67,9 @@ public class MainController implements Initializable, BookReturnCallback {
     private DatabaseHandler databaseHandler;
     private PieChart bookChart;
     private PieChart memberChart;
+
+    LibrarianController librarianController = new LibrarianController();
+    AdminController adminController = new AdminController();
 
 //    @FXML
 //    private HBox book_info;
@@ -251,48 +259,46 @@ public class MainController implements Initializable, BookReturnCallback {
 
     @FXML
     private void loadIssueOperation(ActionEvent event) {
-        if (checkForIssueValidity()) {
-            JFXButton btn = new JFXButton("Okay!");
-            AlertMaker.showMaterialDialog(rootPane, rootAnchorPane, Arrays.asList(btn), "Invalid Input", null);
-            return;
-        }
-        if (bookStatus.getText().equals(BOOK_NOT_AVAILABLE)) {
-            JFXButton btn = new JFXButton("Okay!");
-            JFXButton viewDetails = new JFXButton("View Details");
-            viewDetails.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent e) -> {
-                String bookToBeLoaded = bookIDInput.getText();
-                bookID.setText(bookToBeLoaded);
-                bookID.fireEvent(new ActionEvent());
-                mainTabPane.getSelectionModel().select(renewTab);
-            });
-            AlertMaker.showMaterialDialog(rootPane, rootAnchorPane, Arrays.asList(btn, viewDetails), "Already issued book", "This book is already issued. Cant process issue request");
-            return;
-        }
+//        if (checkForIssueValidity()) {
+//            JFXButton btn = new JFXButton("Okay!");
+//            AlertMaker.showMaterialDialog(rootPane, rootAnchorPane, Arrays.asList(btn), "Invalid Input", null);
+//            return;
+//        }
+//        if (bookStatus.getText().equals(BOOK_NOT_AVAILABLE)) {
+//            JFXButton btn = new JFXButton("Okay!");
+//            JFXButton viewDetails = new JFXButton("View Details");
+//            viewDetails.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent e) -> {
+//                String bookToBeLoaded = bookIDInput.getText();
+//                bookID.setText(bookToBeLoaded);
+//                bookID.fireEvent(new ActionEvent());
+//                mainTabPane.getSelectionModel().select(renewTab);
+//            });
+//            AlertMaker.showMaterialDialog(rootPane, rootAnchorPane, Arrays.asList(btn, viewDetails), "Already issued book", "This book is already issued. Cant process issue request");
+//            return;
+//        }
 
         String memberID = memberIDInput.getText();
-        String bookID = bookIDInput.getText();
+        String isbn = bookIDInput.getText();
 
         JFXButton yesButton = new JFXButton("YES");
         yesButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent event1) -> {
-            String str = "INSERT INTO ISSUE(memberID,bookID) VALUES ("
-                    + "'" + memberID + "',"
-                    + "'" + bookID + "')";
-            String str2 = "UPDATE BOOK SET isAvail = false WHERE id = '" + bookID + "'";
-            System.out.println(str + " and " + str2);
+            try {
+                librarianController.checkOutBook(isbn, memberID);
 
-            if (databaseHandler.execAction(str) && databaseHandler.execAction(str2)) {
                 JFXButton button = new JFXButton("Done!");
                 button.setOnAction((actionEvent) -> {
                     bookIDInput.requestFocus();
                 });
                 AlertMaker.showMaterialDialog(rootPane, rootAnchorPane, Arrays.asList(button), "Book Issue Complete", null);
-                refreshGraphs();
-            } else {
+            } catch (CheckException e) {
                 JFXButton button = new JFXButton("Okay.I'll Check");
                 AlertMaker.showMaterialDialog(rootPane, rootAnchorPane, Arrays.asList(button), "Issue Operation Failed", null);
+                e.printStackTrace();
             }
+
             clearIssueEntries();
         });
+
         JFXButton noButton = new JFXButton("NO");
         noButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent event1) -> {
             JFXButton button = new JFXButton("That's Okay");
@@ -300,7 +306,7 @@ public class MainController implements Initializable, BookReturnCallback {
             clearIssueEntries();
         });
         AlertMaker.showMaterialDialog(rootPane, rootAnchorPane, Arrays.asList(yesButton, noButton), "Confirm Issue",
-                String.format("Are you sure want to issue the book '%s' to '%s' ?", bookName.getText(), memberName.getText()));
+                String.format("Are you sure want to issue the book '%s' to '%s' ?", isbn, memberID));
     }
 
     @FXML

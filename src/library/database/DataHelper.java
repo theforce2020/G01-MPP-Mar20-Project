@@ -7,7 +7,6 @@ import java.sql.Statement;
 
 import library.model.Book;
 import library.model.MailServerInfo;
-import library.ui.listmember.MemberListController.Member;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
