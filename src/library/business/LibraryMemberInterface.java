@@ -14,7 +14,7 @@ public interface LibraryMemberInterface {
     List<LibraryMember> getAllLibraryMembers();
 
     boolean doesMemberExist(String memberId);
-    
+
     LibraryMember getMember(String memberId);
 
     void deleteMember(String memberId) throws LibrarySystemException;

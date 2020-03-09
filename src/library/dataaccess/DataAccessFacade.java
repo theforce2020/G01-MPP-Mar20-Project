@@ -258,6 +258,19 @@ public class DataAccessFacade implements DataAccess {
         }
     }
 
+    @Override
+    public CheckoutRecord getCheckoutRecord(String memberId) {
+        HashMap<String, CheckoutRecord> records = loadCheckoutRecordMap();
+        return records.get(memberId);
+    }
+
+    @Override
+    public BookCopy getBookCopy(String isbn, int copyNum) {
+        HashMap<String, Book> books = loadBookMap();
+        Book book = books.get(isbn);
+        return book.getCopy(copyNum);
+    }
+
     enum StorageType {
         BOOKS, MEMBERS, USERS, CHECKOUTRECORDS, LIBRARIANS, ADMINS
     }
@@ -296,17 +309,4 @@ public class DataAccessFacade implements DataAccess {
             return "(" + first.toString() + ", " + second.toString() + ")";
         }
     }
-
-	@Override
-	public CheckoutRecord getCheckoutRecord(String memberId) {
-		HashMap<String, CheckoutRecord> records = loadCheckoutRecordMap();
-        return records.get(memberId);
-	}
-
-	@Override
-	public BookCopy getBookCopy(String isbn, int copyNum) {
-		HashMap<String, Book> books = loadBookMap();
-		Book book = books.get(isbn);
-		return book.getCopy(copyNum);
-	}
 }

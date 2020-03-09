@@ -18,6 +18,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import library.alert.AlertMaker;
+import library.exceptions.LibrarySystemException;
 import library.model.LibraryMember;
 import library.ui.addmember.MemberAddController;
 import library.ui.main.admin.AdminController;
@@ -82,18 +83,21 @@ public class MemberListController extends library.business.AdminController imple
             AlertMaker.showErrorMessage("No member selected", "Please select a member for deletion.");
             return;
         }
-//        if (DatabaseHandler.getInstance().isMemberHasAnyBooks(selectedForDeletion)) {
-//            AlertMaker.showErrorMessage("Cant be deleted", "This member has some books.");
-//            return;
-//        }
+
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Deleting book");
         alert.setContentText("Are you sure want to delete " + selectedForDeletion.getFirstName() + " " + selectedForDeletion.getLastName() + " ?");
         Optional<ButtonType> answer = alert.showAndWait();
         if (answer.get() == ButtonType.OK) {
-            deleteMember(selectedForDeletion.getMemberId());
-            AlertMaker.showSimpleAlert("Book deleted", selectedForDeletion.getFirstName() + " " + selectedForDeletion.getLastName() + " was deleted successfully.");
-            list.remove(selectedForDeletion);
+            try {
+                deleteMember(selectedForDeletion.getMemberId());
+                AlertMaker.showSimpleAlert("Book deleted", selectedForDeletion.getFirstName() + " " + selectedForDeletion.getLastName() + " was deleted successfully.");
+                list.remove(selectedForDeletion);
+            } catch (LibrarySystemException e) {
+                AlertMaker.showErrorMessage("Cant be deleted", "This member has some books.");
+                e.printStackTrace();
+                return;
+            }
         } else {
             AlertMaker.showSimpleAlert("Deletion cancelled", "Deletion process cancelled");
         }

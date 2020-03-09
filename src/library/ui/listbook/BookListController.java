@@ -18,6 +18,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import library.alert.AlertMaker;
+import library.exceptions.LibrarySystemException;
 import library.model.Book;
 import library.ui.addbook.BookAddController;
 import library.ui.addcopy.CopyAddController;
@@ -93,9 +94,15 @@ public class BookListController extends library.business.AdminController impleme
         alert.setContentText("Are you sure want to delete the book " + selectedForDeletion.title + " ?");
         Optional<ButtonType> answer = alert.showAndWait();
         if (answer.get() == ButtonType.OK) {
-            deleteBook(selectedForDeletion.isbn);
+
+            try {
+                deleteBook(selectedForDeletion.isbn);
                 AlertMaker.showSimpleAlert("Book deleted", selectedForDeletion.getTitle() + " was deleted successfully.");
                 list.remove(selectedForDeletion);
+            } catch (LibrarySystemException e) {
+                AlertMaker.showErrorMessage("Cant be deleted", "This book has some copies borrowed.");
+                e.printStackTrace();
+            }
         } else {
             AlertMaker.showSimpleAlert("Deletion cancelled", "Deletion process cancelled");
         }

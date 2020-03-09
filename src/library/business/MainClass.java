@@ -29,9 +29,9 @@ public class MainClass {
 		Book book = controller.getBook("37832");
 		book.addCopy();book.addCopy();book.addCopy();
 		controller.updateBook(book);*/
-		//book = controller.getBook("37832");
-		//List<Book> mems = new ArrayList<>();
-		//mems.addAll(books);*/
+        //book = controller.getBook("37832");
+        //List<Book> mems = new ArrayList<>();
+        //mems.addAll(books);*/
 
         try {
 			/*controller.saveLibrarian("Elly", "Businge", "92283", "xxx", "iowa city", "Iowa", "256", "lib", "qwerty");
@@ -39,26 +39,27 @@ public class MainClass {
 
 			Collection<Admin> admins = controller.getAllAdmins();
 			Collection<Librarian> librarians = controller.getAllLibrarians();*/
-			
-			//controller.saveLibraryMember("19292913", "Elly", "Businge", "92283", "xxx", "iowa city", "Iowa", "256");
-			//Collection<LibraryMember> admins = controller.getAllLibraryMembers();
-			//controller.updateLibraryMember("19292913", "Elly33", "Businge22", "92283", "xxx", "iowa city", "Iowa", "256");
-        	Collection<Book> books = controller.getAllBooks();
-        	List<LibraryMember> members = controller.getAllLibraryMembers();
-			
+
+            //controller.saveLibraryMember("19292913", "Elly", "Businge", "92283", "xxx", "iowa city", "Iowa", "256");
+            //Collection<LibraryMember> admins = controller.getAllLibraryMembers();
+            //controller.updateLibraryMember("19292913", "Elly33", "Businge22", "92283", "xxx", "iowa city", "Iowa", "256");
+            Collection<Book> books = controller.getAllBooks();
+            List<LibraryMember> members = controller.getAllLibraryMembers();
+
 //        	lib.checkOutBook("37832", "1");
 //        	CheckoutRecord record = lib.getCheckoutRecord("1");
 //        	books = controller.getAllBooks();
-        	
-        	//lib.checkInBook("37832", 1, "1");
-        	
-        	//books = controller.getAllBooks();
-        	
-        	CheckoutRecord record = lib.getCheckoutRecord("1");
-			System.out.println("");
-						
-		} catch (Exception e) {}
-	}
+
+            //lib.checkInBook("37832", 1, "1");
+
+            //books = controller.getAllBooks();
+
+            CheckoutRecord record = lib.getCheckoutRecord("1");
+            System.out.println();
+
+        } catch (Exception e) {
+        }
+    }
 
     public static Book addCopyToBook() throws LoginException {
         DataAccess da = new DataAccessFacade();

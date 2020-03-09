@@ -1,25 +1,20 @@
 package library.ui.main.librarian;
 
-import com.jfoenix.controls.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTabPane;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import library.alert.AlertMaker;
@@ -31,16 +26,12 @@ import library.model.LibraryMember;
 import library.ui.callback.BookReturnCallback;
 import library.ui.issuedlist.IssuedListController;
 import library.ui.main.admin.CountStat;
-import library.ui.main.toolbar.ToolbarController;
 import library.util.LibraryAssistantUtil;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class LibrarianController implements Initializable, BookReturnCallback {
 

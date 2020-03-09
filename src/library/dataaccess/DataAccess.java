@@ -17,9 +17,9 @@ public interface DataAccess {
     void saveCheckoutRecord(CheckoutRecord checkoutRecord);
 
     Book getBook(String isbn);
-    
+
     BookCopy getBookCopy(String isbn, int copyNum);
-    
+
     void deleteBook(String isbn);
 
     void updateBook(Book bk);
@@ -45,6 +45,6 @@ public interface DataAccess {
     SystemUser getSystemUser(String username);
 
     LibraryMember getLibraryMember(String memberId);
-    
+
     CheckoutRecord getCheckoutRecord(String memberId);
 }

@@ -9,8 +9,8 @@ public interface CheckInterface {
     void checkOutBook(String isbn, String memberId) throws CheckException;
 
     void checkInBook(String isbn, int copyNum, String memberId) throws CheckException;
-    
+
     CheckoutRecord getCheckoutRecord(String memberId);
-    
+
     CheckoutRecordEntry[] getCheckoutRecordEntries(String memberId);
 }
