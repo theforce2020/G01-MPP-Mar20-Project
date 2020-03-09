@@ -1,5 +1,6 @@
 package library.business;
 
+import library.exceptions.LibrarySystemException;
 import library.model.Book;
 import library.model.BookCopy;
 
@@ -15,7 +16,7 @@ public interface BookInterface {
 	
 	public boolean isBookAvailable(String isbn);
 	
-	public void deleteBook(String isbn);
+	public void deleteBook(String isbn) throws LibrarySystemException;
 	
 	public void addBookAuthor(String isbn, String fName, String lName);
 	

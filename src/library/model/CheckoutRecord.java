@@ -36,6 +36,17 @@ public class CheckoutRecord implements Serializable {
         }
         return amount;
     }
+    
+    public boolean hasBorrowedBook() {
+    	boolean result = false;
+    	for (CheckoutRecordEntry entry : checkoutRecordEntries) {
+    		if (!entry.isReturned()) {
+    			result = true;
+    			break;
+    		}    			
+    	}
+    	return result;
+    }
 
     public CheckoutRecordEntry[] getEntries() {
         return this.checkoutRecordEntries;
