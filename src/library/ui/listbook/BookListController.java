@@ -240,6 +240,14 @@ public class BookListController extends AdminController implements Initializable
             return author;
         }
 
+        public int getCopies() {
+            return copies;
+        }
+
+        public int getAvailable() {
+            return available;
+        }
+
         @Override
         public String toString() {
             return "Books{" +
