@@ -11,4 +11,6 @@ public interface LibraryMemberInterface {
 	public void updateLibraryMember(String memberId, String firstName, String lastName, String telephone, String street, String city, String state, String zip);
 	
 	public List<LibraryMember> getAllLibraryMembers();
+	
+	public boolean doesMemberExist(String memberId);
 }

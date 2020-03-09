@@ -278,4 +278,14 @@ public class DataAccessFacade implements DataAccess {
 
 		private static final long serialVersionUID = 5399827794066637059L;
 	}
+
+	@Override
+	public boolean doesMemberExist(String memberId) {
+		boolean result = false;
+		HashMap<String, LibraryMember> members = loadMemberMap();
+		if (members.containsKey(memberId)) {
+			result = true;
+		}
+		return result;
+	}
 }

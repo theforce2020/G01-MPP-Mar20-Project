@@ -127,4 +127,9 @@ public class AdminController implements LibraryMemberInterface, BookInterface, L
 		HashMap<Integer, Librarian> librarians = dataFacade.loadLibrarianMap();
 		return new ArrayList<Librarian>(librarians.values());
 	}
+
+	@Override
+	public boolean doesMemberExist(String memberId) {
+		return dataFacade.doesMemberExist(memberId);
+	}
 }

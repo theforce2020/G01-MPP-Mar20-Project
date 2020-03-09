@@ -25,6 +25,8 @@ public interface DataAccess {
 	
 	public void updateBook(Book bk);
 	
+	public boolean doesMemberExist(String memberId);
+	
 	public Librarian getLibrarianById(int librarianId);
 	
 	public boolean isBookAvailable(String isbn);
