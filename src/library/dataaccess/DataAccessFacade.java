@@ -39,7 +39,7 @@ public class DataAccessFacade implements DataAccess {
 	
 	public void updateLibraryMember(LibraryMember member) {
 		HashMap<String, LibraryMember> mems = loadMemberMap();
-		if(!mems.containsKey(member.getMemberId())) {
+		if(mems.containsKey(member.getMemberId())) {
 			mems.put(member.getMemberId(), member);
 			saveToStorage(StorageType.MEMBERS, mems);
 		}
@@ -95,7 +95,7 @@ public class DataAccessFacade implements DataAccess {
 	
 	public void updateLibrarian(Librarian librarian) {
 		HashMap<Integer, Librarian> librarians = loadLibrarianMap();
-		if(!librarians.containsKey(librarian.getId())) {
+		if(librarians.containsKey(librarian.getId())) {
 			librarians.put(librarian.getId(), librarian);
 			saveToStorage(StorageType.LIBRARIANS, librarians);
 		}
@@ -103,7 +103,7 @@ public class DataAccessFacade implements DataAccess {
 	
 	public void updateAdmin(Admin admin) {
 		HashMap<Integer, Admin> admins = loadAdminMap();
-		if(!admins.containsKey(admin.getId())) {
+		if(admins.containsKey(admin.getId())) {
 			admins.put(admin.getId(), admin);
 			saveToStorage(StorageType.ADMINS, admins);
 		}
@@ -111,7 +111,7 @@ public class DataAccessFacade implements DataAccess {
 
 	public void updateBook(Book bk) {
 		HashMap<String, Book> books = loadBookMap();
-		if(!books.containsKey(bk.getIsbn())) {
+		if(books.containsKey(bk.getIsbn())) {
 			books.put(bk.getIsbn(), bk);
 			saveToStorage(StorageType.BOOKS, books);
 		}
@@ -287,5 +287,14 @@ public class DataAccessFacade implements DataAccess {
 			result = true;
 		}
 		return result;
+	}
+
+	@Override
+	public void deleteMember(String memberId) {
+		HashMap<String, LibraryMember> members = loadMemberMap();
+		if (members.containsKey(memberId)) {
+			members.remove(memberId);
+			saveToStorage(StorageType.MEMBERS, members);
+		}
 	}
 }

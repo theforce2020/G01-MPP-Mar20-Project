@@ -10,6 +10,7 @@ import library.exceptions.LoginException;
 import library.model.Admin;
 import library.model.Book;
 import library.model.Librarian;
+import library.model.LibraryMember;
 
 public class MainClass {
 
@@ -28,14 +29,23 @@ public class MainClass {
 		//mems.addAll(books);*/
 
 		try {
-			controller.saveLibrarian("Elly", "Businge", "92283", "xxx", "iowa city", "Iowa", "256", "lib", "qwerty");
+			/*controller.saveLibrarian("Elly", "Businge", "92283", "xxx", "iowa city", "Iowa", "256", "lib", "qwerty");
 			controller.saveAdmin("Elly1", "Businge1", "922831", "xxx", "iowa city", "Iowa", "256", "admin", "qwerty");
 
 			Collection<Admin> admins = controller.getAllAdmins();
-			Collection<Librarian> librarians = controller.getAllLibrarians();
+			Collection<Librarian> librarians = controller.getAllLibrarians();*/
+			
+			controller.saveLibraryMember("19292913", "Elly", "Businge", "92283", "xxx", "iowa city", "Iowa", "256");
+			Collection<LibraryMember> admins = controller.getAllLibraryMembers();
+			controller.updateLibraryMember("19292913", "Elly33", "Businge22", "92283", "xxx", "iowa city", "Iowa", "256");
+			
+			admins = controller.getAllLibraryMembers();
+			controller.deleteMember("19292913");
+			admins = controller.getAllLibraryMembers();
+			System.out.println("");
 		} catch (Exception e) {}
 
-		System.out.println("");
+		
 	}
 
 	public static Book addCopyToBook() throws LoginException {

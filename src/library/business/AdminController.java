@@ -132,4 +132,9 @@ public class AdminController implements LibraryMemberInterface, BookInterface, L
 	public boolean doesMemberExist(String memberId) {
 		return dataFacade.doesMemberExist(memberId);
 	}
+
+	@Override
+	public void deleteMember(String memberId) {
+		dataFacade.deleteMember(memberId);
+	}
 }

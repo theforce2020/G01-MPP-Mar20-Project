@@ -13,4 +13,6 @@ public interface LibraryMemberInterface {
 	public List<LibraryMember> getAllLibraryMembers();
 	
 	public boolean doesMemberExist(String memberId);
+	
+	public void deleteMember(String memberId);
 }
