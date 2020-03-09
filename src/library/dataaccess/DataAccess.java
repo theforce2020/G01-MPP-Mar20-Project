@@ -14,9 +14,11 @@ public interface DataAccess {
 
     HashMap<String, CheckoutRecord> loadCheckoutRecordMap();
 
-    void saveNewCheckoutRecord(CheckoutRecord checkoutRecord);
+    void saveCheckoutRecord(CheckoutRecord checkoutRecord);
 
     Book getBook(String isbn);
+    
+    BookCopy getBookCopy(String isbn, int copyNum);
     
     void deleteBook(String isbn);
 
@@ -43,4 +45,6 @@ public interface DataAccess {
     SystemUser getSystemUser(String username);
 
     LibraryMember getLibraryMember(String memberId);
+    
+    CheckoutRecord getCheckoutRecord(String memberId);
 }

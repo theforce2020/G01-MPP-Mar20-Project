@@ -4,6 +4,7 @@ import library.dataaccess.DataAccess;
 import library.dataaccess.DataAccessFacade;
 import library.exceptions.LoginException;
 import library.model.Book;
+import library.model.CheckoutRecord;
 import library.model.LibraryMember;
 
 import java.util.ArrayList;
@@ -20,14 +21,15 @@ public class MainClass {
         //allWhoseZipContains3();
 
         AdminController controller = new AdminController();
+        LibrarianController lib = new LibrarianController();
 
-		controller.saveBook("37832", "It works", 30, "Elly", "Kane");
-		Collection<Book> books = controller.getAllBooks();
+		/*controller.saveBook("37832", "It works", 30, "Elly", "Kane");
+		//Collection<Book> books = controller.getAllBooks();
 		
 		Book book = controller.getBook("37832");
-		book.addCopy();
-		controller.updateBook(book);
-		book = controller.getBook("37832");
+		book.addCopy();book.addCopy();book.addCopy();
+		controller.updateBook(book);*/
+		//book = controller.getBook("37832");
 		//List<Book> mems = new ArrayList<>();
 		//mems.addAll(books);*/
 
@@ -41,14 +43,21 @@ public class MainClass {
 			//controller.saveLibraryMember("19292913", "Elly", "Businge", "92283", "xxx", "iowa city", "Iowa", "256");
 			//Collection<LibraryMember> admins = controller.getAllLibraryMembers();
 			//controller.updateLibraryMember("19292913", "Elly33", "Businge22", "92283", "xxx", "iowa city", "Iowa", "256");
+        	Collection<Book> books = controller.getAllBooks();
+        	List<LibraryMember> members = controller.getAllLibraryMembers();
 			
-			/*admins = controller.getAllLibraryMembers();
-			controller.deleteMember("19292913");
-			admins = controller.getAllLibraryMembers();*/
+//        	lib.checkOutBook("37832", "1");
+//        	CheckoutRecord record = lib.getCheckoutRecord("1");
+//        	books = controller.getAllBooks();
+        	
+        	//lib.checkInBook("37832", 1, "1");
+        	
+        	//books = controller.getAllBooks();
+        	
+        	CheckoutRecord record = lib.getCheckoutRecord("1");
 			System.out.println("");
+						
 		} catch (Exception e) {}
-
-		
 	}
 
     public static Book addCopyToBook() throws LoginException {

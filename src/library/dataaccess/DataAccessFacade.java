@@ -219,12 +219,10 @@ public class DataAccessFacade implements DataAccess {
     }
 
     @Override
-    public void saveNewCheckoutRecord(CheckoutRecord checkoutRecord) {
+    public void saveCheckoutRecord(CheckoutRecord checkoutRecord) {
         HashMap<String, CheckoutRecord> cr = loadCheckoutRecordMap();
-        String mbrId = checkoutRecord.getMember().getMemberId();
-        cr.put(mbrId, checkoutRecord);
+        cr.put(checkoutRecord.getMemberId(), checkoutRecord);
         saveToStorage(StorageType.CHECKOUTRECORDS, cr);
-
     }
 
     @Override
@@ -298,4 +296,17 @@ public class DataAccessFacade implements DataAccess {
             return "(" + first.toString() + ", " + second.toString() + ")";
         }
     }
+
+	@Override
+	public CheckoutRecord getCheckoutRecord(String memberId) {
+		HashMap<String, CheckoutRecord> records = loadCheckoutRecordMap();
+        return records.get(memberId);
+	}
+
+	@Override
+	public BookCopy getBookCopy(String isbn, int copyNum) {
+		HashMap<String, Book> books = loadBookMap();
+		Book book = books.get(isbn);
+		return book.getCopy(copyNum);
+	}
 }

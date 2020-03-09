@@ -11,13 +11,13 @@ public class CheckoutRecord implements Serializable {
 
     private CheckoutRecordEntry[] checkoutRecordEntries;
 
-    private LibraryMember member;
+    private String memberId;
 
-    public CheckoutRecord(Book book, int copyNum, LibraryMember libraryMember) {
-        this.setMember(libraryMember);
+    public CheckoutRecord(Book book, int copyNum, String memberId) {
+    	setMemberId(memberId);
         Date checkoutDate = new Date();
         BookCopy cp = book.getCopy(copyNum);
-        this.checkoutRecordEntries = new CheckoutRecordEntry[]{new CheckoutRecordEntry(cp, book.getIsbn(), checkoutDate, LibraryUtil.calculateDueDate(checkoutDate, book.getMaxCheckoutLength()))};
+        this.checkoutRecordEntries = new CheckoutRecordEntry[]{new CheckoutRecordEntry(cp, book.getIsbn(), checkoutDate, LibraryUtil.calculateDueDate(checkoutDate, book.getMaxCheckoutLength()), false)};
     }
 
     public void addCheckoutRecordEntry(Book book, int copyNum) {
@@ -25,16 +25,8 @@ public class CheckoutRecord implements Serializable {
         System.arraycopy(checkoutRecordEntries, 0, newArr, 0, checkoutRecordEntries.length);
         Date checkoutDate = new Date();
         BookCopy cp = book.getCopy(copyNum);
-        newArr[checkoutRecordEntries.length] = new CheckoutRecordEntry(cp, book.getIsbn(), checkoutDate, LibraryUtil.calculateDueDate(checkoutDate, book.getMaxCheckoutLength()));
+        newArr[checkoutRecordEntries.length] = new CheckoutRecordEntry(cp, book.getIsbn(), checkoutDate, LibraryUtil.calculateDueDate(checkoutDate, book.getMaxCheckoutLength()), false);
         checkoutRecordEntries = newArr;
-    }
-
-    public LibraryMember getMember() {
-        return member;
-    }
-
-    public void setMember(LibraryMember member) {
-        this.member = member;
     }
 
     public double totalFine() {
@@ -48,4 +40,12 @@ public class CheckoutRecord implements Serializable {
     public CheckoutRecordEntry[] getEntries() {
         return this.checkoutRecordEntries;
     }
+
+	public String getMemberId() {
+		return memberId;
+	}
+
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
 }
