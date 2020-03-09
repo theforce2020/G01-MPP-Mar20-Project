@@ -16,6 +16,19 @@ public class Main extends Application {
 
     private final static Logger LOGGER = LogManager.getLogger(Main.class.getName());
 
+    public static void main(String[] args) {
+        Long startTime = System.currentTimeMillis();
+        LOGGER.log(Level.INFO, "Library Assistant launched on {}", LibraryAssistantUtil.formatDateTimeString(startTime));
+        launch(args);
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            @Override
+            public void run() {
+                Long exitTime = System.currentTimeMillis();
+                LOGGER.log(Level.INFO, "Library Assistant is closing on {}. Used for {} ms", LibraryAssistantUtil.formatDateTimeString(startTime), exitTime);
+            }
+        });
+    }
+
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/library/ui/login/login.fxml"));
@@ -32,19 +45,6 @@ public class Main extends Application {
             ExceptionUtil.init();
             DatabaseHandler.getInstance();
         }).start();
-    }
-
-    public static void main(String[] args) {
-        Long startTime = System.currentTimeMillis();
-        LOGGER.log(Level.INFO, "Library Assistant launched on {}", LibraryAssistantUtil.formatDateTimeString(startTime));
-        launch(args);
-        Runtime.getRuntime().addShutdownHook(new Thread() {
-            @Override
-            public void run() {
-                Long exitTime = System.currentTimeMillis();
-                LOGGER.log(Level.INFO, "Library Assistant is closing on {}. Used for {} ms", LibraryAssistantUtil.formatDateTimeString(startTime), exitTime);
-            }
-        });
     }
 
 }

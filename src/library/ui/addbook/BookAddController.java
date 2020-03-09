@@ -1,14 +1,6 @@
 package library.ui.addbook;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,11 +9,12 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import library.alert.AlertMaker;
 import library.business.AdminController;
-import library.model.Book;
-import library.database.DataHelper;
-import library.database.DatabaseHandler;
 import library.ui.listbook.BookListController;
 import org.apache.commons.lang3.StringUtils;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 public class BookAddController extends AdminController implements Initializable {
 
@@ -50,9 +43,9 @@ public class BookAddController extends AdminController implements Initializable 
         String isbn = StringUtils.trimToEmpty(this.isbn.getText());
         String bookAuthor = StringUtils.trimToEmpty(author.getText());
         String bookName = StringUtils.trimToEmpty(title.getText());
-        int checkout =  Integer.parseInt(StringUtils.trimToEmpty(copies.getText()));
+        int checkout = Integer.parseInt(StringUtils.trimToEmpty(copies.getText()));
 
-        if (isbn.isEmpty() || bookAuthor.isEmpty() || bookName.isEmpty())  {
+        if (isbn.isEmpty() || bookAuthor.isEmpty() || bookName.isEmpty()) {
             AlertMaker.showMaterialDialog(rootPane, mainContainer, new ArrayList<>(), "Insufficient Data", "Please enter data in all fields.");
             return;
         }
@@ -69,9 +62,9 @@ public class BookAddController extends AdminController implements Initializable 
         }
 
         saveBook(isbn, bookName, checkout, bookAuthor, "");
-            AlertMaker.showMaterialDialog(rootPane, mainContainer, new ArrayList<>(), "New book added", bookName + " has been added");
-            clearEntries();
-            close();
+        AlertMaker.showMaterialDialog(rootPane, mainContainer, new ArrayList<>(), "New book added", bookName + " has been added");
+        clearEntries();
+        close();
     }
 
     @FXML
@@ -80,7 +73,7 @@ public class BookAddController extends AdminController implements Initializable 
         stage.close();
     }
 
-    private  void close(){
+    private void close() {
         Stage stage = (Stage) rootPane.getScene().getWindow();
         stage.close();
     }

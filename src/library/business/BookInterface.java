@@ -1,18 +1,18 @@
 package library.business;
 
-import java.util.List;
-
 import library.model.Book;
 
+import java.util.List;
+
 public interface BookInterface {
-	
-	public List<Book> getAllBooks();
-	
-	public void saveBook(String isbn, String title, int maxCheckoutLength, String fName, String lName);
-	
-	public void updateBook(String isbn, String title, int maxCheckoutLength, String fName, String lName);
-	
-	public boolean isBookAvailable(String isbn);
-	
-	public void addBookAuthor(String isbn, String fName, String lName);
+
+    List<Book> getAllBooks();
+
+    void saveBook(String isbn, String title, int maxCheckoutLength, String fName, String lName);
+
+    void updateBook(String isbn, String title, int maxCheckoutLength, String fName, String lName);
+
+    boolean isBookAvailable(String isbn);
+
+    void addBookAuthor(String isbn, String fName, String lName);
 }

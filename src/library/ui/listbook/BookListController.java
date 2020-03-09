@@ -1,19 +1,5 @@
 package library.ui.listbook;
 
-import java.io.IOException;
-import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.stream.Collectors;
-
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -33,11 +19,18 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import library.alert.AlertMaker;
 import library.business.AdminController;
-import library.database.DatabaseHandler;
 import library.model.Book;
 import library.ui.addbook.BookAddController;
+import library.ui.addcopy.CopyAddController;
 import library.ui.main.MainController;
 import library.util.LibraryAssistantUtil;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class BookListController extends AdminController implements Initializable {
 
@@ -54,7 +47,9 @@ public class BookListController extends AdminController implements Initializable
     @FXML
     private TableColumn<Bookz, String> authorCol;
     @FXML
-    private TableColumn<Bookz, String> copyCol;
+    private TableColumn<Bookz, Integer> copyCol;
+    @FXML
+    private TableColumn<Bookz, Integer> availCol;
     @FXML
     private AnchorPane contentPane;
 
@@ -72,7 +67,8 @@ public class BookListController extends AdminController implements Initializable
         titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
         idCol.setCellValueFactory(new PropertyValueFactory<>("isbn"));
         authorCol.setCellValueFactory(new PropertyValueFactory<>("author"));
-        copyCol.setCellValueFactory(new PropertyValueFactory<>("maxCheckoutLength"));
+        copyCol.setCellValueFactory(new PropertyValueFactory<>("copies"));
+        availCol.setCellValueFactory(new PropertyValueFactory<>("available"));
     }
 
     private void loadData() {
@@ -80,40 +76,6 @@ public class BookListController extends AdminController implements Initializable
         List<Book> books = getAllBooks();
         list.addAll(books.stream().map(Bookz::new).collect(Collectors.toList()));
         tableView.setItems(list);
-    }
-
-    public static class Bookz {
-        String title;
-        String isbn;
-        String author;
-        int maxCheckoutLength;
-
-        public Bookz(Book book) {
-            this.title = book.getTitle();
-            this.isbn = book.getIsbn();
-            this.author = book.getAuthors().get(0).getName();
-            this.maxCheckoutLength = book.getMaxCheckoutLength();
-        }
-
-        public Book toBook() {
-            return new Book(isbn, title, maxCheckoutLength, new ArrayList<>());
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public String getIsbn() {
-            return isbn;
-        }
-
-        public String getAuthor() {
-            return author;
-        }
-
-        public int getMaxCheckoutLength() {
-            return maxCheckoutLength;
-        }
     }
 
     @FXML
@@ -124,25 +86,17 @@ public class BookListController extends AdminController implements Initializable
             AlertMaker.showErrorMessage("No book selected", "Please select a book for deletion.");
             return;
         }
-//        if (DatabaseHandler.getInstance().isBookAlreadyIssued(selectedForDeletion)) {
-//            AlertMaker.showErrorMessage("Cant be deleted", "This book is already issued and cant be deleted.");
-//            return;
-//        }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Deleting book");
         alert.setContentText("Are you sure want to delete the book " + selectedForDeletion.title + " ?");
         Optional<ButtonType> answer = alert.showAndWait();
-//        if (answer.get() == ButtonType.OK) {
-//            Boolean result = DatabaseHandler.getInstance().deleteBook(selectedForDeletion);
-//            if (result) {
-//                AlertMaker.showSimpleAlert("Book deleted", selectedForDeletion.getTitle() + " was deleted successfully.");
-//                list.remove(selectedForDeletion);
-//            } else {
-//                AlertMaker.showSimpleAlert("Failed", selectedForDeletion.getTitle() + " could not be deleted");
-//            }
-//        } else {
-//            AlertMaker.showSimpleAlert("Deletion cancelled", "Deletion process cancelled");
-//        }
+        if (answer.get() == ButtonType.OK) {
+            deleteBook(selectedForDeletion.isbn);
+                AlertMaker.showSimpleAlert("Book deleted", selectedForDeletion.getTitle() + " was deleted successfully.");
+                list.remove(selectedForDeletion);
+        } else {
+            AlertMaker.showSimpleAlert("Deletion cancelled", "Deletion process cancelled");
+        }
     }
 
     @FXML
@@ -157,7 +111,7 @@ public class BookListController extends AdminController implements Initializable
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/library/ui/addbook/add_book.fxml"));
             Parent parent = loader.load();
 
-            BookAddController controller = (BookAddController) loader.getController();
+            BookAddController controller = loader.getController();
             controller.inflateUI(selectedForEdit);
 
             Stage stage = new Stage(StageStyle.DECORATED);
@@ -190,15 +144,112 @@ public class BookListController extends AdminController implements Initializable
             row.add(book.title);
             row.add(book.isbn);
             row.add(book.author);
-            row.add(String.valueOf(book.maxCheckoutLength));
+            row.add(String.valueOf(book.copies));
             printData.add(row);
         }
         LibraryAssistantUtil.initPDFExprot(rootPane, contentPane, getStage(), printData);
     }
 
     @FXML
+    private void exportToConsole(ActionEvent event) {
+        List<List> printData = new ArrayList<>();
+        String[] headers = {"   Title   ", "ID", "  Author  ", "  Publisher ", "Avail"};
+        printData.add(Arrays.asList(headers));
+        for (Bookz book : list) {
+            List<String> row = new ArrayList<>();
+            row.add(book.title);
+            row.add(book.isbn);
+            row.add(book.author);
+            row.add(String.valueOf(book.copies));
+            printData.add(row);
+        }
+
+        System.out.println(printData);
+    }
+
+    @FXML
     private void closeStage(ActionEvent event) {
         getStage().close();
+    }
+
+    public void addCopy(ActionEvent actionEvent) {
+        Bookz selectedForEdit = tableView.getSelectionModel().getSelectedItem();
+        if (selectedForEdit == null) {
+            AlertMaker.showErrorMessage("No book selected", "Please select a book for edit.");
+            return;
+        }
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/library/ui/addcopy/add_copy.fxml"));
+            Parent parent = loader.load();
+
+            CopyAddController controller = loader.getController();
+            controller.inflateUI(selectedForEdit);
+
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.setTitle("Add Book Copy");
+            stage.setScene(new Scene(parent));
+            stage.show();
+            LibraryAssistantUtil.setStageIcon(stage);
+
+            stage.setOnHiding((e) -> {
+                handleRefresh(new ActionEvent());
+            });
+
+        } catch (IOException ex) {
+            Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void toConsole(ActionEvent actionEvent) {
+        Bookz selectedForEdit = tableView.getSelectionModel().getSelectedItem();
+        if (selectedForEdit == null) {
+            AlertMaker.showErrorMessage("No book selected", "Please select a book for edit.");
+            return;
+        }
+        System.out.println(selectedForEdit);
+    }
+
+    public static class Bookz {
+        String title;
+        String isbn;
+        String author;
+        int copies;
+        int available;
+
+        public Bookz(Book book) {
+            this.title = book.getTitle();
+            this.isbn = book.getIsbn();
+            this.author = book.getAuthors().get(0).getName();
+            this.copies = book.getNumCopies();
+            this.available = book.getAvailableCopies();
+        }
+
+        public Book toBook() {
+            return new Book(isbn, title, copies, new ArrayList<>());
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public String getIsbn() {
+            return isbn;
+        }
+
+        public String getAuthor() {
+            return author;
+        }
+
+        @Override
+        public String toString() {
+            return "Books{" +
+                    "title='" + title + '\'' +
+                    ", isbn='" + isbn + '\'' +
+                    ", author='" + author + '\'' +
+                    ", copies=" + copies +
+                    ", available=" + available +
+                    '}';
+        }
     }
 
 }

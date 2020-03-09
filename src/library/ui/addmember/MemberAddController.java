@@ -1,10 +1,6 @@
 package library.ui.addmember;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,8 +10,11 @@ import javafx.stage.Stage;
 import library.alert.AlertMaker;
 import library.business.AdminController;
 import library.model.LibraryMember;
-import library.ui.listmember.MemberListController;
 import org.apache.commons.lang3.StringUtils;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 public class MemberAddController extends AdminController implements Initializable {
     @FXML
@@ -95,7 +94,7 @@ public class MemberAddController extends AdminController implements Initializabl
         AlertMaker.showMaterialDialog(rootPane, mainContainer, new ArrayList<>(), "Success", "Member data updated.");
     }
 
-    private  void close(){
+    private void close() {
         Stage stage = (Stage) firstName.getScene().getWindow();
         stage.close();
     }

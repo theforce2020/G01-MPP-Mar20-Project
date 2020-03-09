@@ -1,22 +1,22 @@
 package library.exceptions;
 
-import java.io.PrintStream;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.PrintStream;
+
 /**
- *
  * @author afsal
  */
 public class ExceptionUtil {
+
+    private final static Logger LOGGER = LogManager.getLogger(ExceptionUtil.class.getName());
 
     public static void init() {
         Thread.setDefaultUncaughtExceptionHandler(new DefaultExceptionHandler());
         System.setOut(createLoggingProxy(System.out));
         System.setErr(createLoggingProxy(System.err));
     }
-
-    private final static Logger LOGGER = LogManager.getLogger(ExceptionUtil.class.getName());
 
     public static PrintStream createLoggingProxy(final PrintStream realPrintStream) {
         return new PrintStream(realPrintStream) {

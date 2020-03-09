@@ -1,22 +1,8 @@
 package library.database;
 
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
-import javax.swing.JOptionPane;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -25,19 +11,26 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import javax.swing.*;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public final class DatabaseHandler {
 
     private final static Logger LOGGER = LogManager.getLogger(DatabaseHandler.class.getName());
-
-    private static DatabaseHandler handler = null;
-
     private static final String DB_URL = "jdbc:derby:database;create=true";
+    private static DatabaseHandler handler = null;
     private static Connection conn = null;
     private static Statement stmt = null;
 
     static {
-        createConnection();
-        inflateDB();
+//        createConnection();
+//        inflateDB();
     }
 
     private DatabaseHandler() {
@@ -70,13 +63,11 @@ public final class DatabaseHandler {
             }
             if (tableData.isEmpty()) {
                 System.out.println("Tables are already loaded");
-            }
-            else {
+            } else {
                 System.out.println("Inflating new tables.");
                 createTables(tableData);
             }
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             LOGGER.log(Level.ERROR, "{}", ex);
         }
     }
@@ -85,8 +76,7 @@ public final class DatabaseHandler {
         try {
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver").newInstance();
             conn = DriverManager.getConnection(DB_URL);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Cant load database", "Database Error", JOptionPane.ERROR_MESSAGE);
             System.exit(0);
         }
@@ -106,34 +96,18 @@ public final class DatabaseHandler {
         }
     }
 
-    public ResultSet execQuery(String query) {
-        ResultSet result;
-        try {
-            stmt = conn.createStatement();
-            result = stmt.executeQuery(query);
-        }
-        catch (SQLException ex) {
-            System.out.println("Exception at execQuery:dataHandler" + ex.getLocalizedMessage());
-            return null;
-        }
-        finally {
-        }
-        return result;
+    public static void main(String[] args) throws Exception {
+        DatabaseHandler.getInstance();
     }
 
-    public boolean execAction(String qu) {
-        try {
-            stmt = conn.createStatement();
-            stmt.execute(qu);
-            return true;
+    private static void createTables(List<String> tableData) throws SQLException {
+        Statement statement = conn.createStatement();
+        statement.closeOnCompletion();
+        for (String command : tableData) {
+            System.out.println(command);
+            statement.addBatch(command);
         }
-        catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error:" + ex.getMessage(), "Error Occured", JOptionPane.ERROR_MESSAGE);
-            System.out.println("Exception at execQuery:dataHandler" + ex.getLocalizedMessage());
-            return false;
-        }
-        finally {
-        }
+        statement.executeBatch();
     }
 
 //    public boolean deleteBook(Book book) {
@@ -237,8 +211,30 @@ public final class DatabaseHandler {
 //        return false;
 //    }
 
-    public static void main(String[] args) throws Exception {
-        DatabaseHandler.getInstance();
+    public ResultSet execQuery(String query) {
+        ResultSet result;
+        try {
+            stmt = conn.createStatement();
+            result = stmt.executeQuery(query);
+        } catch (SQLException ex) {
+            System.out.println("Exception at execQuery:dataHandler" + ex.getLocalizedMessage());
+            return null;
+        } finally {
+        }
+        return result;
+    }
+
+    public boolean execAction(String qu) {
+        try {
+            stmt = conn.createStatement();
+            stmt.execute(qu);
+            return true;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error:" + ex.getMessage(), "Error Occured", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Exception at execQuery:dataHandler" + ex.getLocalizedMessage());
+            return false;
+        } finally {
+        }
     }
 
     public ObservableList<PieChart.Data> getBookGraphStatistics() {
@@ -256,8 +252,7 @@ public final class DatabaseHandler {
                 int count = rs.getInt(1);
                 data.add(new PieChart.Data("Issued Books (" + count + ")", count));
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return data;
@@ -278,21 +273,10 @@ public final class DatabaseHandler {
                 int count = rs.getInt(1);
                 data.add(new PieChart.Data("Active (" + count + ")", count));
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return data;
-    }
-
-    private static void createTables(List<String> tableData) throws SQLException {
-        Statement statement = conn.createStatement();
-        statement.closeOnCompletion();
-        for (String command : tableData) {
-            System.out.println(command);
-            statement.addBatch(command);
-        }
-        statement.executeBatch();
     }
 
     public Connection getConnection() {

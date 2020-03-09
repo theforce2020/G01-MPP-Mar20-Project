@@ -10,7 +10,7 @@ public class MailServerInfo {
     private String emailID;
     private String password;
     private Boolean sslEnabled;
-    
+
     public MailServerInfo(String mailServer, Integer port, String emailID, String password, Boolean sslEnabled) {
         this.mailServer = mailServer;
         this.port = port;
@@ -38,7 +38,7 @@ public class MailServerInfo {
     public Boolean getSslEnabled() {
         return sslEnabled;
     }
-    
+
     @Override
     public String toString() {
         return String.format("%s:%d @ %s", mailServer, port, emailID);

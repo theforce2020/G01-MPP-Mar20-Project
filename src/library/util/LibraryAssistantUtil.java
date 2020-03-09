@@ -1,17 +1,6 @@
 package library.util;
 
 import com.jfoenix.controls.JFXButton;
-import java.awt.Desktop;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -24,8 +13,20 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import library.alert.AlertMaker;
 import library.export.pdf.ListToPDF;
-import library.ui.settings.Preferences;
 import library.ui.main.MainController;
+import library.ui.settings.Preferences;
+
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 public class LibraryAssistantUtil {
 

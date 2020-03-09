@@ -1,53 +1,53 @@
 package library.model;
 
-import java.io.Serializable;
-
 import library.dataaccess.Auth;
 
+import java.io.Serializable;
+
 final public class SystemUser implements Serializable {
-	
-	private static final long serialVersionUID = 5147265048973262104L;
-	
-	private int id;
-	
-	private String username;
-	
-	private String password;
-	
-	private Auth authorization;
 
-	public SystemUser(String username, String password, Auth auth) {
-		this.username = username;
-		this.password = password;
-		this.authorization = auth;
-	}
-	
-	public String getPassword() {
-		return password;
-	}
-	
-	public Auth getAuthorization() {
-		return authorization;
-	}
-	
-	@Override
-	public String toString() {
-		return "[" + authorization.toString() + "]";
-	}
+    private static final long serialVersionUID = 5147265048973262104L;
 
-	public String getUsername() {
-		return username;
-	}
+    private int id;
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    private String username;
 
-	public int getId() {
-		return id;
-	}
+    private String password;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    private Auth authorization;
+
+    public SystemUser(String username, String password, Auth auth) {
+        this.username = username;
+        this.password = password;
+        this.authorization = auth;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public Auth getAuthorization() {
+        return authorization;
+    }
+
+    @Override
+    public String toString() {
+        return "[" + authorization.toString() + "]";
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

@@ -7,7 +7,6 @@ package library.dataaccess;
  * once) before the rest of the application can work properly.
  * It will create three serialized objects in the dataaccess.storage
  * folder.
- *
  */
 public class TestData {
 	

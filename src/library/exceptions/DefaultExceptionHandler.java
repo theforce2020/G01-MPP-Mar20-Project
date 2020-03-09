@@ -1,12 +1,12 @@
 package library.exceptions;
 
-import java.lang.Thread.UncaughtExceptionHandler;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.lang.Thread.UncaughtExceptionHandler;
+
 /**
- *
  * @author afsal
  */
 public class DefaultExceptionHandler implements UncaughtExceptionHandler {

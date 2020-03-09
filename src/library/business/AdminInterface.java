@@ -1,16 +1,16 @@
 package library.business;
 
-import library.model.Admin;
 import library.exceptions.UsernameInUseException;
+import library.model.Admin;
 
 import java.util.List;
 
 
 public interface AdminInterface {
-	
-	public void saveAdmin(String fName, String lName, String telephone, String street, String city, String state, String zip, String username, String password) throws UsernameInUseException;
-	
-	public void updateAdmin(int adminId, String fName, String lName, String telephone, String street, String city, String state, String zip);
-	
-	public List<Admin> getAllAdmins();
+
+    void saveAdmin(String fName, String lName, String telephone, String street, String city, String state, String zip, String username, String password) throws UsernameInUseException;
+
+    void updateAdmin(int adminId, String fName, String lName, String telephone, String street, String city, String state, String zip);
+
+    List<Admin> getAllAdmins();
 }
